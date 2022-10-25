@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Alex Page - Web Developer</title>
+        <link rel="icon" href="/Images/ctoon-portrait-beanie.png" />
+        <!--JQuery-->
+        <script
+            src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous">
+        </script>
+        <!--CSS file-->
+        <link rel="stylesheet" href="/dist/output.css">
+        <!--JavaScript file-->
+        <script src="/dist/JS/script.js"></script>
+    </head>
+    <body class="mx-auto">
+        <div id="pg_t" class="top-0 m-0 p-0 h-0"></div>
+        <header class="top-0 h-max z-1">
+            <section id="header_content" class="min-h-fit py-2 flex-auto md:flex row justify-around items-center mx-auto sm:justify-between">
+                <div id="md_header" class="flex row justify-between p-3">
+                    <div id="name-container" class="ml-6 mr-auto">
+                        <p id="name" class="flex justify-center items-center text-center">
+                            Alex Page
+                        </p>
+                    </div>
+                    <!-- Expands contact info when viewport is below 768px -->
+                    <button id="sandwich_menu" onclick="contact();" class="block md:hidden mx-6">
+                        <img id="menu_icn" src="/Images/sandwich-icon(d8e4ec).ico"/ alt="menu icon">
+                    </button>
+                </div>
+                <!-- Contact section -->
+                <section id="contact-container" class="flex" name="contact_info">
+                    <div id="contact" class="hidden flex-col mb-3 items-center w-fit md:flex md:mb-0 md:justify-end mx-auto">
+                        <div id="contact_label" class="flex justify-center mx-auto mb-3 md:hidden">
+                            <p class="mb-1">Contact</p>
+                        </div>
+                        <!-- contact content -->
+                        <div class="flex flex-row ml-auto mr-3 justify-center">
+                            <!-- Email info -->
+                            <div class="flex justify-end mx-3 md:mx-6">
+                                <div id="email-container" class="flex justify-around items-center md:my-0 md:text-lg">
+                                    <button id="email" onclick="clipboard();" class="flex justify-between items-center static w-max">
+                                        page.alexanderjohn@gmail.com
+                                        <div id="cpy_border" class="mx-3"></div>
+                                        <img id="copy_icn" src="https://api.iconify.design/material-symbols:content-copy-rounded.svg?color=%23d8e4ec" class="w-4 md:w-5" />
+                                    </button>
+                                    <p id="alert" class="hidden justify-center absolute"></p>
+                                </div>
+                            </div>
+                            <!-- Github & Linkedin links -->
+                            <nav class="flex justify-end">               
+                                <div id="nav_content" class="mx-auto my-auto flex flex-row justify-between">
+                                    <div class="mx-3 md:my-3 md:mx-5">
+                                        <a href="https://github.com/ImmuneMoon" target="_blank" onclick="gitclick();">
+                                            <img id="github" src="https://api.iconify.design/octicon:mark-github-16.svg?color=%2300d4b5" class="w-7" alt="Github" />
+                                        </a>
+                                    </div>
+                                    <div class="mx-3 md:my-3 md:mx-5">
+                                        <a href="https://www.linkedin.com/in/p-alex-j/" target="_blank" onclick="inclick();">
+                                            <img id="linkedin" src="https://api.iconify.design/akar-icons:linkedinv1-fill.svg?color=%2300d4b5" class="w-7" alt="Linkedin" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <!-- have the link for the section of the page youre in light up if possible -->
+            <nav id="pg_nav" class="">
+                <div id="pg_nav_bkgrnd">
+                    <div id="pg_nav_container" class="grid grid-cols-3 w-80">
+                        <a id="contact_direct" class="py-2 w-auto col-start-1 col-end-2 text-center" href="#pg_t">Contact</a>
+                        <a id="about_direct" class="py-2 w-auto col-start-2 col-end-3 text-center" href="#section_2">About</a>
+                        <a id="project_direct" class="py-2 w-auto pr-2 col-start-3 col-end-4 text-center" href="#section_3">Projects</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <section id="section_1" class="my-auto">
+                <div id="creds_container" class="flex justify-center items-center content-center">
+                    <section id="credentials">
+                        <div class="flex justify-center">
+                            <h1 id="intro">Web developer</h1>
+                        </div>
+                        <div class="flex justify-center my-3">
+                            <ul id="skills" class="grid grid-cols-5 gap-5 sm:grid-cols-10">
+                                <li id="htmlang" data-tooltip="HTML">
+                                    <img class="lang" src="https://api.iconify.design/akar-icons:html-fill.svg?color=%23cccde0" alt="HTML"  />
+                                </li>
+                                <li id="css" data-tooltip="CSS">
+                                    <img class="lang" src="https://api.iconify.design/akar-icons:css-fill.svg?color=%23cccde0" alt="CSS" />
+                                </li>
+                                <li id="bootstrap" data-tooltip="Bootstrap">
+                                    <img class="lang" src="https://api.iconify.design/akar-icons:bootstrap-fill.svg?color=%23cccde0" alt="Bootstrap" />
+                                </li>
+                                <li id="tailwind" data-tooltip="Tailwind CSS">
+                                    <img class="lang" src="https://api.iconify.design/simple-icons:tailwindcss.svg?color=%23cccde0" alt="TailwindCSS" />
+                                </li>
+                                <li id="javascript" data-tooltip="JavaScript">
+                                    <img class="lang" src="https://api.iconify.design/akar-icons:javascript-fill.svg?color=%23cccde0" alt="JavaScript" />
+                                </li>
+                                <li id="jquery" data-tooltip="JQuery">
+                                    <img class="lang" src="https://api.iconify.design/akar-icons:jquery-fill.svg?color=%23cccde0" alt="JQuery" />
+                                </li>
+                                <li id="python" data-tooltip="Python">
+                                    <img class="lang" src="https://api.iconify.design/akar-icons:python-fill.svg?color=%23cccde0" alt="Python" />
+                                </li>
+                                <li id="flask" data-tooltip="Flask">
+                                    <img class="lang" src="https://api.iconify.design/file-icons:flask.svg?color=%23cccde0" alt="Flask" />
+                                </li>
+                                <li id="sql" data-tooltip="SQLite">
+                                    <img class="lang" src="https://api.iconify.design/simple-icons:sqlite.svg?color=%23cccde0" alt="SQLite" />
+                                </li>
+                                <li id="c_lang" data-tooltip="C-Language">
+                                    <img class="lang" src="https://api.iconify.design/mdi:language-c.svg?color=%23cccde0" alt="C-Lang" />
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-center my-7">
+                            <button id="resume">
+                                <a href="/dist/docs/Alexander_Page_Resume.pdf" target="blank">
+                                    Résumé
+                                </a>
+                            </button>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <section id="section_3">
+                <div id="projects_container">
+                    <section id="projects" class="" name="projects">
+                        <div id="proj_head_container">
+                            <h2 id="projects_heading" class="flex justify-center">
+                                Projects
+                            </h2>
+                        </div>
+                        <div>
+                            <p>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem a, mollitia beatae sed voluptatem dolorum incidunt, nobis reprehenderit 
+                                sequi ipsum est quod impedit in obcaecati, nisi necessitatibus officiis voluptas consectetur. Lorem ipsum dolor sit amet consectetur 
+                                adipisicing elit. Ab asperiores quam enim id sequi! Deleniti fugit molestiae doloremque odio harum qui soluta est voluptatum ipsum. 
+                                Voluptates in aliquam odit? Debitis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias dolor quam quos, beatae similique 
+                                deserunt expedita maxime excepturi velit, iure sunt ipsum? Voluptatem quis labore ut illo, dolorum nesciunt dolore? Lorem ipsum dolor 
+                                sit amet consectetur adipisicing elit. Impedit non sed officiis nobis nostrum suscipit saepe, perferendis reprehenderit quis obcaecati 
+                                architecto perspiciatis repudiandae voluptate, ducimus explicabo ipsa unde qui laborum? Lorem ipsum dolor sit amet consectetur 
+                                adipisicing elit. Corporis laudantium dolores suscipit voluptatem consequatur quae sunt ducimus placeat repudiandae tenetur repellendus 
+                                obcaecati odio voluptates, vel iste tempore quam sequi ratione! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit dicta 
+                                porro nemo, magnam labore cupiditate! Iusto, neque! Nam natus earum fugiat ipsum, blanditiis maiores voluptate, itaque repellendus ab, 
+                                perferendis sit. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere doloremque architecto mollitia quisquam tenetur sit, 
+                                doloribus, cupiditate voluptatem atque facilis minus! Ipsam, voluptate laboriosam. Cupiditate mollitia soluta totam molestiae commodi? 
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, similique aperiam veniam numquam praesentium rem cupiditate optio vero 
+                                dignissimos, laborum dolorem modi quisquam at adipisci consequatur, placeat voluptate? Dicta, incidunt? Lorem ipsum dolor sit amet 
+                                consectetur adipisicing elit. Nulla dicta molestiae molestias totam aliquam unde corrupti suscipit assumenda, ea ipsa optio illo, vitae 
+                                deleniti. Aliquid consequatur assumenda animi sed tempore. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem a, mollitia beatae sed voluptatem dolorum incidunt, nobis reprehenderit 
+                                sequi ipsum est quod impedit in obcaecati, nisi necessitatibus officiis voluptas consectetur. Lorem ipsum dolor sit amet consectetur 
+                                adipisicing elit. Ab asperiores quam enim id sequi! Deleniti fugit molestiae doloremque odio harum qui soluta est voluptatum ipsum. 
+                                Voluptates in aliquam odit? Debitis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias dolor quam quos, beatae similique 
+                                deserunt expedita maxime excepturi velit, iure sunt ipsum? Voluptatem quis labore ut illo, dolorum nesciunt dolore? Lorem ipsum dolor 
+                                sit amet consectetur adipisicing elit. Impedit non sed officiis nobis nostrum suscipit saepe, perferendis reprehenderit quis obcaecati 
+                                architecto perspiciatis repudiandae voluptate, ducimus explicabo ipsa unde qui laborum? Lorem ipsum dolor sit amet consectetur 
+                                adipisicing elit. Corporis laudantium dolores suscipit voluptatem consequatur quae sunt ducimus placeat repudiandae tenetur repellendus 
+                                obcaecati odio voluptates, vel iste tempore quam sequi ratione! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit dicta 
+                                porro nemo, magnam labore cupiditate! Iusto, neque! Nam natus earum fugiat ipsum, blanditiis maiores voluptate, itaque repellendus ab, 
+                                perferendis sit. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere doloremque architecto mollitia quisquam tenetur sit, 
+                                doloribus, cupiditate voluptatem atque facilis minus! Ipsam, voluptate laboriosam. Cupiditate mollitia soluta totam molestiae commodi? 
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, similique aperiam veniam numquam praesentium rem cupiditate optio vero 
+                                dignissimos, laborum dolorem modi quisquam at adipisci consequatur, placeat voluptate? Dicta, incidunt? Lorem ipsum dolor sit amet 
+                                consectetur adipisicing elit. Nulla dicta molestiae molestias totam aliquam unde corrupti suscipit assumenda, ea ipsa optio illo, vitae 
+                                deleniti. Aliquid consequatur assumenda animi sed tempore.
+                            </p>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </main>
+        <footer>
+
+        </footer>
+    </body>
+</html>
