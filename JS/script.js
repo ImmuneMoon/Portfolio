@@ -12,8 +12,8 @@ $(() => {
 
     // Github icon hover effect
     $('#github').hover(() => {
-        // Turns orange (#ff8900)
-        $('#github').attr('src', 'https://api.iconify.design/octicon:mark-github-16.svg?color=%23ff8900');
+        // Turns yellow (#f9f047)
+        $('#github').attr('src', 'https://api.iconify.design/octicon:mark-github-16.svg?color=%23f9f047');
     }, () => {
         // Turns back to green/blue (#00d4b5)
         $('#github').attr('src', 'https://api.iconify.design/octicon:mark-github-16.svg?color=%2300d4b5');
@@ -21,8 +21,8 @@ $(() => {
 
     // Linkedin icon hover effect
     $('#linkedin').hover(() => {
-        // Turns orange (#ff8900)
-        $('#linkedin').attr('src', 'https://api.iconify.design/akar-icons:linkedinv1-fill.svg?color=%23ff8900');
+        // Turns yellow (#f9f047)
+        $('#linkedin').attr('src', 'https://api.iconify.design/akar-icons:linkedinv1-fill.svg?color=%23f9f047');
     }, () => {
         // Turns back to green/blue (#00d4b5)
         $('#linkedin').attr('src', 'https://api.iconify.design/akar-icons:linkedinv1-fill.svg?color=%2300d4b5');
@@ -30,11 +30,11 @@ $(() => {
 
     // Contact menu hover effect
     $('#menu_icn').hover(() => {
-        // Turns orange (#ff8800)
-        $('#menu_icn').attr('src', '/Images/sandwich-icon-(ff8800).ico');
+        // Turns yellow (#f9f047)
+        $('#menu_icn').attr('src', '/Images/sandwich-icon(f9f047)-thin.ico');
     }, () => {
         // Turns back to white (#d8e4ec)
-        $('#menu_icn').attr('src', '/Images/sandwich-icon(d8e4ec).ico');
+        $('#menu_icn').attr('src', '/Images/sandwich-icon(d8e4ec)-thin.ico');
     });
 
     // Resume hover effect
@@ -63,9 +63,13 @@ $(() => {
 
             else {
                 $('#contact').hide()
+                $('#header_content').css({
+                    'grid-template-rows' : '1',
+                    'border-radius' : '0'
+                });
+
             }
         }
-        
     });
       
 
@@ -94,12 +98,44 @@ $(() => {
             });
         }
     });
+    window.addEventListener("scroll", () => {
+        let scroll = $(window).scrollTop();
+        if (scroll > 87) {
+            $('#pg_nav').css({
+                'position' : 'fixed',
+                'top' : '0px'
+            });
+            $('header').css({
+                'margin-bottom' : '40px'
+            });
+        }
+        else {
+            $('#pg_nav').css({
+                'position' : 'static',
+                'top' : ''
+            });
+            $('header').css({
+                'margin-bottom' : '0'
+            });
+            $('#contact').css({
+                'border-radius' : '0'
+            });
+            $('#header_content').css({
+                'grid-template-rows' : '1',
+                'border-radius' : '0'
+            });
+            if ($(document).width() < 752) {
+                $('#contact').hide()
+            }
+        }
+    });
+
 });
 
 function clipboard() {
 
-    // Changes the copy icon to orange (#ff8800) outline version on click
-    $('#copy_icn').attr('src', 'https://api.iconify.design/material-symbols:content-copy-outline-rounded.svg?color=%23ff8800');
+    // Changes the copy icon to yellow (#f9f047) outline version on click
+    $('#copy_icn').attr('src', 'https://api.iconify.design/material-symbols:content-copy-outline-rounded.svg?color=%23f9f047');
     // After 300ms the icon changes back to white (#d8e4ec) original
     setTimeout(() => {
         $('#copy_icn').attr('src', 'https://api.iconify.design/material-symbols:content-copy-rounded.svg?color=%23d8e4ec');
@@ -131,8 +167,8 @@ function clipboard() {
 
 function gitclick() {
 
-    // Changes the github icon to orange (#ff8900) outline version on click
-    $('#github').attr('src', 'https://api.iconify.design/iconoir:github-outline.svg?color=%23ff8900');
+    // Changes the github icon to yellow (#f9f047) outline version on click
+    $('#github').attr('src', 'https://api.iconify.design/iconoir:github-outline.svg?color=%23f9f047');
     // After 300ms the icon changes back to green/blue (#00ffed) original
     setTimeout(() => {
         $('#github').attr('src', 'https://api.iconify.design/octicon:mark-github-16.svg?color=%2300d4b5');
@@ -141,8 +177,8 @@ function gitclick() {
 
 function inclick() {
 
-    // Changes the linkedin icon to orange (#ff8900) outline version on click
-    $('#linkedin').attr('src', 'https://api.iconify.design/ph:linkedin-logo-bold.svg?color=%23ff8900');
+    // Changes the linkedin icon to yellow (#f9f047) outline version on click
+    $('#linkedin').attr('src', 'https://api.iconify.design/ph:linkedin-logo-bold.svg?color=%23f9f047');
     // After 300ms the icon changes back to green/blue (#00d4b5) original
     setTimeout(() => {
         $('#linkedin').attr('src', 'https://api.iconify.design/akar-icons:linkedinv1-fill.svg?color=%2300d4b5');
@@ -158,8 +194,6 @@ function contact() {
         
         $('#contact').show()
 
-        // Turns orange (#ff8800)
-        $('#menu_icn').attr('src', '/Images/sandwich-icon-(ff8800).ico');
 
     }
     else {
@@ -173,7 +207,5 @@ function contact() {
             'border-radius' : '0'
         });
 
-        // Turns back to white (#d8e4ec)
-        $('#menu_icn').attr('src', '/Images/sandwich-icon(d8e4ec).ico');
     }
 }

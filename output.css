@@ -563,6 +563,10 @@ video {
   position: static;
 }
 
+.fixed{
+  position: fixed;
+}
+
 .absolute{
   position: absolute;
 }
@@ -671,12 +675,6 @@ video {
 
 .h-0{
   height: 0px;
-}
-
-.h-max{
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
 }
 
 .min-h-fit{
@@ -926,11 +924,12 @@ header {
 
 #section_1 {
   min-width: 100%;
-  min-height: 100vh;
 }
 
-#creds_container {
-  transform: translateY(50%)
+#creds_section {
+  padding-top: 10%;
+  padding-bottom: 15%;
+  position: static;
 }
 
 #about-container{
@@ -946,7 +945,7 @@ header {
   width: 1.75em;
 }
 
-#htmlang {
+#htmlang:hover {
   position: relative
 }
 
@@ -966,7 +965,7 @@ header {
   transform-origin: top center;
 }
 
-#css {
+#css:hover {
   position: relative
 }
 
@@ -986,7 +985,7 @@ header {
   transform-origin: top center;
 }
 
-#bootstrap {
+#bootstrap:hover {
   position: relative
 }
 
@@ -1006,7 +1005,7 @@ header {
   transform-origin: top center;
 }
 
-#tailwind {
+#tailwind:hover {
   position: relative
 }
 
@@ -1026,7 +1025,7 @@ header {
   transform-origin: top center;
 }
 
-#javascript {
+#javascript:hover {
   position: relative
 }
 
@@ -1046,7 +1045,7 @@ header {
   transform-origin: top center;
 }
 
-#jquery {
+#jquery:hover {
   position: relative
 }
 
@@ -1066,7 +1065,7 @@ header {
   transform-origin: top center;
 }
 
-#python {
+#python:hover {
   position: relative
 }
 
@@ -1086,7 +1085,7 @@ header {
   transform-origin: top center;
 }
 
-#flask {
+#flask:hover {
   position: relative
 }
 
@@ -1106,7 +1105,7 @@ header {
   transform-origin: top center;
 }
 
-#sql {
+#sql:hover {
   position: relative
 }
 
@@ -1126,7 +1125,7 @@ header {
   transform-origin: top center;
 }
 
-#c_lang {
+#c_lang:hover {
   position: relative
 }
 

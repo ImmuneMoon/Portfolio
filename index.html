@@ -18,8 +18,8 @@
         <script src="/dist/JS/script.js"></script>
     </head>
     <body class="mx-auto">
-        <div id="pg_t" class="top-0 m-0 p-0 h-0"></div>
-        <header class="top-0 h-max z-1">
+        <div id="contact_section" class="top-0 m-0 p-0 h-0"></div>
+        <header class="">
             <section id="header_content" class="min-h-fit py-2 flex-auto md:flex row justify-around items-center mx-auto sm:justify-between">
                 <div id="md_header" class="flex row justify-between p-3">
                     <div id="name-container" class="ml-6 mr-auto">
@@ -29,7 +29,7 @@
                     </div>
                     <!-- Expands contact info when viewport is below 768px -->
                     <button id="sandwich_menu" onclick="contact();" class="block md:hidden mx-6">
-                        <img id="menu_icn" src="/Images/sandwich-icon(d8e4ec).ico"/ alt="menu icon">
+                        <img id="menu_icn" src="/Images/sandwich-icon(d8e4ec)-thin.ico"/ alt="menu icon">
                     </button>
                 </div>
                 <!-- Contact section -->
@@ -70,19 +70,20 @@
                     </div>
                 </section>
             </section>
-            <!-- have the link for the section of the page youre in light up if possible -->
-            <nav id="pg_nav" class="">
-                <div id="pg_nav_bkgrnd">
-                    <div id="pg_nav_container" class="grid grid-cols-3 w-80">
-                        <a id="contact_direct" class="py-2 w-auto col-start-1 col-end-2 text-center" href="#pg_t">Contact</a>
-                        <a id="about_direct" class="py-2 w-auto col-start-2 col-end-3 text-center" href="#section_2">About</a>
-                        <a id="project_direct" class="py-2 w-auto pr-2 col-start-3 col-end-4 text-center" href="#section_3">Projects</a>
-                    </div>
-                </div>
-            </nav>
         </header>
+        <!-- page section scroll links -->
+        <nav id="pg_nav" class="">
+            <div id="pg_nav_bkgrnd">
+                <div id="pg_nav_container" class="grid grid-cols-3 w-80">
+                    <a id="contact_direct" class="py-2 w-auto col-start-1 col-end-2 text-center" href="#contact_section" onclick="contact();">Contact</a>
+                    <a id="about_direct" class="py-2 w-auto col-start-2 col-end-3 text-center" href="#about_section">About</a>
+                    <a id="project_direct" class="py-2 w-auto pr-2 col-start-3 col-end-4 text-center" href="#project_section">Projects</a>
+                </div>
+            </div>
+        </nav>
         <main>
-            <section id="section_1" class="my-auto">
+            <!-- Resume and known languages -->
+            <section id="creds_section" class="my-auto">
                 <div id="creds_container" class="flex justify-center items-center content-center">
                     <section id="credentials">
                         <div class="flex justify-center">
@@ -132,7 +133,7 @@
                     </section>
                 </div>
             </section>
-            <section id="section_3">
+            <section id="project_section">
                 <div id="projects_container">
                     <section id="projects" class="" name="projects">
                         <div id="proj_head_container">
