@@ -51,16 +51,15 @@ $(() => {
             'background-color' : '#940000'
         });
     });
-
+    // Listens for click events
     document.addEventListener('click', (event) => {
         let element = []
         element.push(event.target);
         if ($(document).width() < 753) {
-            // If element isn't any within the contact dropdown
-            if (element.includes($('#contact-container')[0]) || element.includes($('#contact')[0]) || element.includes($('#menu_icn')[0]) || element.includes($('#email')[0]) || element.includes($('#github')[0]) || element.includes($('#linkedin')[0])) {
+            // If element isn't any within the contact dropdown when a click is detected, the contact dropdown is hidden 
+            if (element.includes($(':header')[0]) ||element.includes($('#header_content')[0]) || element.includes($('#md_header')[0]) || element.includes($('#name-container')[0]) || element.includes($('#name')[0]) || element.includes($('#contact-container')[0]) || element.includes($('#contact_label_container')[0]) || element.includes($('#contact_label')[0]) || element.includes($('#contact')[0]) || element.includes($('#menu_icn')[0]) || element.includes($('#email')[0]) || element.includes($('#github')[0]) || element.includes($('#linkedin')[0])) {
                 return
             }
-
             else {
                 $('#contact').hide()
                 $('#header_content').css({
@@ -98,8 +97,12 @@ $(() => {
             });
         }
     });
+
+    // Listens for scrolling
     window.addEventListener("scroll", () => {
         let scroll = $(window).scrollTop();
+
+        // When the viewport is below 87px, the page nav will stick to the top of the window and go back in place then scrolled above 87px height
         if (scroll > 87) {
             $('#pg_nav').css({
                 'position' : 'fixed',
@@ -124,6 +127,7 @@ $(() => {
                 'grid-template-rows' : '1',
                 'border-radius' : '0'
             });
+            // Makes sure the contact dropdown hides when the viewport is below 752px when resized
             if ($(document).width() < 752) {
                 $('#contact').hide()
             }
@@ -186,6 +190,7 @@ function inclick() {
 }
 
 function contact() {
+    // Shows the contact dropdown when the menu icon triggers this function and closes it if open when triggered
     if ($('#contact').css('display') == 'none') {
         $('#header_content').css({
             'grid-template-rows' : '3',

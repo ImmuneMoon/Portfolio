@@ -876,30 +876,6 @@ header {
 #pg_nav_container {
 }
 
-#contact_direct {
-}
-
-#contact_direct:hover {
-  border-radius:  0 0 1rem 0;
-  background: linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%);
-}
-
-#about_direct {
-}
-
-#about_direct:hover {
-  border-radius:  0 0 1rem 1rem;
-  background: linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%);
-}
-
-#project_direct {
-}
-
-#project_direct:hover {
-  border-radius:  0 0 4rem 1rem;
-  background: linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%);
-}
-
 #email {
   font-family: 'Prompt', sans-serif;
   border: none;
@@ -920,6 +896,21 @@ header {
 #menu_icn {
   height: 2em;
   width: auto;
+}
+
+#contact_direct:hover {
+  border-radius:  0 0 1rem 0;
+  background: linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%);
+}
+
+#about_direct:hover {
+  border-radius:  0 0 1rem 1rem;
+  background: linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%);
+}
+
+#project_direct:hover {
+  border-radius:  0 0 4rem 1rem;
+  background: linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%);
 }
 
 #section_1 {
@@ -1158,7 +1149,7 @@ header {
 /* Viewport sizes below tailwind's medium viewport size */
 
 @media (max-width: 768px) {
-  #contact_label {
+  #contact_label_container {
     width: 25%;
     border-bottom: solid 1px #d8e4ec;
   }
