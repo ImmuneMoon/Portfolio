@@ -51,13 +51,29 @@ $(() => {
             'background-color' : '#940000'
         });
     });
+
     // Listens for click events
     document.addEventListener('click', (event) => {
         let element = []
         element.push(event.target);
+
+        // On medium or smaller screens
         if ($(document).width() < 753) {
             // If element isn't any within the contact dropdown when a click is detected, the contact dropdown is hidden 
-            if (element.includes($(':header')[0]) ||element.includes($('#header_content')[0]) || element.includes($('#md_header')[0]) || element.includes($('#name-container')[0]) || element.includes($('#name')[0]) || element.includes($('#contact-container')[0]) || element.includes($('#contact_label_container')[0]) || element.includes($('#contact_label')[0]) || element.includes($('#contact')[0]) || element.includes($('#menu_icn')[0]) || element.includes($('#email')[0]) || element.includes($('#github')[0]) || element.includes($('#linkedin')[0])) {
+            if (element.includes($(':header')[0]) || 
+                element.includes($('#header_content')[0]) || 
+                element.includes($('#md_header')[0]) || 
+                element.includes($('#name-container')[0]) || 
+                element.includes($('#name')[0]) || 
+                element.includes($('#contact-container')[0]) || 
+                element.includes($('#contact_label_container')[0]) || 
+                element.includes($('#contact_label')[0]) || 
+                element.includes($('#contact')[0]) || 
+                element.includes($('#menu_icn')[0]) || 
+                element.includes($('#email')[0]) || 
+                element.includes($('#github')[0]) || 
+                element.includes($('#linkedin')[0])) {
+
                 return
             }
             else {
@@ -66,8 +82,46 @@ $(() => {
                     'grid-template-rows' : '1',
                     'border-radius' : '0'
                 });
-
             }
+        }
+
+        // Highlights contact nav button on click
+        if (element.includes($('#contact_direct')[0])) {
+            $('#contact_direct').css({
+                'border-radius':  '0 0 1rem 0',
+                'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
+            });
+        }
+
+        // Highlights about nav button on click
+        if (element.includes($('#about_direct')[0])) {
+            $('#about_direct').css({
+                'border-radius':  '0 0 1rem 1rem',
+                'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
+            });
+        }
+
+        // Highlights projects nav button on click
+        if (element.includes($('#project_direct')[0])) {
+            $('#project_direct').css({
+                'border-radius':  '0 0 4rem 1rem',
+                'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
+            });
+        }
+
+        if (element.includes($('#resume')[0])) {
+            // Changes the resume button to white (#940000) with red (#d8e4ec) text on click
+            $('#resume').css({
+                'color' : '#940000',
+                'background-color' : '#d8e4ec'
+            });
+            setTimeout(() => {
+                // Changes the resume button to red (#d8e4ec) with white (#940000) text after 175ms
+                $('#resume').css({
+                    'color' : '#d8e4ec',
+                    'background-color' : '#940000'
+                });
+            }, 175)
         }
     });
       
@@ -101,6 +155,52 @@ $(() => {
     // Listens for scrolling
     window.addEventListener("scroll", () => {
         let scroll = $(window).scrollTop();
+        /* Find scroll distance from bottom of page when in the contact/ resume section
+        // Highlighs contact nav button in contact section
+        if (scroll >= 0 && scroll < 857) {
+            // Nav bar highlight
+            $('#contact_direct').css({
+                'border-radius':  '0 0 1rem 0',
+                'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
+            });
+        }
+        else {
+            $('#contact_direct').css({
+                'border-radius':  '0',
+                'background' : 'none'
+            });
+        }
+
+        // Highlighs about nav button in about section
+        if (scroll >= 857 && scroll < project section number) {
+            // Nav bar highlight
+            $('#about_direct').css({
+                'border-radius':  '0 0 1rem 1rem',
+                'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
+            });
+        }
+        else {
+            $('#about_direct').css({
+                'border-radius':  '0',
+                'background' : 'none'
+            });
+        }
+        
+        // Highlighs projects nav button in project section
+        if (scroll >= project section number) {
+            // Nav bar highlight
+            $('#project_direct').css({
+                'border-radius':  '0 0 4rem 1rem',
+                'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
+            });
+        }
+        else {
+            $('#project_direct').css({
+                'border-radius':  '0',
+                'background' : 'none'
+            });
+        }
+        */
 
         // When the viewport is below 87px, the page nav will stick to the top of the window and go back in place then scrolled above 87px height
         if (scroll > 87) {
@@ -191,26 +291,40 @@ function inclick() {
 
 function contact() {
     // Shows the contact dropdown when the menu icon triggers this function and closes it if open when triggered
-    if ($('#contact').css('display') == 'none') {
-        $('#header_content').css({
-            'grid-template-rows' : '3',
-            'border-radius' : '0 0 2rem 0'
-        });
-        
-        $('#contact').show()
+    if ($(document).width() < 752) {
+        if ($('#contact').css('display') == 'none') {
+            // Changes the menu icon to yellow (#f9f047) on click
+            $('#menu_icn').attr('src', '/Images/sandwich-icon(f9f047)-thin.ico');
+            setTimeout(() => {
+                // After 175ms the icon changes back to white (#d8e4ec)
+                $('#menu_icn').attr('src', '/Images/sandwich-icon(d8e4ec)-thin.ico');
+            }, 175)
+            $('#header_content').css({
+                'grid-template-rows' : '3',
+                'border-radius' : '0 0 2rem 0'
+            });
+            
+            $('#contact').show()
 
 
-    }
-    else {
-        $('#contact').hide()
-        $('#contact').css({
-            'border-radius' : '0'
-        });
+        }
+        else {
+            // Changes the menu icon to yellow (#f9f047) on click
+            $('#menu_icn').attr('src', '/Images/sandwich-icon(f9f047)-thin.ico');
+            setTimeout(() => {
+                // After 175ms the icon changes back to white (#d8e4ec)
+                $('#menu_icn').attr('src', '/Images/sandwich-icon(d8e4ec)-thin.ico');
+            }, 175)
+            $('#contact').hide()
+            $('#contact').css({
+                'border-radius' : '0'
+            });
 
-        $('#header_content').css({
-            'grid-template-rows' : '1',
-            'border-radius' : '0'
-        });
+            $('#header_content').css({
+                'grid-template-rows' : '1',
+                'border-radius' : '0'
+            });
 
+        }
     }
 }

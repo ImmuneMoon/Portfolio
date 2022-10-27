@@ -873,7 +873,8 @@ header {
   background-color: #131328;
 }
 
-#pg_nav_container {
+#contact_label {
+  font-weight:bolder;
 }
 
 #email {
@@ -913,14 +914,9 @@ header {
   background: linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%);
 }
 
-#section_1 {
-  min-width: 100%;
-}
-
 #creds_section {
-  padding-top: 10%;
-  padding-bottom: 15%;
-  position: static;
+  padding-top: 10rem;
+  padding-bottom: 20rem;
 }
 
 #about-container{
