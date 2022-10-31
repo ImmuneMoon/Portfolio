@@ -6,6 +6,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Inline+One&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
@@ -17,6 +21,10 @@
 /* Name plate */
 
 /* Web dev text */
+
+/* About me */
+
+/* Certificates title */
 
 /* HX Title */
 
@@ -692,6 +700,10 @@ video {
   margin-right: 0.75rem;
 }
 
+.mb-8{
+  margin-bottom: 2rem;
+}
+
 .ml-0{
   margin-left: 0px;
 }
@@ -758,10 +770,6 @@ video {
   width: auto;
 }
 
-.w-96{
-  width: 24rem;
-}
-
 .max-w-xs{
   max-width: 20rem;
 }
@@ -792,10 +800,6 @@ video {
 
 .flex-row{
   flex-direction: row;
-}
-
-.flex-row-reverse{
-  flex-direction: row-reverse;
 }
 
 .flex-col{
@@ -830,10 +834,6 @@ video {
   gap: 1.25rem;
 }
 
-.gap-6{
-  gap: 1.5rem;
-}
-
 .p-0{
   padding: 0px;
 }
@@ -846,6 +846,10 @@ video {
   padding: 1.5rem;
 }
 
+.p-10{
+  padding: 2.5rem;
+}
+
 .py-2{
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -855,8 +859,16 @@ video {
   padding-right: 0.5rem;
 }
 
+.text-left{
+  text-align: left;
+}
+
 .text-center{
   text-align: center;
+}
+
+.text-right{
+  text-align: right;
 }
 
 .text-lg{
@@ -895,6 +907,7 @@ Blueish Green ( #00d4b5 )
 Orange ( #ff8800 )
 Yellow ( #e7dc00 )
 Lighter Yellow ( #f9f047 )
+Red ( #940000 )
 White ( #d8e4ec )
 Greyish White ( #cccde0 )
 Greyish Blue ( #131328 )
@@ -996,9 +1009,6 @@ header {
 #creds_section {
   padding-top: 10rem;
   padding-bottom: 20rem;
-}
-
-#about-container{
 }
 
 #intro {
@@ -1216,43 +1226,76 @@ header {
   width: 7em;
   height: 2em;
   border-radius: 10px;
+  transition-duration: 0.2s;
+}
+
+#resume:hover {
+  transform: scale(1.05);
+}
+
+#about_section {
+  margin-top: 20rem;
+}
+
+#about_container {
+  width: 100%;
 }
 
 #me_container {
-  min-width: -webkit-max-content;
-  min-width: -moz-max-content;
-  min-width: max-content;
-}
-
-#about_me {
-  font-size: x-large;
-  font-weight: bolder;
+  width: auto;
 }
 
 #me_text_circle {
-  width: 35rem;
-  height: 35rem;
+  width: 22rem;
+  height: 22rem;
   border-radius: 50%;
-  background-color: #00325870;
+  background-color: #00ffee51;
   box-shadow: 3px 7px 20px 1px rgba(0, 0, 0, 0.5);
-  transform: translateX(10rem) translateY(-5rem);
+  transform: translateX(12rem) translateY(-10rem);
+}
+
+#about_me {
+  font-family: 'Londrina Outline', cursive;
+  font-size: 6rem;
+  font-weight: bolder;
+  line-height: 5rem;
+  transform: translateX(-15rem) translateY(-5rem);
 }
 
 #me_text {
+  width: 24rem;
+  line-height: 2.5rem;
+  font-size: larger;
+  transform: translateX(3rem) translateY(8rem);
 }
 
 #certs_container{
-  border-radius: 50px;
-  min-width: -webkit-max-content;
-  min-width: -moz-max-content;
-  min-width: max-content;
-  background-color: #003258;
-  box-shadow: 0px 7px 10px 1px rgba(0, 0, 0, 0.5);
+  width: 100%;
 }
 
 #certs_title {
-  font-size: 27px;
-  font-weight: bolder;
+  font-family: 'Alumni Sans Inline One', cursive;
+  font-size: 80px;
+  font-weight: bold;
+  transform: translateX(0rem) translateY(-8rem);
+}
+
+#certs {
+  width: 100%;
+}
+
+#hx_container {
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  border-radius: 100px 100px 100px 25px;
+  background-color: #003258;
+  box-shadow: 0px 7px 10px 1px rgba(0, 0, 0, 0.5);
+  transition: transform 250ms linear;
+}
+
+#hx_container:hover {
+  transform: translateY(-10px);
 }
 
 #hx_title {
@@ -1277,6 +1320,25 @@ header {
 
 #CS50x {
   border-radius: 50px;
+  transition-duration: 0.2s;
+}
+
+#CS50x:hover {
+  transform: scale(1.015);
+}
+
+#fcc_container {
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  border-radius: 100px 25px 100px 100px;
+  background-color: #003258;
+  box-shadow: 0px 7px 10px 1px rgba(0, 0, 0, 0.5);
+  transition: transform 250ms linear;
+}
+
+#fcc_container:hover {
+  transform: translateY(-10px);
 }
 
 #fcc_title {
@@ -1301,17 +1363,46 @@ header {
 
 #RWD {
   border-radius: 50px;
+  transition-duration: 0.2s;
+}
+
+#RWD:hover {
+  transform: scale(1.015);
 }
 
 #projects {
 }
 
-/* Viewport sizes below tailwind's medium viewport size */
+/* Viewport sizes below medium viewport size */
 
 @media (max-width: 768px) {
   #contact_label_container {
     width: 25%;
     border-bottom: solid 1px #d8e4ec;
+  }
+
+  #me_text_circle {
+    width: 22rem;
+    height: 22rem;
+    border-radius: 50%;
+    background-color: #00ffee51;
+    box-shadow: 3px 7px 20px 1px rgba(0, 0, 0, 0.5);
+    transform: translateX(3rem) translateY(-5rem);
+  }
+
+  #about_me {
+    font-family: 'Londrina Outline', cursive;
+    font-size: 6rem;
+    font-weight: bolder;
+    line-height: 5rem;
+    transform: translateX(-15rem) translateY(-5rem);
+  }
+
+  #me_text {
+    width: 24rem;
+    line-height: 2.5rem;
+    font-size: larger;
+    transform: translateX(3rem) translateY(8rem);
   }
 }
 
@@ -1350,14 +1441,6 @@ header {
     margin-bottom: 0px;
   }
 
-  .md\:ml-10{
-    margin-left: 2.5rem;
-  }
-
-  .md\:mr-10{
-    margin-right: 2.5rem;
-  }
-
   .md\:flex{
     display: flex;
   }
@@ -1370,6 +1453,10 @@ header {
     width: 1.25rem;
   }
 
+  .md\:justify-start{
+    justify-content: flex-start;
+  }
+
   .md\:justify-end{
     justify-content: flex-end;
   }
@@ -1377,6 +1464,24 @@ header {
   .md\:text-lg{
     font-size: 1.125rem;
     line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px){
+  .lg\:ml-10{
+    margin-left: 2.5rem;
+  }
+
+  .lg\:mr-10{
+    margin-right: 2.5rem;
+  }
+
+  .lg\:flex-row{
+    flex-direction: row;
+  }
+
+  .lg\:flex-row-reverse{
+    flex-direction: row-reverse;
   }
 }
 

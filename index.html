@@ -18,7 +18,7 @@
         <script src="/dist/JS/script.js"></script>
     </head>
     <body class="mx-auto">
-        <div id="contact_section" class="top-0 m-0 p-0 h-0"></div>
+        <div id="contact_top" class="top-0 m-0 p-0 h-0"></div>
         <header class="">
             <section id="header_content" class="min-h-fit py-2 flex-auto md:flex row justify-around items-center mx-auto sm:justify-between">
                 <div id="md_header" class="flex row justify-between p-3">
@@ -75,8 +75,8 @@
         <nav id="pg_nav" class="z-10">
             <div id="pg_nav_bkgrnd">
                 <div id="pg_nav_container" class="grid grid-cols-3 w-80">
-                    <a id="contact_direct" class="py-2 w-auto col-start-1 col-end-2 text-center" href="#contact_section">Contact</a>
-                    <a id="about_direct" class="py-2 w-auto col-start-2 col-end-3 text-center" href="#about_section">About</a>
+                    <a id="contact_direct" class="py-2 w-auto col-start-1 col-end-2 text-center" href="#contact_top">Contact</a>
+                    <a id="about_direct" class="py-2 w-auto col-start-2 col-end-3 text-center" href="#about">About</a>
                     <a id="project_direct" class="py-2 w-auto pr-2 col-start-3 col-end-4 text-center" href="#project_section">Projects</a>
                 </div>
             </div>
@@ -136,45 +136,48 @@
             <!-- try to make it where the grid is side by side above md, with certs in a column, 
                 and round borders on the pics, text to the left for the top cert, to the right for the bottom. 
                 the whole section collapses at small to being above and below -->
+            <div id="about"></div>
             <section id="about_section" class="flex justify-center items-center m-auto">
                 <div id="about_container" class="grid grid-cols-1 2xl:grid-cols-2">
                     <div id="me_text_circle" class="relative z-0">
                         <div id="me_container" class="my-6 flex flex-col justify-center mx-auto p-6">
-                                <h2 id="about_me" class="text-center absolute">
+                                <h2 id="about_me" class="text-right absolute">
                                     About Me
                                 </h2>
-                                <p id="me_text" class="text-center w-96 absolute">
+                                <p id="me_text" class="text-left absolute">
                                     I'm a Front End Web Developer dabbling in Back End. I've always been passionate about tech 
                                     and decided a little over a year ago to pursue a lifelong interest in coding seriously so 
                                     I can be the one crafting technologies people love.
                                 </p>
                         </div>
                     </div>
-                    <div id="certs_container" class="flex-auto justify-center mx-auto p-6">
-                        <h2 id="certs_title" class="text-center">
+                    <div id="certs_container" class="flex justify-center mx-auto p-6">
+                        <h2 id="certs_title" class="text-center absolute z-0">
                             Certificates 🎓
                         </h2>
-                        <div class="grid grid-cols-1 gap-6 w-fit">
-                            <div class="flex-auto md:flex justify-center items-center">
-                                <div class="flex flex-col">
-                                    <div>
-                                        <h3 id="hx_title" class="text-center my-3">
-                                            HarvardX
-                                        </h3>
-                                        <h4 id="hx_desc" class="text-center my-3">
-                                            CS50x - Intro to Computer Sci <br>and The Art of Programming
-                                        </h4>
+                        <div id="certs" class="flex flex-col">
+                            <div id="hx" class="flex justify-center md:justify-end">
+                                <div id="hx_container" class="flex flex-col p-10 mb-8 lg:flex-row">
+                                    <div class="flex flex-col">
+                                        <div>
+                                            <h3 id="hx_title" class="text-center my-3">
+                                                HarvardX
+                                            </h3>
+                                            <h4 id="hx_desc" class="text-center my-3">
+                                                CS50x - Intro to Computer Sci <br>and The Art of Programming
+                                            </h4>
+                                        </div>
+                                        <p id="hx_text" class="text-center mx-auto flex justify-center">
+                                            During CS50x, I developed skills in C, Python, SQLite, Flask, Bootstrap, JavaScript and web design. This course represents approx. 10 weeks of study; including 10 problem sets, 8 labs, and a final project.
+                                        </p>
                                     </div>
-                                    <p id="hx_text" class="text-center mx-auto flex justify-center">
-                                        During CS50x, I developed skills in C, Python, SQLite, Flask, Bootstrap, JavaScript and web design. This course represents approx. 10 weeks of study; including 10 problem sets, 8 labs, and a final project.
-                                    </p>
+                                    <a class="ml-0 mt-7 lg:ml-10 flex justify-center" href="https://certificates.cs50.io/5d48894d-a24d-4232-9b11-6a2881d503d2.pdf?size=letter" target="_blank">
+                                        <img id="CS50x" class="max-w-xs" src="/dist/docs/CS50x Certificate (9-25-22).png" />
+                                    </a>
                                 </div>
-                                <a class="ml-0 mt-7 md:ml-10 flex justify-center" href="https://certificates.cs50.io/5d48894d-a24d-4232-9b11-6a2881d503d2.pdf?size=letter" target="_blank">
-                                    <img id="CS50x" class="max-w-xs" src="/dist/docs/CS50x Certificate (9-25-22).png" />
-                                </a>
                             </div>
-                            <div class="grid grid-cols-1 gap-6">
-                                <div class="flex-auto flex-row-reverse md:flex justify-center items-center">
+                            <div id="fcc" class="flex justify-center md:justify-start">
+                                <div id="fcc_container" class="flex flex-col p-10 lg:flex-row-reverse">
                                     <div class="flex flex-col">
                                         <div>
                                             <h3 id="fcc_title" class="text-center my-3">
@@ -188,7 +191,7 @@
                                             During this responsive web design course, I developed skills in HTML, CSS and implementing them in responsive, accessible websites. This course represents approx. 300hrs of coursework; including 5 projects.
                                         </p>
                                     </div>
-                                    <a class="mr-0 mt-7 md:mr-10 flex justify-center" href="https://www.freecodecamp.org/certification/immunemoon/responsive-web-design" target="_blank">
+                                    <a class="mr-0 mt-7 lg:mr-10 flex justify-center" href="https://www.freecodecamp.org/certification/immunemoon/responsive-web-design" target="_blank">
                                         <img id="RWD" class="max-w-xs" src="/dist/docs/FreeCodeCamp Responsive Web Design Certificate (8-31-21).png" />
                                     </a>
                                 </div>
