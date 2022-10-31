@@ -1,6 +1,6 @@
 // Waits for DOM load
 $(() => {
-
+    let distance = $(window).scrollTop();
     // Copy icon hover effect
     $('#email').hover(() => {
         // Turns green/blue (#00d4b5)
@@ -51,6 +51,33 @@ $(() => {
             'background-color' : '#940000'
         });
     });
+
+    // When the viewport is below 87px, the page nav will stick to the top of the window and go back in place then scrolled above 87px height
+    if (distance > 87) {
+        $('#pg_nav').css({
+            'position' : 'fixed',
+            'top' : '0px'
+        });
+        $('header').css({
+            'margin-bottom' : '40px'
+        });
+    }
+    else {
+        $('#pg_nav').css({
+            'position' : 'static',
+            'top' : ''
+        });
+        $('header').css({
+            'margin-bottom' : '0'
+        });
+        $('#contact').css({
+            'border-radius' : '0'
+        });
+        $('#header_content').css({
+            'grid-template-rows' : '1',
+            'border-radius' : '0'
+        });
+    }
 
     // Listens for click events
     document.addEventListener('click', (event) => {
@@ -201,7 +228,6 @@ $(() => {
             });
         }
         */
-
         // When the viewport is below 87px, the page nav will stick to the top of the window and go back in place then scrolled above 87px height
         if (scroll > 87) {
             $('#pg_nav').css({
@@ -227,7 +253,8 @@ $(() => {
                 'grid-template-rows' : '1',
                 'border-radius' : '0'
             });
-            // Makes sure the contact dropdown hides when the viewport is below 752px when resized
+
+            // Makes sure the contact dropdown hides when the viewport is below 752px
             if ($(document).width() < 752) {
                 $('#contact').hide()
             }
