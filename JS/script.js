@@ -182,6 +182,7 @@ $(() => {
     // Listens for scrolling
     window.addEventListener("scroll", () => {
         let scroll = $(window).scrollTop();
+        console.log('distance: ', scroll);
         /* Find scroll distance from bottom of page when in the contact/ resume section
         // Highlighs contact nav button in contact section
         if (scroll >= 0 && scroll < 857) {
@@ -259,6 +260,31 @@ $(() => {
                 $('#contact').hide()
             }
         }
+        
+        /* // For animating elements as you scroll past instead of on hover, might implement, 
+                need to figure out how to trigger the effects for scrolling down and up
+        if (scroll >= 1200) {
+
+            $('#hx_container').css({
+                'transition' : 'transform 250ms linear',
+                'transform' : 'translateY(-10px)'
+            });
+        }
+
+        if (scroll >= 1600 && $('#hx_container').css('transform') == 'translateY(-10px)') {
+
+            $('#hx_container').css({
+                'transition' : 'transform 250ms linear',
+                'transform' : 'translateY(10px)'
+            });
+            
+            $('#fcc_container').css({
+                'transition' : 'transform 250ms linear',
+                'transform' : 'translateY(-10px)'
+            });
+        }
+        */
+       
     });
 
 });

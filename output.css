@@ -14,9 +14,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
 /* Unused */
 
-/* Custom default text */
+/* Custom default font */
 
 /* Name plate */
 
@@ -29,6 +31,8 @@
 /* HX Title */
 
 /* fcc Title */
+
+/* "Click Me" text */
 
 /* ! tailwindcss v3.1.8 | MIT License | https://tailwindcss.com */
 
@@ -641,6 +645,10 @@ video {
   margin: auto;
 }
 
+.m-6{
+  margin: 1.5rem;
+}
+
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
@@ -786,6 +794,10 @@ video {
   resize: both;
 }
 
+.grid-flow-col{
+  grid-auto-flow: column;
+}
+
 .grid-cols-3{
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -853,6 +865,16 @@ video {
 .py-2{
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.py-6{
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.px-12{
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .pr-2{
@@ -1226,12 +1248,13 @@ header {
   width: 7em;
   height: 2em;
   border-radius: 10px;
-  transition-duration: 0.2s;
 }
 
 #resume:hover {
   transform: scale(1.05);
 }
+
+/* adjust sizing for screens above 1500px */
 
 #about_section {
   margin-top: 20rem;
@@ -1275,8 +1298,8 @@ header {
 
 #certs_title {
   font-family: 'Alumni Sans Inline One', cursive;
-  font-size: 80px;
-  font-weight: bold;
+  font-size: 70px;
+  font-weight: 500;
   transform: translateX(0rem) translateY(-8rem);
 }
 
@@ -1315,16 +1338,61 @@ header {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  font-size: '';
+  height: 100%;
+  font-size: 15px;
 }
 
 #CS50x {
   border-radius: 50px;
-  transition-duration: 0.2s;
 }
 
 #CS50x:hover {
   transform: scale(1.015);
+}
+
+#click_me_container {
+  opacity: 30%;
+  transform: translateX(27rem) translateY(17rem);
+}
+
+#click_me {
+  color: #f9f047;
+  font-family: 'Gochi Hand', cursive;
+  -webkit-animation: click_me 3.7s ease infinite;
+          animation: click_me 3.7s ease infinite;
+}
+
+@-webkit-keyframes click_me {
+  20%{
+    transform: rotate(-5deg);
+  }
+
+  50% {
+    transform: rotate(5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes click_me {
+  20%{
+    transform: rotate(-5deg);
+  }
+
+  50% {
+    transform: rotate(5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+#click_me_arrow {
+  width: 28px;
+  transform: translateX(3.75rem) translateY(-.75rem);
 }
 
 #fcc_container {
@@ -1358,12 +1426,12 @@ header {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  font-size: '';
+  height: 100%;
+  font-size: 15px;
 }
 
 #RWD {
   border-radius: 50px;
-  transition-duration: 0.2s;
 }
 
 #RWD:hover {
@@ -1371,38 +1439,149 @@ header {
 }
 
 #projects {
+  min-height: 400px;
 }
 
-/* Viewport sizes below medium viewport size */
+#ten_k_container {
+  width: 450px;
+  border-radius: 50px;
+  background-image: url("/Images/10k-calc-screenshot.png");
+  background-color: #3d3d3d;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+#ten_k_demo {
+  width: 100%;
+  height: 100%;
+}
+
+#ten_k_title {
+  width: 75%;
+  border-radius: 10px 10px 0 0;
+  background-color: rgba(100%, 100%, 100%, 30%);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  transform: translateX(20px);
+}
+
+#ten_k_info {
+  border-radius: 20px;
+  background-color: rgba(100%, 100%, 100%, 30%);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  width: 100%;
+}
+
+#huddle_container {
+  width: 450px;
+  border-radius: 50px;
+  background-image: url("/Images/huddle screenshot.png");
+  background-color: #350076;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+#ten_k_demo {
+  width: 100%;
+  height: 100%;
+}
+
+#huddle_title {
+  width: 60%;
+  border-radius: 10px 10px 0 0;
+  background-color: rgba(100%, 100%, 100%, 30%);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  transform: translateX(20px);
+}
+
+#huddle_info {
+  border-radius: 20px;
+  background-color: rgba(100%, 100%, 100%, 30%);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  width: 100%;
+}
+
+.code {
+  background-color: #940000;
+  width: 5em;
+  height: 2em;
+  border-radius: 10px;
+}
+
+@media (max-width: 1023px) {
+  #click_me_container {
+    transform: translateX(-1rem) translateY(30rem);
+  }
+}
 
 @media (max-width: 768px) {
   #contact_label_container {
     width: 25%;
     border-bottom: solid 1px #d8e4ec;
   }
+}
+
+@media (max-width: 690px) {
+  #certs_title {
+    font-family: 'Alumni Sans Inline One', cursive;
+    font-size: 60px;
+    font-weight: bold;
+    transform: translateX(0rem) translateY(-8rem);
+  }
 
   #me_text_circle {
-    width: 22rem;
-    height: 22rem;
+    width: 16rem;
+    height: 16rem;
     border-radius: 50%;
     background-color: #00ffee51;
     box-shadow: 3px 7px 20px 1px rgba(0, 0, 0, 0.5);
-    transform: translateX(3rem) translateY(-5rem);
+    transform: translateX(5rem) translateY(-10rem);
   }
 
   #about_me {
     font-family: 'Londrina Outline', cursive;
-    font-size: 6rem;
+    width: 10rem;
+    font-size: 4rem;
     font-weight: bolder;
-    line-height: 5rem;
-    transform: translateX(-15rem) translateY(-5rem);
+    line-height: 3.3rem;
+    transform: translateX(-5rem) translateY(-5rem);
   }
 
   #me_text {
-    width: 24rem;
-    line-height: 2.5rem;
-    font-size: larger;
-    transform: translateX(3rem) translateY(8rem);
+    width: 20rem;
+    line-height: 2.2rem;
+    font-size: medium;
+    transform: translateX(3rem) translateY(5rem);
+  }
+}
+
+@media (max-width: 600px) {
+  #click_me_container {
+    transform: translateX(-1rem) translateY(31rem);
+  }
+}
+
+@media (max-width: 550px) {
+  #me_text {
+    width: 17rem;
+    line-height: 2.1rem;
+    font-size: small;
+    transform: translateX(3rem) translateY(5rem);
+  }
+}
+
+@media (max-width: 530px) {
+  #click_me_container {
+    transform: translateX(-1rem) translateY(32.7rem);
   }
 }
 
