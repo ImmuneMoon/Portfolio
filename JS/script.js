@@ -37,20 +37,6 @@ $(() => {
         $('#menu_icn').attr('src', '/Images/sandwich-icon(d8e4ec)-thin.ico');
     });
 
-    // Resume hover effect
-    $('#resume').hover(() => {
-        // Turns white/ red (#d8e4ec / #940000)
-        $('#resume').css({
-            'color' : '#940000',
-            'background-color' : '#d8e4ec'
-        });
-    }, () => {
-        // Turns back to red/ white (#940000 / #d8e4ec)
-        $('#resume').css({
-            'color' : '#d8e4ec',
-            'background-color' : '#940000'
-        });
-    });
 
     // When the viewport is below 87px, the page nav will stick to the top of the window and go back in place then scrolled above 87px height
     if (distance > 87) {
@@ -150,6 +136,22 @@ $(() => {
                 });
             }, 175)
         }
+
+        if (element.includes($('.proj_bttn')[0])) {
+            // Changes the project class buttons to white (#940000) with red (#d8e4ec) text on click
+            $('.proj_bttn').css({
+                'color' : '#940000',
+                'background-color' : '#d8e4ec'
+            });
+            setTimeout(() => {
+                // Changes the project class buttons to red (#d8e4ec) with white (#940000) text after 175ms
+                $('.proj_bttn').css({
+                    'color' : '#d8e4ec',
+                    'background-color' : '#940000'
+                });
+            }, 175)
+        }
+
     });
       
 
@@ -183,9 +185,8 @@ $(() => {
     window.addEventListener("scroll", () => {
         let scroll = $(window).scrollTop();
         console.log('distance: ', scroll);
-        /* Find scroll distance from bottom of page when in the contact/ resume section
         // Highlighs contact nav button in contact section
-        if (scroll >= 0 && scroll < 857) {
+        if (scroll >= 0 && scroll < 400) {
             // Nav bar highlight
             $('#contact_direct').css({
                 'border-radius':  '0 0 1rem 0',
@@ -200,7 +201,7 @@ $(() => {
         }
 
         // Highlighs about nav button in about section
-        if (scroll >= 857 && scroll < project section number) {
+        if (scroll >= 400 && scroll < 2050) {
             // Nav bar highlight
             $('#about_direct').css({
                 'border-radius':  '0 0 1rem 1rem',
@@ -215,7 +216,7 @@ $(() => {
         }
         
         // Highlighs projects nav button in project section
-        if (scroll >= project section number) {
+        if (scroll >= 2050) {
             // Nav bar highlight
             $('#project_direct').css({
                 'border-radius':  '0 0 4rem 1rem',
@@ -228,7 +229,7 @@ $(() => {
                 'background' : 'none'
             });
         }
-        */
+        
         // When the viewport is below 87px, the page nav will stick to the top of the window and go back in place then scrolled above 87px height
         if (scroll > 87) {
             $('#pg_nav').css({
@@ -284,7 +285,7 @@ $(() => {
             });
         }
         */
-       
+
     });
 
 });

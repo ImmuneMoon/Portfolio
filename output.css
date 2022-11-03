@@ -16,23 +16,27 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
 /* Unused */
 
-/* Custom default font */
+/* Custom Default Font */
 
-/* Name plate */
+/* Name Plate */
 
-/* Web dev text */
+/* Web Dev Text */
 
-/* About me */
+/* About Me Heading */
 
-/* Certificates title */
+/* Certificates Heading */
 
 /* HX Title */
 
 /* fcc Title */
 
-/* "Click Me" text */
+/* "Click Me" Text */
+
+/* Projects Heading */
 
 /* ! tailwindcss v3.1.8 | MIT License | https://tailwindcss.com */
 
@@ -637,16 +641,8 @@ video {
   grid-column-end: 4;
 }
 
-.m-0{
-  margin: 0px;
-}
-
 .m-auto{
   margin: auto;
-}
-
-.m-6{
-  margin: 1.5rem;
 }
 
 .mx-auto{
@@ -682,6 +678,16 @@ video {
 .my-6{
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+.my-0\.5{
+  margin-top: 0.125rem;
+  margin-bottom: 0.125rem;
+}
+
+.my-0{
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .ml-6{
@@ -724,6 +730,10 @@ video {
   margin-right: 0px;
 }
 
+.mb-6{
+  margin-bottom: 1.5rem;
+}
+
 .block{
   display: block;
 }
@@ -738,10 +748,6 @@ video {
 
 .hidden{
   display: none;
-}
-
-.h-0{
-  height: 0px;
 }
 
 .min-h-fit{
@@ -794,10 +800,6 @@ video {
   resize: both;
 }
 
-.grid-flow-col{
-  grid-auto-flow: column;
-}
-
 .grid-cols-3{
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -808,6 +810,10 @@ video {
 
 .grid-cols-1{
   grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .flex-row{
@@ -846,10 +852,6 @@ video {
   gap: 1.25rem;
 }
 
-.p-0{
-  padding: 0px;
-}
-
 .p-3{
   padding: 0.75rem;
 }
@@ -862,19 +864,13 @@ video {
   padding: 2.5rem;
 }
 
+.p-2{
+  padding: 0.5rem;
+}
+
 .py-2{
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-}
-
-.py-6{
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
-.px-12{
-  padding-left: 3rem;
-  padding-right: 3rem;
 }
 
 .pr-2{
@@ -1029,8 +1025,8 @@ header {
 }
 
 #creds_section {
-  padding-top: 10rem;
-  padding-bottom: 20rem;
+  margin-top: 10rem;
+  margin-bottom: 40rem;
 }
 
 #intro {
@@ -1248,20 +1244,23 @@ header {
   width: 7em;
   height: 2em;
   border-radius: 10px;
+  transition: transform 100ms linear;
 }
 
 #resume:hover {
+  color: #940000;
+  background-color: #d8e4ec;
   transform: scale(1.05);
 }
 
-/* adjust sizing for screens above 1500px */
-
-#about_section {
-  margin-top: 20rem;
+#about_nav {
+  margin-bottom: 45rem;
+  transform: translateY(-20rem);
 }
 
 #about_container {
   width: 100%;
+  margin-bottom: 20rem;
 }
 
 #me_container {
@@ -1296,11 +1295,11 @@ header {
   width: 100%;
 }
 
-#certs_title {
+#certs_heading {
   font-family: 'Alumni Sans Inline One', cursive;
   font-size: 70px;
   font-weight: 500;
-  transform: translateX(0rem) translateY(-8rem);
+  transform: translateY(-8rem);
 }
 
 #certs {
@@ -1318,7 +1317,7 @@ header {
 }
 
 #hx_container:hover {
-  transform: translateY(-10px);
+  transform: translateX(-10px);
 }
 
 #hx_title {
@@ -1344,6 +1343,7 @@ header {
 
 #CS50x {
   border-radius: 50px;
+  transition: transform 100ms linear;
 }
 
 #CS50x:hover {
@@ -1406,7 +1406,7 @@ header {
 }
 
 #fcc_container:hover {
-  transform: translateY(-10px);
+  transform: translateX(10px);
 }
 
 #fcc_title {
@@ -1432,89 +1432,119 @@ header {
 
 #RWD {
   border-radius: 50px;
+  transition: transform 100ms linear;
 }
 
 #RWD:hover {
   transform: scale(1.015);
 }
 
-#projects {
-  min-height: 400px;
+#projects_heading {
+  font-family: 'Indie Flower', cursive;
+  font-size: 70px;
+  font-weight: 900;
+  transform: translateY(-4rem);
+}
+
+#project_section {
+  margin-bottom: 7rem;
 }
 
 #ten_k_container {
   width: 450px;
+  height: 400px;
   border-radius: 50px;
   background-image: url("/Images/10k-calc-screenshot.png");
   background-color: #3d3d3d;
   background-size: 100%;
   background-repeat: no-repeat;
+  box-shadow: 0px 7px 10px 1px rgba(0, 0, 0, 0.5);
+  transition: transform 250ms linear;
 }
 
-#ten_k_demo {
-  width: 100%;
-  height: 100%;
+#ten_k_container:hover {
+  transform: translateY(-10px);
 }
 
 #ten_k_title {
-  width: 75%;
-  border-radius: 10px 10px 0 0;
-  background-color: rgba(100%, 100%, 100%, 30%);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
-  transform: translateX(20px);
-}
-
-#ten_k_info {
-  border-radius: 20px;
-  background-color: rgba(100%, 100%, 100%, 30%);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  width: 60%;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
-  width: 100%;
+  border-radius: 40px 40px 0 0;
+  background-color: rgba(68, 68, 68, 0.6);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  transform: translateX(-15px);
+}
+
+#ten_k_info {
+  width: 80%;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  border-radius: 20px;
+  background-color: rgba(68, 68, 68, 0.6);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
 }
 
 #huddle_container {
   width: 450px;
+  height: 400px;
   border-radius: 50px;
   background-image: url("/Images/huddle screenshot.png");
   background-color: #350076;
   background-size: 100%;
   background-repeat: no-repeat;
+  box-shadow: 0px 7px 10px 1px rgba(0, 0, 0, 0.5);
+  transition: transform 250ms linear;
 }
 
-#ten_k_demo {
-  width: 100%;
-  height: 100%;
+#huddle_container:hover {
+  transform: translateY(-10px);
 }
 
 #huddle_title {
-  width: 60%;
-  border-radius: 10px 10px 0 0;
-  background-color: rgba(100%, 100%, 100%, 30%);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
-  transform: translateX(20px);
-}
-
-#huddle_info {
-  border-radius: 20px;
-  background-color: rgba(100%, 100%, 100%, 30%);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  width: 50%;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
-  width: 100%;
+  border-radius: 40px 40px 0 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  transform: translateX(-40px);
 }
 
-.code {
+#huddle_info {
+  width: 80%;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+
+.infotxt {
+  width: 240px;
+  margin-right: 10px;
+}
+
+.proj_bttn {
   background-color: #940000;
   width: 5em;
   height: 2em;
   border-radius: 10px;
+  transition: transform 100ms linear;
+}
+
+.proj_bttn:hover {
+  color: #940000;
+  background-color: #d8e4ec;
+  transform: scale(1.03);
 }
 
 @media (max-width: 1023px) {
@@ -1624,12 +1654,20 @@ header {
     display: flex;
   }
 
+  .md\:grid{
+    display: grid;
+  }
+
   .md\:hidden{
     display: none;
   }
 
   .md\:w-5{
     width: 1.25rem;
+  }
+
+  .md\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .md\:justify-start{

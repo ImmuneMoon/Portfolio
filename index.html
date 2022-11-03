@@ -18,7 +18,7 @@
         <script src="/dist/JS/script.js"></script>
     </head>
     <body class="mx-auto">
-        <div id="contact_top" class="top-0 m-0 p-0 h-0"></div>
+        <div id="contact_nav" class="top-0"></div>
         <header class="">
             <section id="header_content" class="min-h-fit py-2 flex-auto md:flex row justify-around items-center mx-auto sm:justify-between">
                 <div id="md_header" class="flex row justify-between p-3">
@@ -75,9 +75,9 @@
         <nav id="pg_nav" class="z-10">
             <div id="pg_nav_bkgrnd">
                 <div id="pg_nav_container" class="grid grid-cols-3 w-80">
-                    <a id="contact_direct" class="py-2 w-auto col-start-1 col-end-2 text-center" href="#contact_top">Contact</a>
-                    <a id="about_direct" class="py-2 w-auto col-start-2 col-end-3 text-center" href="#about">About</a>
-                    <a id="project_direct" class="py-2 w-auto pr-2 col-start-3 col-end-4 text-center" href="#project_section">Projects</a>
+                    <a id="contact_direct" class="py-2 w-auto col-start-1 col-end-2 text-center" href="#contact_nav">Contact</a>
+                    <a id="about_direct" class="py-2 w-auto col-start-2 col-end-3 text-center" href="#about_nav">About</a>
+                    <a id="project_direct" class="py-2 w-auto pr-2 col-start-3 col-end-4 text-center" href="#projects_nav">Projects</a>
                 </div>
             </div>
         </nav>
@@ -124,11 +124,11 @@
                             </ul>
                         </div>
                         <div class="flex justify-center my-7">
-                            <button id="resume" class="text-lg font-semibold">
-                                <a href="/dist/docs/Alexander_Page_Resume.pdf" target="_blank">
-                                    Résumé
-                                </a>
-                            </button>
+                            <a href="/dist/docs/Alexander_Page_Resume.pdf" target="_blank">
+                                <button id="resume" class="text-lg font-semibold">
+                                        Résumé
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
             <!-- try to make it where the grid is side by side above md, with certs in a column, 
                 and round borders on the pics, text to the left for the top cert, to the right for the bottom. 
                 the whole section collapses at small to being above and below -->
-            <div id="about"></div>
+            <div id="about_nav"></div>
             <section id="about_section" class="flex justify-center items-center m-auto">
                 <div id="about_container" class="grid grid-cols-1 2xl:grid-cols-2">
                     <div id="me_text_circle" class="relative z-0">
@@ -152,7 +152,7 @@
                         </div>
                     </div>
                     <div id="certs_container" class="flex justify-center mx-auto p-6">
-                        <h2 id="certs_title" class="text-center absolute z-0">
+                        <h2 id="certs_heading" class="text-center absolute z-0">
                             Certificates 🎓
                         </h2>
                         <div id="certs" class="flex flex-col">
@@ -211,58 +211,55 @@
                             Projects
                         </h2>
                     </div>
-                    <div class="flex justify-center">
-                        <div id="projects" class="grid grid-flow-col gap-5">
-                            <div id="ten_k_container" class="py-6 px-12 m-6 flex">
-                                <a id="ten_k_demo" href="https://immunemoon.github.io/10-000-Hour-Calculator/" target="_blank">
-                                    <div class="flex flex-col justify-end">
-                                        <div>
-                                            <h3 id="ten_k_title">
-                                            The 10,000 Hour Calculator
-                                            </h3>
-                                        </div>
-                                        <div id="ten_k_info" class="">
-                                            <p>
-                                                A calculator for determining how long you have left to reach 10,000 hours in a skill.
-                                            </p>
-                                            <button class="code">
-                                                <a href="https://github.com/ImmuneMoon/10-000-Hour-Calculator" target="_blank">
-                                                    Code
-                                                </a>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </a>
-                                <div id="demo_container" class="absolute z-0 flex">
-                                    <p id="demo_text">Demo</p>
-                                    <img id="demo_arrow" class="absolute" src="/Images/clickMe arrow(d8e4ec).png" alt="Click me arrow" />
+                    <div id="project_content" class="grid grid-cols-1 md:grid-cols-2">
+                        <div id="ten_k_container" class="flex flex-col justify-end my-6 mx-auto">
+                            <h3 id="ten_k_title" class="flex justify-center mx-auto p-2">
+                                The 10,000 Hour Calculator
+                            </h3>
+                            <div id="ten_k_info" class="flex justify-center items-center mx-auto p-3 mb-6">
+                                <p class="infotxt">
+                                    A calculator for determining how long you have left to reach 10,000 hours in a skill.
+                                </p>
+                                <div class="flex flex-col justify-center">
+                                    <a href="https://github.com/ImmuneMoon/10-000-Hour-Calculator" target="_blank">
+                                        <button class="proj_bttn my-0.5">
+                                            Code
+                                        </button>
+                                    </a>
+                                    <a href="https://immunemoon.github.io/10-000-Hour-Calculator/" target="_blank">
+                                        <button class="proj_bttn my-0.5">
+                                            Demo
+                                        </button>
+                                    </a>
                                 </div>
                             </div>
-                            <a id="huddle_demo" href="https://codepen.io/immunemoon/details/GRExjev" target="_blank">
-                                <div id="huddle_container" class="py-6 px-12 m-6">
-                                    <div class="flex flex-col justify-end">
-                                        <div>
-                                            <h3 id="huddle_title">
-                                            Huddle Landing Page
-                                            </h3>
-                                        </div>
-                                        <div id="huddle_info" class="">
-                                            <p>
-                                                A Frontendmentor HTML/CSS landing page project.
-                                            </p>
-                                            <button class="code">
-                                                <a href="https://github.com/ImmuneMoon/Huddle-landing-page" target="_blank">
-                                                    Code
-                                                </a>
-                                            </button>
-                                        </div>
-                                    </div>
+                        </div>
+                        <div id="huddle_container" class="flex flex-col justify-end my-6 mx-auto">
+                            <h3 id="huddle_title" class="flex justify-center mx-auto p-2">
+                                Huddle Landing Page
+                            </h3>
+                            <div id="huddle_info" class="flex justify-center items-center mx-auto p-3 mb-6">
+                                <p class="infotxt">
+                                    A Frontendmentor HTML/CSS landing page project.
+                                </p>
+                                <div class="flex flex-col justify-center">
+                                    <a href="https://github.com/ImmuneMoon/Huddle-landing-page" target="_blank">
+                                        <button class="proj_bttn my-0.5">
+                                            Code
+                                        </button>
+                                    </a>
+                                    <a href="https://codepen.io/immunemoon/details/GRExjev" target="_blank">
+                                        <button class="proj_bttn my-0.5">
+                                            Demo
+                                        </button>
+                                    </a>
                                 </div>
-                            </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
+            <div id="projects_nav"></div>
         </main>
         <footer>
 
