@@ -406,7 +406,7 @@ $(() => {
                 'top' : '0px'
             });
             $('header').css({
-                'margin-bottom' : '40px'
+                'margin-bottom' : '200px'
             });
         }
         else {

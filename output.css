@@ -1263,13 +1263,15 @@ body {
   width: auto;
 }
 
+/* adjust this to adjust about me section position */
+
 #me_text_circle {
   width: 22rem;
   height: 22rem;
   border-radius: 50%;
   background-color: #00ffee51;
   box-shadow: 3px 7px 20px 1px rgba(0, 0, 0, 0.5);
-  transform: translateX(12rem) translateY(-10rem);
+  transform: translateX(12rem) translateY(-15rem);
 }
 
 #about_me {
