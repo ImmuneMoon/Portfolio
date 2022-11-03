@@ -1037,190 +1037,28 @@ body {
   width: 1.75em;
 }
 
-#htmlang:hover {
-  position: relative
-}
-
-#htmlang:hover::before {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  position: absolute;
-  content: attr(data-tooltip);
-  font-size: small;
-  font-weight: bold;
-  text-align: center;
-  bottom: -.05rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(100%);
-  transition: 400ms transform;
-  transform-origin: top center;
-}
-
-#css:hover {
-  position: relative
-}
-
-#css:hover::before {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  position: absolute;
-  content: attr(data-tooltip);
-  font-size: small;
-  font-weight: bold;
-  text-align: center;
-  bottom: -.05rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(100%);
-  transition: 400ms transform;
-  transform-origin: top center;
-}
-
-#bootstrap:hover {
-  position: relative
-}
-
-#bootstrap:hover::before {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  position: absolute;
-  content: attr(data-tooltip);
-  font-size: small;
-  font-weight: bold;
-  text-align: center;
-  bottom: -.05rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(100%);
-  transition: 400ms transform;
-  transform-origin: top center;
-}
-
-#tailwind:hover {
-  position: relative
-}
-
-#tailwind:hover::before {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  position: absolute;
-  content: attr(data-tooltip);
-  font-size: small;
-  font-weight: bold;
-  text-align: center;
-  bottom: -.05rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(100%);
-  transition: 400ms transform;
-  transform-origin: top center;
-}
-
-#javascript:hover {
-  position: relative
-}
-
-#javascript:hover::before {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  position: absolute;
-  content: attr(data-tooltip);
-  font-size: small;
-  font-weight: bold;
-  text-align: center;
-  bottom: -.05rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(100%);
-  transition: 400ms transform;
-  transform-origin: top center;
-}
-
-#jquery:hover {
-  position: relative
-}
-
-#jquery:hover::before {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  position: absolute;
-  content: attr(data-tooltip);
-  font-size: small;
-  font-weight: bold;
-  text-align: center;
-  bottom: -.05rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(100%);
-  transition: 400ms transform;
-  transform-origin: top center;
-}
-
-#python:hover {
-  position: relative
-}
-
-#python:hover::before {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  position: absolute;
-  content: attr(data-tooltip);
-  font-size: small;
-  font-weight: bold;
-  text-align: center;
-  bottom: -.05rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(100%);
-  transition: 400ms transform;
-  transform-origin: top center;
-}
-
-#flask:hover {
-  position: relative
-}
-
-#flask:hover::before {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  position: absolute;
-  content: attr(data-tooltip);
-  font-size: small;
-  font-weight: bold;
-  text-align: center;
-  bottom: -.05rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(100%);
-  transition: 400ms transform;
-  transform-origin: top center;
-}
-
-#sql:hover {
-  position: relative
-}
-
-#sql:hover::before {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  position: absolute;
-  content: attr(data-tooltip);
-  font-size: small;
-  font-weight: bold;
-  text-align: center;
-  bottom: -.05rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(100%);
-  transition: 400ms transform;
-  transform-origin: top center;
-}
-
+#htmlang:hover, 
+#css:hover, 
+#bootstrap:hover, 
+#tailwind:hover, 
+#javascript:hover, 
+#jquery:hover, 
+#python:hover, 
+#flask:hover, 
+#sql:hover, 
 #c_lang:hover {
   position: relative
 }
 
+#htmlang:hover::before, 
+#css:hover::before, 
+#bootstrap:hover::before, 
+#tailwind:hover::before, 
+#javascript:hover::before, 
+#jquery:hover::before, 
+#python:hover::before, 
+#flask:hover::before, 
+#sql:hover::before, 
 #c_lang:hover::before {
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -1464,7 +1302,8 @@ body {
   transition: transform 250ms linear;
 }
 
-#ten_k_container:hover {
+#ten_k_container:hover, 
+#huddle_container:hover {
   transform: translateY(-10px);
 }
 
@@ -1501,10 +1340,6 @@ body {
   background-repeat: no-repeat;
   box-shadow: 0px 7px 10px 1px rgba(0, 0, 0, 0.5);
   transition: transform 250ms linear;
-}
-
-#huddle_container:hover {
-  transform: translateY(-10px);
 }
 
 #huddle_title {
@@ -1574,7 +1409,7 @@ body {
     border-radius: 50%;
     background-color: #00ffee51;
     box-shadow: 3px 7px 20px 1px rgba(0, 0, 0, 0.5);
-    transform: translateX(5rem) translateY(-10rem);
+    transform: translateX(5rem) translateY(-15rem);
   }
 
   #about_me {
