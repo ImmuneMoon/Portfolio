@@ -37,6 +37,128 @@ $(() => {
         $('#menu_icn').attr('src', '/Images/sandwich-icon(d8e4ec)-thin.ico');
     });
 
+    // Resume button hover effect
+    $('#resume').hover(() => {
+        // Turns text red(#940000) and background white(#d8e4ec)
+        $('#resume').css({
+            'color' : '#940000',
+            'background-color' : '#d8e4ec'
+        });
+    }, () => {
+        // Turns text back to white(#940000) and background back to red(#940000)
+        $('#resume').css({
+            'color' : '#d8e4ec',
+            'background-color' : '#940000'
+        });
+    });
+
+    // #ten_k_code button hover effect
+    $('#ten_k_code').hover(() => {
+        // Turns text red(#940000) and background white(#d8e4ec)
+        $('#ten_k_code').css({
+            'color' : '#940000',
+            'background-color' : '#d8e4ec'
+        });
+    }, () => {
+        // Turns text back to white(#940000) and background back to red(#940000)
+        $('#ten_k_code').css({
+            'color' : '#d8e4ec',
+            'background-color' : '#940000'
+        });
+    });
+
+    // #ten_k_demo button hover effect
+    $('#ten_k_demo').hover(() => {
+        // Turns text red(#940000) and background white(#d8e4ec)
+        $('#ten_k_demo').css({
+            'color' : '#940000',
+            'background-color' : '#d8e4ec'
+        });
+    }, () => {
+        // Turns text back to white(#940000) and background back to red(#940000)
+        $('#ten_k_demo').css({
+            'color' : '#d8e4ec',
+            'background-color' : '#940000'
+        });
+    });
+
+    // #huddle_code button hover effect
+    $('#huddle_code').hover(() => {
+        // Turns text red(#940000) and background white(#d8e4ec)
+        $('#huddle_code').css({
+            'color' : '#940000',
+            'background-color' : '#d8e4ec'
+        });
+    }, () => {
+        // Turns text back to white(#940000) and background back to red(#940000)
+        $('#huddle_code').css({
+            'color' : '#d8e4ec',
+            'background-color' : '#940000'
+        });
+    });
+
+    // #huddle_demo button hover effect
+    $('#huddle_demo').hover(() => {
+        // Turns text red(#940000) and background white(#d8e4ec)
+        $('#huddle_demo').css({
+            'color' : '#940000',
+            'background-color' : '#d8e4ec'
+        });
+    }, () => {
+        // Turns text back to white(#940000) and background back to red(#940000)
+        $('#huddle_demo').css({
+            'color' : '#d8e4ec',
+            'background-color' : '#940000'
+        });
+    });
+
+    /* Nav menu hover effect. Highlights button on hover & if user is in relevant screen area
+        the button keeps its current value
+    */
+    // Contact nav button
+    $('#contact_direct').hover(() => {
+        $('#contact_direct').css({
+            'border-radius' : '0 0 1rem 0',
+            'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
+        });
+    }, () => {
+        if (distance >= 340) {
+            $('#contact_direct').css({
+                'border-radius' : '0',
+                'background' : 'none'
+            });
+        }
+    });
+
+    // about nav button
+    $('#about_direct').hover(() => {
+        $('#about_direct').css({
+            'border-radius' : '0 0 1rem 1rem',
+            'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
+        });
+    }, () => {
+        if (distance <= 340 || distance >= 2300) {
+            $('#about_direct').css({
+                'border-radius' : '0',
+                'background' : 'none'
+            });
+        }
+    });
+
+    // project nav button
+    $('#project_direct').hover(() => {
+        $('#project_direct').css({
+            'border-radius' : '0 0 4rem 1rem',
+            'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
+        });
+    }, () => {
+        if (distance < 2300) {
+            $('#project_direct').css({
+                'border-radius' : '0',
+                'background' : 'none'
+            });
+        }
+    });
 
     // When the viewport is below 87px, the page nav will stick to the top of the window and go back in place then scrolled above 87px height
     if (distance > 87) {
@@ -65,6 +187,51 @@ $(() => {
         });
     }
 
+    // Highlighs contact nav button in contact section when within the relevant screen area
+    if (distance < 340) {
+        // Nav bar highlight
+        $('#contact_direct').css({
+            'border-radius' : '0 0 1rem 0',
+            'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
+        });
+    }
+    else {
+        $('#contact_direct').css({
+            'border-radius' : '0',
+            'background' : 'none'
+        });
+    }
+
+    // Highlighs about nav button in about section
+    if (distance >= 340 && distance < 2300) {
+        // Nav bar highlight
+        $('#about_direct').css({
+            'border-radius' : '0 0 1rem 1rem',
+            'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
+        });
+    }
+    else {
+        $('#about_direct').css({
+            'border-radius' : '0',
+            'background' : 'none'
+        });
+    }
+    
+    // Highlighs projects nav button in project section
+    if (distance >= 2300) {
+        // Nav bar highlight
+        $('#project_direct').css({
+            'border-radius' : '0 0 4rem 1rem',
+            'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
+        });
+    }
+    else {
+        $('#project_direct').css({
+            'border-radius' : '0',
+            'background' : 'none'
+        });
+    }
+
     // Listens for click events
     document.addEventListener('click', (event) => {
         let element = []
@@ -72,7 +239,9 @@ $(() => {
 
         // On medium or smaller screens
         if ($(document).width() < 753) {
-            // If element isn't any within the contact dropdown when a click is detected, the contact dropdown is hidden 
+            /* If element isn't any within the contact dropdown when a click is detected, 
+                the contact dropdown is hidden 
+            */
             if (element.includes($(':header')[0]) || 
                 element.includes($('#header_content')[0]) || 
                 element.includes($('#md_header')[0]) || 
@@ -101,7 +270,7 @@ $(() => {
         // Highlights contact nav button on click
         if (element.includes($('#contact_direct')[0])) {
             $('#contact_direct').css({
-                'border-radius':  '0 0 1rem 0',
+                'border-radius' : '0 0 1rem 0',
                 'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
             });
         }
@@ -109,7 +278,7 @@ $(() => {
         // Highlights about nav button on click
         if (element.includes($('#about_direct')[0])) {
             $('#about_direct').css({
-                'border-radius':  '0 0 1rem 1rem',
+                'border-radius' : '0 0 1rem 1rem',
                 'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
             });
         }
@@ -117,7 +286,7 @@ $(() => {
         // Highlights projects nav button on click
         if (element.includes($('#project_direct')[0])) {
             $('#project_direct').css({
-                'border-radius':  '0 0 4rem 1rem',
+                'border-radius' : '0 0 4rem 1rem',
                 'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
             });
         }
@@ -185,47 +354,47 @@ $(() => {
     window.addEventListener("scroll", () => {
         let scroll = $(window).scrollTop();
         console.log('distance: ', scroll);
-        // Highlighs contact nav button in contact section
-        if (scroll >= 0 && scroll < 400) {
+        // Highlighs contact nav button in contact section when scrolled
+        if (scroll < 340) {
             // Nav bar highlight
             $('#contact_direct').css({
-                'border-radius':  '0 0 1rem 0',
+                'border-radius' : '0 0 1rem 0',
                 'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
             });
         }
         else {
             $('#contact_direct').css({
-                'border-radius':  '0',
+                'border-radius' : '0',
                 'background' : 'none'
             });
         }
 
-        // Highlighs about nav button in about section
-        if (scroll >= 400 && scroll < 2050) {
+        // Highlighs about nav button in about section when scrolled
+        if (scroll >= 340 && scroll < 2300) {
             // Nav bar highlight
             $('#about_direct').css({
-                'border-radius':  '0 0 1rem 1rem',
+                'border-radius' : '0 0 1rem 1rem',
                 'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
             });
         }
         else {
             $('#about_direct').css({
-                'border-radius':  '0',
+                'border-radius' : '0',
                 'background' : 'none'
             });
         }
         
-        // Highlighs projects nav button in project section
-        if (scroll >= 2050) {
+        // Highlighs projects nav button in project section when scrolled
+        if (scroll >= 2300) {
             // Nav bar highlight
             $('#project_direct').css({
-                'border-radius':  '0 0 4rem 1rem',
+                'border-radius' : '0 0 4rem 1rem',
                 'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
             });
         }
         else {
             $('#project_direct').css({
-                'border-radius':  '0',
+                'border-radius' : '0',
                 'background' : 'none'
             });
         }
