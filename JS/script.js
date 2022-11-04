@@ -548,3 +548,21 @@ function contact() {
         }
     }
 }
+
+function contactClick() {
+    $('html, body').animate({
+        scrollTop: 0
+    }, 750);
+}
+
+function aboutClick() {
+    $('html, body').animate({
+        scrollTop: 650
+    }, 750);
+}
+
+function projectClick() {
+    $('html, body').animate({
+        scrollTop: 2500
+    }, 750);
+}

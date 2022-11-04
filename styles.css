@@ -177,7 +177,7 @@ html, body
 
 #about_nav {
     margin-bottom: 45rem;
-    transform: translateY(-20rem);
+    transform: translateY(-25rem);
 }
 
 #about_container {
@@ -196,7 +196,7 @@ html, body
     border-radius: 50%;
     background-color: #00ffee51;
     box-shadow: 3px 7px 20px 1px rgba(0, 0, 0, 0.5);
-    transform: translateX(12rem) translateY(-18rem);
+    transform: translateX(12rem) translateY(-15rem);
 
 }
 
@@ -463,7 +463,7 @@ html, body
         border-radius: 50%;
         background-color: #00ffee51;
         box-shadow: 3px 7px 20px 1px rgba(0, 0, 0, 0.5);
-        transform: translateX(5rem) translateY(-18rem);
+        transform: translateX(4.5rem) translateY(-18rem);
     
     }
     

@@ -22,7 +22,6 @@
         <script src="./JS/script.js"></script>
     </head>
     <body class="mx-auto">
-        <div id="contact_nav" class="top-0"></div>
         <header class="">
             <section id="header_content" class="min-h-fit py-2 flex-auto md:flex row justify-around items-center mx-auto sm:justify-between">
                 <div id="md_header" class="flex row justify-between p-3">
@@ -79,9 +78,9 @@
         <nav id="pg_nav" class="z-10">
             <div id="pg_nav_bkgrnd">
                 <div id="pg_nav_container" class="grid grid-cols-3 w-80">
-                    <a id="contact_direct" class="py-2 w-auto col-start-1 col-end-2 text-center" href="#contact_nav" aria-label="Contact">Contact</a>
-                    <a id="about_direct" class="py-2 w-auto col-start-2 col-end-3 text-center" href="#about_nav" aria-label="About">About</a>
-                    <a id="project_direct" class="py-2 w-auto pr-2 col-start-3 col-end-4 text-center" href="#projects_nav" aria-label="Projects">Projects</a>
+                    <button id="contact_direct" class="py-2 w-auto col-start-1 col-end-2 text-center" onclick="contactClick();" aria-label="Contact">Contact</button>
+                    <button id="about_direct" class="py-2 w-auto col-start-2 col-end-3 text-center" onclick="aboutClick();" aria-label="About">About</button>
+                    <button id="project_direct" class="py-2 w-auto pr-2 col-start-3 col-end-4 text-center"  onclick="projectClick();" aria-label="Projects">Projects</button>
                 </div>
             </div>
         </nav>
@@ -140,7 +139,6 @@
             <!-- try to make it where the grid is side by side above md, with certs in a column, 
                 and round borders on the pics, text to the left for the top cert, to the right for the bottom. 
                 the whole section collapses at small to being above and below -->
-            <div id="about_nav"></div>
             <section id="about_section" class="flex justify-center items-center m-auto">
                 <div id="about_container" class="grid grid-cols-1 2xl:grid-cols-2">
                     <div id="me_text_circle" class="relative z-0">
@@ -208,7 +206,6 @@
                     </div>
                 </div>
             </section>
-            <div id="projects_nav"></div>
             <section id="project_section">
                 <div id="projects_container">
                     <div id="proj_head_container">
