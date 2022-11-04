@@ -52,11 +52,6 @@ html, body
     width: 100%;
     background-color: #0a0c2e;
     scroll-behavior: smooth;
-    overflow-x: hidden;
-}
-
-header {
-    width: 100%;
 }
 
 #header_content {
@@ -201,7 +196,7 @@ header {
     border-radius: 50%;
     background-color: #00ffee51;
     box-shadow: 3px 7px 20px 1px rgba(0, 0, 0, 0.5);
-    transform: translateX(12rem) translateY(-15rem);
+    transform: translateX(12rem) translateY(-18rem);
 
 }
 
@@ -439,6 +434,12 @@ header {
     }
 }
 
+@media screen and (max-width: 768px){
+    ::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+  }
+
 @media (max-width: 768px) {
 
     #contact_label_container {
@@ -462,7 +463,7 @@ header {
         border-radius: 50%;
         background-color: #00ffee51;
         box-shadow: 3px 7px 20px 1px rgba(0, 0, 0, 0.5);
-        transform: translateX(5rem) translateY(-15rem);
+        transform: translateX(5rem) translateY(-16rem);
     
     }
     
