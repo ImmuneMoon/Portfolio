@@ -24,7 +24,7 @@
 @tailwind utilities;
 
 /*
-Colors:
+Color samples:
 Dark Purple ( #2f0068 )
 Dark Purple/Blue ( #0a0c2e )
 Light blue ( #003258 )
@@ -116,26 +116,6 @@ body {
     height: 2em;
     width: auto;
 }
-
-/*
-
-#contact_direct:hover {
-    border-radius:  0 0 1rem 0;
-    background: linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%);
-}
-
-#about_direct:hover {
-    border-radius:  0 0 1rem 1rem;
-    background: linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%);
-}
-
-#project_direct:hover {
-    border-radius:  0 0 4rem 1rem;
-    background: linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%);
-
-}
-
-*/
 
 #creds_section {
     margin-top: 10rem;

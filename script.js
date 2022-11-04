@@ -124,6 +124,7 @@ $(() => {
     }, () => {
         distance = $(window).scrollTop();
         if (distance > 340) {
+            console.log('contact distance works', distance);
             $('#contact_direct').css({
                 'border-radius' : '0',
                 'background' : 'none'
@@ -146,6 +147,7 @@ $(() => {
     }, () => {
         distance = $(window).scrollTop();
         if (distance <= 340 || distance >= 2300) {
+            console.log('about distance works', distance);
             $('#about_direct').css({
                 'border-radius' : '0',
                 'background' : 'none'
@@ -168,6 +170,7 @@ $(() => {
     }, () => {
         distance = $(window).scrollTop();
         if (distance < 2300) {
+            console.log('project distance works', distance);
             $('#project_direct').css({
                 'border-radius' : '0',
                 'background' : 'none'
@@ -181,9 +184,7 @@ $(() => {
         }
     });
 
-    /* When the viewport is below 87px, the page nav will stick to the top of the window 
-    and go back in place then scrolled above 87px height
-    */
+    // When the viewport is below 87px, the page nav will stick to the top of the window and go back in place then scrolled above 87px height
     if (distance > 87) {
         $('#pg_nav').css({
             'position' : 'fixed',
@@ -350,6 +351,7 @@ $(() => {
     // Listens for window resize
     window.addEventListener('resize', () => {
         // Shows #contact in sizes above tailwind's medium size
+        console.log($(document).width())
         if ($(document).width() > 752) {
             $('#contact').show()
             $('#sandwich_menu').hide()
@@ -375,6 +377,7 @@ $(() => {
     // Listens for scrolling
     window.addEventListener("scroll", () => {
         let scroll = $(window).scrollTop();
+        console.log('distance: ', scroll);
         // Highlighs contact nav button in contact section when scrolled
         if (scroll < 340) {
             // Nav bar highlight
@@ -453,7 +456,33 @@ $(() => {
                 $('#contact').hide()
             }
         }
+        
+        /* // For animating elements as you scroll past instead of on hover, might implement, 
+                need to figure out how to trigger the effects for scrolling down and up
+        if (scroll >= 1200) {
+
+            $('#hx_container').css({
+                'transition' : 'transform 250ms linear',
+                'transform' : 'translateY(-10px)'
+            });
+        }
+
+        if (scroll >= 1600 && $('#hx_container').css('transform') == 'translateY(-10px)') {
+
+            $('#hx_container').css({
+                'transition' : 'transform 250ms linear',
+                'transform' : 'translateY(10px)'
+            });
+            
+            $('#fcc_container').css({
+                'transition' : 'transform 250ms linear',
+                'transform' : 'translateY(-10px)'
+            });
+        }
+        */
+
     });
+
 });
 
 function clipboard() {
