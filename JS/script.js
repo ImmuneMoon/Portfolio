@@ -119,13 +119,21 @@ $(() => {
     $('#contact_direct').hover(() => {
         $('#contact_direct').css({
             'border-radius' : '0 0 1rem 0',
-            'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
+            'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.5) 37%, #00000000 100%)'
         });
     }, () => {
-        if (distance >= 340) {
+        distance = $(window).scrollTop();
+        if (distance > 340) {
+            console.log('contact distance works', distance);
             $('#contact_direct').css({
                 'border-radius' : '0',
                 'background' : 'none'
+            });
+        }
+        else {
+            $('#contact_direct').css({
+                'border-radius' : '0 0 1rem 0',
+                'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
             });
         }
     });
@@ -134,13 +142,21 @@ $(() => {
     $('#about_direct').hover(() => {
         $('#about_direct').css({
             'border-radius' : '0 0 1rem 1rem',
-            'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
+            'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.5) 37%, #00000000 100%)'
         });
     }, () => {
+        distance = $(window).scrollTop();
         if (distance <= 340 || distance >= 2300) {
+            console.log('about distance works', distance);
             $('#about_direct').css({
                 'border-radius' : '0',
                 'background' : 'none'
+            });
+        }
+        else {
+            $('#about_direct').css({
+                'border-radius' : '0 0 1rem 1rem',
+                'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
             });
         }
     });
@@ -149,13 +165,21 @@ $(() => {
     $('#project_direct').hover(() => {
         $('#project_direct').css({
             'border-radius' : '0 0 4rem 1rem',
-            'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
+            'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.5) 37%, #00000000 100%)'
         });
     }, () => {
+        distance = $(window).scrollTop();
         if (distance < 2300) {
+            console.log('project distance works', distance);
             $('#project_direct').css({
                 'border-radius' : '0',
                 'background' : 'none'
+            });
+        }
+        else {
+            $('#project_direct').css({
+                'border-radius' : '0 0 4rem 1rem',
+                'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
             });
         }
     });

@@ -4,8 +4,10 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Alex Page Web developer portfolio">
+        <meta name="author" content="Alex Page"
+        <link rel="icon" href="/Images/ctoon-portrait.ico" />
         <title>Alex Page - Web Developer</title>
-        <link rel="icon" href="/Images/ctoon-portrait.png" />
         <!--JQuery-->
         <script
             src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -46,7 +48,7 @@
                                     <button id="email" onclick="clipboard();" class="flex justify-between items-center static w-max">
                                         page.alexanderjohn@gmail.com
                                         <div id="cpy_border" class="mx-3"></div>
-                                        <img id="copy_icn" src="https://api.iconify.design/material-symbols:content-copy-rounded.svg?color=%23d8e4ec" class="w-4 md:w-5" />
+                                        <img id="copy_icn" src="https://api.iconify.design/material-symbols:content-copy-rounded.svg?color=%23d8e4ec" class="w-4 md:w-5" alt="copy"/>
                                     </button>
                                     <p id="alert" class="hidden justify-center absolute"></p>
                                 </div>
@@ -55,12 +57,12 @@
                             <nav class="flex justify-end">               
                                 <div id="nav_content" class="mx-auto my-auto flex flex-row justify-between">
                                     <div class="mx-3 md:my-3 md:mx-5">
-                                        <a href="https://github.com/ImmuneMoon" target="_blank" onclick="gitclick();">
-                                            <img id="github" src="https://api.iconify.design/octicon:mark-github-16.svg?color=%2300d4b5" class="w-7" alt="Github" />
+                                        <a href="https://github.com/ImmuneMoon" target="_blank" onclick="gitclick();" aria-label="Github">
+                                            <img id="github" src="https://api.iconify.design/octicon:mark-github-16.svg?color=%2300d4b5" class="w-7" alt="Github"/>
                                         </a>
                                     </div>
                                     <div class="mx-3 md:my-3 md:mx-5">
-                                        <a href="https://www.linkedin.com/in/p-alex-j/" target="_blank" onclick="inclick();">
+                                        <a href="https://www.linkedin.com/in/p-alex-j/" target="_blank" onclick="inclick();" aria-label="Linkedin">
                                             <img id="linkedin" src="https://api.iconify.design/akar-icons:linkedinv1-fill.svg?color=%2300d4b5" class="w-7" alt="Linkedin" />
                                         </a>
                                     </div>
@@ -75,9 +77,9 @@
         <nav id="pg_nav" class="z-10">
             <div id="pg_nav_bkgrnd">
                 <div id="pg_nav_container" class="grid grid-cols-3 w-80">
-                    <a id="contact_direct" class="py-2 w-auto col-start-1 col-end-2 text-center" href="#contact_nav">Contact</a>
-                    <a id="about_direct" class="py-2 w-auto col-start-2 col-end-3 text-center" href="#about_nav">About</a>
-                    <a id="project_direct" class="py-2 w-auto pr-2 col-start-3 col-end-4 text-center" href="#projects_nav">Projects</a>
+                    <a id="contact_direct" class="py-2 w-auto col-start-1 col-end-2 text-center" href="#contact_nav" aria-label="Contact">Contact</a>
+                    <a id="about_direct" class="py-2 w-auto col-start-2 col-end-3 text-center" href="#about_nav" aria-label="About">About</a>
+                    <a id="project_direct" class="py-2 w-auto pr-2 col-start-3 col-end-4 text-center" href="#projects_nav" aria-label="Projects">Projects</a>
                 </div>
             </div>
         </nav>
@@ -124,7 +126,7 @@
                             </ul>
                         </div>
                         <div class="flex justify-center my-7">
-                            <a href="/dist/docs/Alexander_Page_Resume.pdf" target="_blank">
+                            <a href="/dist/docs/Alexander_Page_Resume.pdf" target="_blank" aria-label="Resume">
                                 <button id="resume" class="text-lg font-semibold">
                                         Résumé
                                 </button>
@@ -171,8 +173,8 @@
                                             During CS50x, I developed skills in C, Python, SQLite, Flask, Bootstrap, JavaScript and web design. This certificate represents approx. 10 weeks of study; including 10 problem sets, 8 labs, and a final project.
                                         </p>
                                     </div>
-                                    <a class="ml-0 mt-7 lg:ml-10 flex justify-center" href="https://certificates.cs50.io/5d48894d-a24d-4232-9b11-6a2881d503d2.pdf?size=letter" target="_blank">
-                                        <img id="CS50x" class="max-w-xs" src="/dist/docs/CS50x Certificate (9-25-22).png" alt="Hx cert" />
+                                    <a class="ml-0 mt-7 lg:ml-10 flex justify-center" href="https://certificates.cs50.io/5d48894d-a24d-4232-9b11-6a2881d503d2.pdf?size=letter" target="_blank" aria-label="CS50x Certificate">
+                                        <img id="CS50x" class="max-w-xs" src="/dist/docs/CS50x Certificate (9-25-22).png" alt="CS50x cert" />
                                     </a>
                                     <div id="click_me_container" class="absolute z-0 flex">
                                         <p id="click_me">Click Me!</p>
@@ -195,8 +197,8 @@
                                             During Freecodecamp's responsive web design course, I developed skills in HTML, CSS and learned how to implement them in responsive, accessible websites. This certificate represents approx. 300hrs of coursework; including 5 projects.
                                         </p>
                                     </div>
-                                    <a class="mr-0 mt-7 lg:mr-10 flex justify-center" href="https://www.freecodecamp.org/certification/immunemoon/responsive-web-design" target="_blank">
-                                        <img id="RWD" class="max-w-xs" src="/dist/docs/FreeCodeCamp Responsive Web Design Certificate (8-31-21).png" alt="Fcc cert" />
+                                    <a class="mr-0 mt-7 lg:mr-10 flex justify-center" href="https://www.freecodecamp.org/certification/immunemoon/responsive-web-design" target="_blank" aria-label="Freecodecamp Responsive Web Design Certificate">
+                                        <img id="RWD" class="max-w-xs" src="/dist/docs/FreeCodeCamp Responsive Web Design Certificate (8-31-21).png" alt="Freecodecamp cert" />
                                     </a>
                                 </div>
                             </div>
@@ -217,18 +219,18 @@
                             <h3 id="ten_k_title" class="flex justify-center mx-auto p-2">
                                 The 10,000 Hour Calculator
                             </h3>
-                            <div id="ten_k_info" class="flex justify-center items-center mx-auto p-3 mb-6">
+                            <div id="ten_k_info" class="flex justify-center items-center mx-auto p-3 py-7">
                                 <p class="infotxt">
                                     A calculator for determining how long you have left to reach 10,000 hours in a skill.
                                 </p>
                                 <div class="flex flex-col justify-center">
-                                    <a href="https://github.com/ImmuneMoon/10-000-Hour-Calculator" target="_blank">
-                                        <button id="ten_k_code" class="my-0.5">
+                                    <a href="https://github.com/ImmuneMoon/10-000-Hour-Calculator" target="_blank" aria-label="10K Calculator code">
+                                        <button id="ten_k_code" class="mb-2">
                                             Code
                                         </button>
                                     </a>
-                                    <a href="https://immunemoon.github.io/10-000-Hour-Calculator/" target="_blank">
-                                        <button id="ten_k_demo" class="my-0.5">
+                                    <a href="https://immunemoon.github.io/10-000-Hour-Calculator/" target="_blank" aria-label="10K Calculator demo">
+                                        <button id="ten_k_demo" class="mt-2">
                                             Demo
                                         </button>
                                     </a>
@@ -239,18 +241,18 @@
                             <h3 id="huddle_title" class="flex justify-center mx-auto p-2">
                                 Huddle Landing Page
                             </h3>
-                            <div id="huddle_info" class="flex justify-center items-center mx-auto p-3 mb-6">
+                            <div id="huddle_info" class="flex justify-center items-center mx-auto p-3 py-7">
                                 <p class="infotxt">
                                     A Frontendmentor HTML/CSS landing page project.
                                 </p>
                                 <div class="flex flex-col justify-center">
-                                    <a href="https://github.com/ImmuneMoon/Huddle-landing-page" target="_blank">
-                                        <button id="huddle_code" class="my-0.5">
+                                    <a href="https://github.com/ImmuneMoon/Huddle-landing-page" target="_blank" aria-label="Huddle Landing Page code">
+                                        <button id="huddle_code" class="mb-2">
                                             Code
                                         </button>
                                     </a>
-                                    <a href="https://codepen.io/immunemoon/details/GRExjev" target="_blank">
-                                        <button id="huddle_demo" class="my-0.5">
+                                    <a href="https://immunemoon.github.io/Huddle-landing-page/huddle-index.html" target="_blank" aria-label="Huddle Landing Page demo">
+                                        <button id="huddle_demo" class="mt-2">
                                             Demo
                                         </button>
                                     </a>
