@@ -349,7 +349,6 @@ $(() => {
 
     // Listens for window resize
     window.addEventListener('resize', () => {
-        console.log($(document).width());
         // Shows #contact in sizes above tailwind's medium size
         if ($(document).width() > 752) {
             $('#contact').show()
@@ -376,7 +375,6 @@ $(() => {
     // Listens for scrolling
     window.addEventListener("scroll", () => {
         let scroll = $(window).scrollTop();
-        console.log('scroll: ', scroll);
         
         // Highlighs contact nav button in contact section when scrolled
         if (scroll < 340) {
