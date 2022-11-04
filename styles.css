@@ -376,7 +376,7 @@ html, body
 #ten_k_info {
     width: 100%;
     height: max-content;
-    border-radius: 20px 20px 50px 50px;
+    border-radius: 0px 0px 50px 50px;
     background-color: rgba(56, 56, 56, 0.6);
     backdrop-filter: blur(5px);
 }
@@ -405,7 +405,7 @@ html, body
 #huddle_info {
     width: 100%;
     height: max-content;
-    border-radius: 20px 20px 50px 50px;
+    border-radius: 0px 0px 50px 50px;
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(5px);
 }
