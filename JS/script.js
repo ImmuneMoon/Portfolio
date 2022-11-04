@@ -601,7 +601,7 @@ function projectClick() {
             scrollTop: 2875
         }, 750);
     }
-    else if ($(document).width() < 506) {
+    else {
         $('html, body').animate({
             scrollTop: 2900
         }, 750);
