@@ -31,10 +31,10 @@ $(() => {
     // Contact menu hover effect
     $('#menu_icn').hover(() => {
         // Turns yellow (#f9f047)
-        $('#menu_icn').attr('src', './Images/sandwich-icon-yellow-thin.ico');
+        $('#menu_icn').attr('src', './Images/sandwich-icon-yellow-thin.png');
     }, () => {
         // Turns back to white (#d8e4ec)
-        $('#menu_icn').attr('src', './Images/sandwich-icon-thin.ico');
+        $('#menu_icn').attr('src', './Images/sandwich-icon-thin.png');
     });
 
     // Resume button hover effect
@@ -514,10 +514,10 @@ function contact() {
     if ($(document).width() < 752) {
         if ($('#contact').css('display') == 'none') {
             // Changes the menu icon to yellow (#f9f047) on click
-            $('#menu_icn').attr('src', './Images/sandwich-icon-yellow-thin.ico');
+            $('#menu_icn').attr('src', './Images/sandwich-icon-yellow-thin.png');
             setTimeout(() => {
                 // After 175ms the icon changes back to white (#d8e4ec)
-                $('#menu_icn').attr('src', './Images/sandwich-icon-thin.ico');
+                $('#menu_icn').attr('src', './Images/sandwich-icon-thin.png');
             }, 175)
             $('#header_content').css({
                 'grid-template-rows' : '3',
@@ -530,10 +530,10 @@ function contact() {
         }
         else {
             // Changes the menu icon to yellow (#f9f047) on click
-            $('#menu_icn').attr('src', './Images/sandwich-icon-yellow-thin.ico');
+            $('#menu_icn').attr('src', './Images/sandwich-icon-yellow-thin.png');
             setTimeout(() => {
                 // After 175ms the icon changes back to white (#d8e4ec)
-                $('#menu_icn').attr('src', './Images/sandwich-icon-thin.ico');
+                $('#menu_icn').attr('src', './Images/sandwich-icon-thin.png');
             }, 175)
             $('#contact').hide()
             $('#contact').css({
