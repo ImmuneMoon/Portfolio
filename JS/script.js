@@ -1,3 +1,154 @@
+function clipboard() {
+
+    // Changes the copy icon to yellow (#f9f047) outline version on click
+    $('#copy_icn').attr('src', 'https://api.iconify.design/material-symbols:content-copy-outline-rounded.svg?color=%23f9f047');
+    // After 300ms the icon changes back to white (#d8e4ec) original
+    setTimeout(() => {
+        $('#copy_icn').attr('src', 'https://api.iconify.design/material-symbols:content-copy-rounded.svg?color=%23d8e4ec');
+    }, 300)
+
+    // Copy the #email button value to the users clipboard
+    navigator.clipboard.writeText($('#email').text());
+
+    function alert() {
+
+        // Alert the user
+        $('#alert').text('copied!');
+
+        // Makes alert come from below the button in an animation effect
+        $('#alert').css({
+            'display' : 'flex',
+            'transform' : 'translateY(1.5em)'
+        }).animate({
+            'transition' : 'opacity 1s ease-in-out'
+        });
+
+        // Waits 1000ms to hide again
+        setTimeout(() => {
+            $('#alert').hide();
+        }, 1000)
+    }
+    return alert();
+}
+
+function gitclick() {
+
+    // Changes the github icon to yellow (#f9f047) outline version on click
+    $('#github').attr('src', 'https://api.iconify.design/iconoir:github-outline.svg?color=%23f9f047');
+    // After 300ms the icon changes back to green/blue (#00ffed) original
+    setTimeout(() => {
+        $('#github').attr('src', 'https://api.iconify.design/octicon:mark-github-16.svg?color=%2300d4b5');
+    }, 300)
+}
+
+function inclick() {
+
+    // Changes the linkedin icon to yellow (#f9f047) outline version on click
+    $('#linkedin').attr('src', 'https://api.iconify.design/ph:linkedin-logo-bold.svg?color=%23f9f047');
+    // After 300ms the icon changes back to green/blue (#00d4b5) original
+    setTimeout(() => {
+        $('#linkedin').attr('src', 'https://api.iconify.design/akar-icons:linkedinv1-fill.svg?color=%2300d4b5');
+    }, 300)
+}
+
+function contact() {
+    // Shows the contact dropdown when the menu icon triggers this function and closes it if open when triggered
+    if ($(document).width() < 752) {
+        if ($('#contact').css('display') == 'none') {
+            // Changes the menu icon to yellow (#f9f047) on click
+            $('#menu_icn').attr('src', './Images/sandwich-icon-yellow-thin.png');
+            setTimeout(() => {
+                // After 175ms the icon changes back to white (#d8e4ec)
+                $('#menu_icn').attr('src', './Images/sandwich-icon-thin.png');
+            }, 175)
+            $('#header_content').css({
+                'grid-template-rows' : '3',
+                'border-radius' : '0 0 2rem 0'
+            });
+            
+            $('#contact').show()
+
+
+        }
+        else {
+            // Changes the menu icon to yellow (#f9f047) on click
+            $('#menu_icn').attr('src', './Images/sandwich-icon-yellow-thin.png');
+            setTimeout(() => {
+                // After 175ms the icon changes back to white (#d8e4ec)
+                $('#menu_icn').attr('src', './Images/sandwich-icon-thin.png');
+            }, 175)
+            $('#contact').hide()
+            $('#contact').css({
+                'border-radius' : '0'
+            });
+
+            $('#header_content').css({
+                'grid-template-rows' : '1',
+                'border-radius' : '0'
+            });
+
+        }
+    }
+}
+
+
+function contactClick() {
+    $('html, body').animate({
+        scrollTop: 0
+    }, 750);
+}
+
+function aboutClick() {
+    if ($(document).width() < 625) {
+        $('html, body').animate({
+            scrollTop: 700
+        }, 750);
+    }
+    else {
+        $('html, body').animate({
+            scrollTop: 730
+        }, 750);
+    }
+}
+
+function projectClick() {
+    if ($(document).width() > 1008) {
+        $('html, body').animate({
+            scrollTop: 2480
+        }, 750);
+    }
+    else if ($(document).width() > 675) {        
+        $('html, body').animate({
+            scrollTop: 2880
+        }, 750);
+    }
+    else if ($(document).width() > 625) {
+        $('html, body').animate({
+            scrollTop: 2780
+        }, 750);
+    }
+    else if ($(document).width() > 586) {
+        $('html, body').animate({
+            scrollTop: 2830
+        }, 750);
+    }
+    else if ($(document).width() > 518) {
+        $('html, body').animate({
+            scrollTop: 2860
+        }, 750);
+    }
+    else if ($(document).width() > 505) {
+        $('html, body').animate({
+            scrollTop: 2875
+        }, 750);
+    }
+    else {
+        $('html, body').animate({
+            scrollTop: 2900
+        }, 750);
+    }
+}
+
 // Waits for DOM load
 $(() => {
     let distance = $(window).scrollTop();
@@ -457,153 +608,3 @@ $(() => {
     });
 });
 
-function clipboard() {
-
-    // Changes the copy icon to yellow (#f9f047) outline version on click
-    $('#copy_icn').attr('src', 'https://api.iconify.design/material-symbols:content-copy-outline-rounded.svg?color=%23f9f047');
-    // After 300ms the icon changes back to white (#d8e4ec) original
-    setTimeout(() => {
-        $('#copy_icn').attr('src', 'https://api.iconify.design/material-symbols:content-copy-rounded.svg?color=%23d8e4ec');
-    }, 300)
-
-    // Copy the #email button value to the users clipboard
-    navigator.clipboard.writeText($('#email').text());
-
-    function alert() {
-
-        // Alert the user
-        $('#alert').text('copied!');
-
-        // Makes alert come from below the button in an animation effect
-        $('#alert').css({
-            'display' : 'flex',
-            'transform' : 'translateY(1.5em)'
-        }).animate({
-            'transition' : 'opacity 1s ease-in-out'
-        });
-
-        // Waits 1000ms to hide again
-        setTimeout(() => {
-            $('#alert').hide();
-        }, 1000)
-    }
-    return alert();
-}
-
-function gitclick() {
-
-    // Changes the github icon to yellow (#f9f047) outline version on click
-    $('#github').attr('src', 'https://api.iconify.design/iconoir:github-outline.svg?color=%23f9f047');
-    // After 300ms the icon changes back to green/blue (#00ffed) original
-    setTimeout(() => {
-        $('#github').attr('src', 'https://api.iconify.design/octicon:mark-github-16.svg?color=%2300d4b5');
-    }, 300)
-}
-
-function inclick() {
-
-    // Changes the linkedin icon to yellow (#f9f047) outline version on click
-    $('#linkedin').attr('src', 'https://api.iconify.design/ph:linkedin-logo-bold.svg?color=%23f9f047');
-    // After 300ms the icon changes back to green/blue (#00d4b5) original
-    setTimeout(() => {
-        $('#linkedin').attr('src', 'https://api.iconify.design/akar-icons:linkedinv1-fill.svg?color=%2300d4b5');
-    }, 300)
-}
-
-function contact() {
-    // Shows the contact dropdown when the menu icon triggers this function and closes it if open when triggered
-    if ($(document).width() < 752) {
-        if ($('#contact').css('display') == 'none') {
-            // Changes the menu icon to yellow (#f9f047) on click
-            $('#menu_icn').attr('src', './Images/sandwich-icon-yellow-thin.png');
-            setTimeout(() => {
-                // After 175ms the icon changes back to white (#d8e4ec)
-                $('#menu_icn').attr('src', './Images/sandwich-icon-thin.png');
-            }, 175)
-            $('#header_content').css({
-                'grid-template-rows' : '3',
-                'border-radius' : '0 0 2rem 0'
-            });
-            
-            $('#contact').show()
-
-
-        }
-        else {
-            // Changes the menu icon to yellow (#f9f047) on click
-            $('#menu_icn').attr('src', './Images/sandwich-icon-yellow-thin.png');
-            setTimeout(() => {
-                // After 175ms the icon changes back to white (#d8e4ec)
-                $('#menu_icn').attr('src', './Images/sandwich-icon-thin.png');
-            }, 175)
-            $('#contact').hide()
-            $('#contact').css({
-                'border-radius' : '0'
-            });
-
-            $('#header_content').css({
-                'grid-template-rows' : '1',
-                'border-radius' : '0'
-            });
-
-        }
-    }
-}
-
-
-function contactClick() {
-    $('html, body').animate({
-        scrollTop: 0
-    }, 750);
-}
-
-function aboutClick() {
-    if ($(document).width() < 625) {
-        $('html, body').animate({
-            scrollTop: 700
-        }, 750);
-    }
-    else {
-        $('html, body').animate({
-            scrollTop: 730
-        }, 750);
-    }
-}
-
-function projectClick() {
-    if ($(document).width() > 1008) {
-        $('html, body').animate({
-            scrollTop: 2480
-        }, 750);
-    }
-    else if ($(document).width() > 675) {        
-        $('html, body').animate({
-            scrollTop: 2880
-        }, 750);
-    }
-    else if ($(document).width() > 625) {
-        $('html, body').animate({
-            scrollTop: 2780
-        }, 750);
-    }
-    else if ($(document).width() > 586) {
-        $('html, body').animate({
-            scrollTop: 2830
-        }, 750);
-    }
-    else if ($(document).width() > 518) {
-        $('html, body').animate({
-            scrollTop: 2860
-        }, 750);
-    }
-    else if ($(document).width() > 505) {
-        $('html, body').animate({
-            scrollTop: 2875
-        }, 750);
-    }
-    else {
-        $('html, body').animate({
-            scrollTop: 2900
-        }, 750);
-    }
-}
