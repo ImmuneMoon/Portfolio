@@ -349,6 +349,7 @@ $(() => {
 
     // Listens for window resize
     window.addEventListener('resize', () => {
+        console.log($(document).width());
         // Shows #contact in sizes above tailwind's medium size
         if ($(document).width() > 752) {
             $('#contact').show()
@@ -375,6 +376,8 @@ $(() => {
     // Listens for scrolling
     window.addEventListener("scroll", () => {
         let scroll = $(window).scrollTop();
+        console.log('scroll: ', scroll);
+        
         // Highlighs contact nav button in contact section when scrolled
         if (scroll < 340) {
             // Nav bar highlight
@@ -549,6 +552,7 @@ function contact() {
     }
 }
 
+
 function contactClick() {
     $('html, body').animate({
         scrollTop: 0
@@ -556,13 +560,52 @@ function contactClick() {
 }
 
 function aboutClick() {
-    $('html, body').animate({
-        scrollTop: 650
-    }, 750);
+    if ($(document).width() < 625) {
+        $('html, body').animate({
+            scrollTop: 700
+        }, 750);
+    }
+    else {
+        $('html, body').animate({
+            scrollTop: 730
+        }, 750);
+    }
 }
 
 function projectClick() {
-    $('html, body').animate({
-        scrollTop: 2500
-    }, 750);
+    if ($(document).width() > 1008) {
+        $('html, body').animate({
+            scrollTop: 2480
+        }, 750);
+    }
+    else if ($(document).width() > 675) {        
+        $('html, body').animate({
+            scrollTop: 2880
+        }, 750);
+    }
+    else if ($(document).width() > 625) {
+        $('html, body').animate({
+            scrollTop: 2780
+        }, 750);
+    }
+    else if ($(document).width() > 586) {
+        $('html, body').animate({
+            scrollTop: 2830
+        }, 750);
+    }
+    else if ($(document).width() > 518) {
+        $('html, body').animate({
+            scrollTop: 2860
+        }, 750);
+    }
+    else if ($(document).width() > 505) {
+        $('html, body').animate({
+            scrollTop: 2875
+        }, 750);
+    }
+    else if ($(document).width() < 506) {
+        $('html, body').animate({
+            scrollTop: 2900
+        }, 750);
+    }
 }
