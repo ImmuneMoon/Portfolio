@@ -54,8 +54,7 @@ html, body
     scroll-behavior: smooth;
 }
 
-body {
-    height: 100%;
+header {
     width: 100%;
 }
 
