@@ -149,6 +149,8 @@ function projectClick() {
     }
 }
 
+
+
 // Waits for DOM load
 $(() => {
     let distance = $(window).scrollTop();
