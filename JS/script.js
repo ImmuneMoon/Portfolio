@@ -265,6 +265,36 @@ $(() => {
         });
     });
 
+    // #order_card_code button hover effect
+    $('#order_card_code').hover(() => {
+        // Turns text red(#940000) and background white(#d8e4ec)
+        $('#order_card_code').css({
+            'color' : '#940000',
+            'background-color' : '#d8e4ec'
+        });
+    }, () => {
+        // Turns text back to white(#940000) and background back to red(#940000)
+        $('#order_card_code').css({
+            'color' : '#d8e4ec',
+            'background-color' : '#940000'
+        });
+    });
+
+    // #order_card_demo button hover effect
+    $('#order_card_demo').hover(() => {
+        // Turns text red(#940000) and background white(#d8e4ec)
+        $('#order_card_demo').css({
+            'color' : '#940000',
+            'background-color' : '#d8e4ec'
+        });
+    }, () => {
+        // Turns text back to white(#940000) and background back to red(#940000)
+        $('#order_card_demo').css({
+            'color' : '#d8e4ec',
+            'background-color' : '#940000'
+        });
+    });
+
     /* Nav menu hover effect. Highlights button on hover & if user is in relevant screen area
         the button keeps its current value
     */

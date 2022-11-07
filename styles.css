@@ -360,7 +360,8 @@ html, body
 }
 
 #ten_k_container:hover, 
-#huddle_container:hover {
+#huddle_container:hover,
+#order_card_container:hover {
     transform: translateY(-10px);
 }
 
@@ -410,12 +411,46 @@ html, body
     backdrop-filter: blur(5px);
 }
 
+#order_card_title {
+    width: 54%;
+    height: max-content;
+    border-radius: 20px 20px 0 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    transform: translateX(-27%);
+}
+
+#order_card_container {
+    width: 400px;
+    height: 400px;
+    border-radius: 50px;
+    background-image: url("./Images/order-card-screenshot.png");
+    background-color: #186f91;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    box-shadow: 0px 7px 10px 1px rgba(0, 0, 0, 0.5);
+    transition: transform 250ms linear;
+}
+
+#order_card_info {
+    width: 100%;
+    height: max-content;
+    border-radius: 0px 0px 50px 50px;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+}
+
 .infotxt {
     width: 240px;
     margin-right: 10px;
 }
 
-#ten_k_code, #ten_k_demo, #huddle_code, #huddle_demo {
+#ten_k_code, 
+#ten_k_demo, 
+#huddle_code, 
+#huddle_demo, 
+#order_card_code, 
+#order_card_demo {
     background-color: #940000;
     width: 5em;
     height: 2em;
@@ -423,7 +458,12 @@ html, body
     transition: transform 100ms linear;
 }
 
-#ten_k_code:hover, #ten_k_demo:hover, #huddle_code:hover, #huddle_demo:hover {
+#ten_k_code:hover, 
+#ten_k_demo:hover, 
+#huddle_code:hover, 
+#huddle_demo:hover,
+#order_card_code:hover, 
+#order_card_demo:hover {
     transform: scale(1.05);
 }
 
