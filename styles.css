@@ -474,6 +474,8 @@ html, body
     margin-right: 10px;
 }
 
+#isdn_code,
+#isdn_demo,
 #ten_k_code, 
 #ten_k_demo, 
 #huddle_code, 
@@ -487,6 +489,8 @@ html, body
     transition: transform 100ms linear;
 }
 
+#isdn_code:hover,
+#isdn_demo:hover,
 #ten_k_code:hover, 
 #ten_k_demo:hover, 
 #huddle_code:hover, 
