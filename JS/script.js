@@ -19,8 +19,6 @@ function clipboard() {
         $('#alert').css({
             'display' : 'flex',
             'transform' : 'translateY(1.5em)'
-        }).animate({
-            'transition' : 'opacity 1s ease-in-out'
         });
 
         // Waits 1000ms to hide again
@@ -488,7 +486,7 @@ $(() => {
                 element.includes($('#contact_label')[0]) || 
                 element.includes($('#contact')[0]) || 
                 element.includes($('#menu_icn')[0]) || 
-                element.includes($('#email')[0]) || || 
+                element.includes($('#email')[0]) || 
                 element.includes($('#cpy_border')[0]) ||
                 element.includes($('#copy_icn')[0]) || 
                 element.includes($('#github')[0]) || 
