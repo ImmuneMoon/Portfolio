@@ -488,7 +488,9 @@ $(() => {
                 element.includes($('#contact_label')[0]) || 
                 element.includes($('#contact')[0]) || 
                 element.includes($('#menu_icn')[0]) || 
-                element.includes($('#email')[0]) || 
+                element.includes($('#email')[0]) || || 
+                element.includes($('#cpy_border')[0]) ||
+                element.includes($('#copy_icn')[0]) || 
                 element.includes($('#github')[0]) || 
                 element.includes($('#linkedin')[0])) {
 
