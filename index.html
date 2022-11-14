@@ -166,7 +166,7 @@
             <!-- About me section, including certificates -->
             <section id="about_section" class="flex justify-center items-center m-auto">
                 <div id="about_container" class="grid grid-cols-1 2xl:grid-cols-2">
-                    <div id="me_text_circle" class="relative z-0">
+                    <div id="me_text_circle" class="col-span-1 relative z-0">
                         <div id="me_container" class="my-6 flex flex-col justify-center mx-auto p-6">
                                 <h2 id="about_me" class="text-right absolute">
                                     About Me
@@ -178,7 +178,7 @@
                                 </p>
                         </div>
                     </div>
-                    <div id="certs_container" class="flex justify-center mx-auto p-6">
+                    <div id="certs_container" class="flex justify-center col-span-2 mx-auto p-6">
                         <h2 id="certs_heading" class="text-center absolute z-0">
                             Certificates 🎓
                         </h2>
@@ -240,6 +240,29 @@
                         </h2>
                     </div>
                     <div id="project_content" class="flex flex-wrap">
+                        <!-- Intro Section with Dropdown Nav -->
+                        <div id="isdn_container" class="flex flex-col justify-end my-6 mx-auto">
+                            <h3 id="isdn_title" class="flex justify-center mx-auto p-2">
+                                Intro Section w/ Nav
+                            </h3>
+                            <div id="isdn_info" class="flex justify-center items-center mx-auto p-3 py-7">
+                                <p class="infotxt">
+                                    A Intro Section with Dropdown Navigation project for Frontendmentor. Built with TailwindCSS & Jquery.
+                                </p>
+                                <div class="flex flex-col justify-center">
+                                    <a href="https://github.com/ImmuneMoon/Intro-section-with-dropdown" target="_blank" aria-label="Intro section w/ dropdown code">
+                                        <button id="isdn_code" class="mb-2">
+                                            Code
+                                        </button>
+                                    </a>
+                                    <a href="https://immunemoon.github.io/Intro-section-with-dropdown/" target="_blank" aria-label="Intro section w/ dropdown demo">
+                                        <button id="isdn_demo" class="mt-2">
+                                            Demo
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                         <!-- 10,000hr Calculator -->
                         <div id="ten_k_container" class="flex flex-col justify-end my-6 mx-auto">
                             <h3 id="ten_k_title" class="flex justify-center mx-auto p-2">

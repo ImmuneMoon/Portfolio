@@ -106,7 +106,7 @@ function aboutClick() {
     }
     else {
         $('html, body').animate({
-            scrollTop: 730
+            scrollTop: 800
         }, 750);
     }
 }
@@ -114,37 +114,37 @@ function aboutClick() {
 function projectClick() {
     if ($(document).width() > 1008) {
         $('html, body').animate({
-            scrollTop: 2480
+            scrollTop: 2600
         }, 750);
     }
     else if ($(document).width() > 675) {        
         $('html, body').animate({
-            scrollTop: 2880
+            scrollTop: 2950
         }, 750);
     }
     else if ($(document).width() > 625) {
         $('html, body').animate({
-            scrollTop: 2780
+            scrollTop: 2890
         }, 750);
     }
     else if ($(document).width() > 586) {
         $('html, body').animate({
-            scrollTop: 2830
+            scrollTop: 2930
         }, 750);
     }
     else if ($(document).width() > 518) {
         $('html, body').animate({
-            scrollTop: 2860
+            scrollTop: 2960
         }, 750);
     }
     else if ($(document).width() > 505) {
         $('html, body').animate({
-            scrollTop: 2875
+            scrollTop: 2980
         }, 750);
     }
     else {
         $('html, body').animate({
-            scrollTop: 2900
+            scrollTop: 3000
         }, 750);
     }
 }
