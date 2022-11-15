@@ -99,7 +99,7 @@ function contactClick() {
 function aboutClick() {
     if ($(document).width() < 625) {
         $('html, body').animate({
-            scrollTop: 700
+            scrollTop: 825
         }, 750);
     }
     else {
