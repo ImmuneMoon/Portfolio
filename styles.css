@@ -102,7 +102,8 @@ html, body
 }
 
 #alert {
-    width: 18em;
+    font-size: 16px;
+    width: fit-content;
 }
 
 #menu_icn {
@@ -577,6 +578,10 @@ html, body
 
     #click_me_container {
         transform: translateX(-1rem) translateY(31rem);
+    }
+
+    #alert {
+        font-size: 14px;
     }
 }
 
