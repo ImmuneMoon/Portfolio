@@ -500,6 +500,22 @@ html, body
     transform: scale(1.05);
 }
 
+#isdn_lang, #ten_lang {
+    border: 2px solid #00ffed;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    top: 0;
+    left: 0;
+}
+
+.tailwind,
+.jquery,
+.bootstrap {
+    height: 30px;
+    width: 30px;
+}
+
 @media (max-width: 1023px) {
 
     #click_me_container {
