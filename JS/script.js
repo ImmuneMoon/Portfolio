@@ -203,36 +203,52 @@ $(() => {
         });
     });
 
-    // #isdn_code button hover effect
-    $('#isdn_code').hover(() => {
+    // Temp 'challenge' button effect, to be replaced with below code when project is finished
+    $('#space_tour_challenge').hover(() => {
         // Turns text red(#940000) and background white(#d8e4ec)
-        $('#isdn_code').css({
+        $('#space_tour_challenge').css({
             'color' : '#940000',
             'background-color' : '#d8e4ec'
         });
     }, () => {
         // Turns text back to white(#940000) and background back to red(#940000)
-        $('#isdn_code').css({
+        $('#space_tour_challenge').css({
             'color' : '#d8e4ec',
             'background-color' : '#940000'
         });
     });
 
-    // #isdn_demo button hover effect
-    $('#isdn_demo').hover(() => {
+/*
+    // #space_tour_code button hover effect
+    $('#space_tour_code').hover(() => {
         // Turns text red(#940000) and background white(#d8e4ec)
-        $('#isdn_demo').css({
+        $('#space_tour_code').css({
             'color' : '#940000',
             'background-color' : '#d8e4ec'
         });
     }, () => {
         // Turns text back to white(#940000) and background back to red(#940000)
-        $('#isdn_demo').css({
+        $('#space_tour_code').css({
             'color' : '#d8e4ec',
             'background-color' : '#940000'
         });
     });
 
+    // #space_tour_demo button hover effect
+    $('#space_tour_demo').hover(() => {
+        // Turns text red(#940000) and background white(#d8e4ec)
+        $('#space_tour_demo').css({
+            'color' : '#940000',
+            'background-color' : '#d8e4ec'
+        });
+    }, () => {
+        // Turns text back to white(#940000) and background back to red(#940000)
+        $('#space_tour_demo').css({
+            'color' : '#d8e4ec',
+            'background-color' : '#940000'
+        });
+    });
+*/
     // #ten_k_code button hover effect
     $('#ten_k_code').hover(() => {
         // Turns text red(#940000) and background white(#d8e4ec)

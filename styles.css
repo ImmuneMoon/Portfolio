@@ -214,6 +214,8 @@ html, body
     transform: translateX(3rem) translateY(8rem);
 }
 
+/* Certifications section styles */
+
 #certs_container{
     width: 100%;
 }
@@ -228,6 +230,8 @@ html, body
 #certs {
     width: 100%;
 }
+
+/* HarvardX cert styles */
 
 #hx_container {
     max-width: max-content;
@@ -291,6 +295,8 @@ html, body
     transform: translateX(3.75rem) translateY(-.75rem);
 }
 
+/* Freecodecamp cert styles */
+
 #fcc_container {
     max-width: max-content;
     border-radius: 100px 25px 100px 100px;
@@ -331,6 +337,8 @@ html, body
     transform: scale(1.015);
 }
 
+/* Projects section styles */
+
 #projects_nav {
     transform: translateY(-7.5rem);
 }
@@ -345,6 +353,40 @@ html, body
 #project_section {
     margin-bottom: 4rem;
 }
+
+/* Space tour project styles */
+
+#space_tour_container {
+    width: 400px;
+    height: 400px;
+    border-radius: 50px;
+    background-image: url("./Images/Space-tourism-screenshot.png");
+    background-size: fill;
+    background-color: #0e1c51;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    box-shadow: 0px 7px 10px 1px rgba(0, 0, 0, 0.5);
+    transition: transform 250ms linear;
+}
+
+#space_tour_title {
+    width: 75%;
+    height: max-content;
+    border-radius: 0 30px 0 0;
+    background-color: rgba(56, 56, 56, 0.6);
+    backdrop-filter: blur(5px);
+    transform: translateX(-16.75%);
+}
+
+#space_tour_info {
+    width: 100%;
+    height: max-content;
+    border-radius: 0px 0px 50px 50px;
+    background-color: rgba(56, 56, 56, 0.6);
+    backdrop-filter: blur(5px);
+}
+
+/* Intro with dropdown project styles*/
 
 #isdn_container {
     width: 400px;
@@ -376,6 +418,8 @@ html, body
     backdrop-filter: blur(5px);
 }
 
+/* 10,000hr calc project styles */
+
 #ten_k_container {
     width: 400px;
     height: 400px;
@@ -405,6 +449,8 @@ html, body
     backdrop-filter: blur(5px);
 }
 
+/* Order summary card project styles */
+
 #order_card_title {
     width: 54%;
     height: max-content;
@@ -433,6 +479,8 @@ html, body
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(5px);
 }
+
+/* Huddle site project styles */
 
 #huddle_container {
     width: 400px;
@@ -475,6 +523,9 @@ html, body
     margin-right: 10px;
 }
 
+/* Code and demo button styles */
+
+#space_tour_challenge,
 #isdn_code,
 #isdn_demo,
 #ten_k_code, 
@@ -484,12 +535,14 @@ html, body
 #order_card_code, 
 #order_card_demo {
     background-color: #940000;
-    width: 5em;
-    height: 2em;
+    width: fit-content;
+    height: fit-content;
+    padding: .25em 1em .25em 1em;
     border-radius: 10px;
     transition: transform 100ms linear;
 }
 
+#space_tour_challenge:hover,
 #isdn_code:hover,
 #isdn_demo:hover,
 #ten_k_code:hover, 
@@ -501,7 +554,9 @@ html, body
     transform: scale(1.05);
 }
 
-#isdn_lang, #ten_lang {
+/* Project languages styles */
+
+#space_tour_lang, #isdn_lang, #ten_lang {
     border: 2px solid #00ffed;
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.6);
@@ -510,12 +565,34 @@ html, body
     left: 0;
 }
 
+.react,
 .tailwind,
 .jquery,
 .bootstrap {
     height: 30px;
     width: 30px;
 }
+
+/* temp in progress status */
+
+#in_progress {
+    width: fit-content;
+    height: fit-content;
+    border: 2px solid #DDDE00;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    top: 0;
+    right: 0;
+
+}
+
+#construct {
+    height: 30px;
+    width: 30px;
+}
+
+/* Resizing styles */
 
 @media (max-width: 1023px) {
 
