@@ -511,6 +511,8 @@ html, body
     backdrop-filter: blur(5px);
 }
 
+/* Card container hover effects */
+
 #space_tour_container:hover,
 #isdn_container:hover, 
 #ten_k_container:hover, 
@@ -518,6 +520,8 @@ html, body
 #order_card_container:hover {
     transform: translateY(-10px);
 }
+
+/* Card info text */
 
 .infotxt {
     width: 240px;
