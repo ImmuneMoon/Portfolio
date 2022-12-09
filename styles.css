@@ -511,6 +511,7 @@ html, body
     backdrop-filter: blur(5px);
 }
 
+#space_tour_container:hover,
 #isdn_container:hover, 
 #ten_k_container:hover, 
 #huddle_container:hover,
