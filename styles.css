@@ -131,7 +131,8 @@ html, body
 #bootstrap:hover, 
 #tailwind:hover, 
 #javascript:hover, 
-#jquery:hover, 
+#jquery:hover,
+#react:hover, 
 #python:hover, 
 #flask:hover, 
 #sql:hover, 
@@ -145,6 +146,7 @@ html, body
 #tailwind:hover::before, 
 #javascript:hover::before, 
 #jquery:hover::before, 
+#react:hover::before,
 #python:hover::before, 
 #flask:hover::before, 
 #sql:hover::before, 
@@ -208,10 +210,10 @@ html, body
 }
 
 #me_text {
-    width: 24rem;
+    width: 28rem;
     line-height: 2.5rem;
     font-size: larger;
-    transform: translateX(3rem) translateY(8rem);
+    transform: translateX(5rem) translateY(8.5rem);
 }
 
 /* Certifications section styles */
@@ -653,6 +655,31 @@ html, body
         line-height: 2.2rem;
         font-size: medium;
         transform: translateX(3rem) translateY(5rem);
+    }
+}
+
+@media (max-width: 640px) {
+
+    #intro {
+        font-size: 3em;
+    }
+
+    #htmlang, 
+    #css, 
+    #bootstrap,
+    #tailwind, 
+    #javascript, 
+    #jquery,
+    #react, 
+    #python, 
+    #flask, 
+    #sql, 
+    #c_lang {
+        margin: .75rem;
+    }
+
+    .lang {
+        margin-bottom: .15rem;
     }
 }
 
