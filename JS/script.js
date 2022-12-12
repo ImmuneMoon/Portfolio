@@ -609,7 +609,6 @@ $(() => {
 
     // Listens for window resize
     window.addEventListener('resize', () => {
-        console.log($(document).width());
         // Shows #contact in sizes above tailwind's medium size
         if ($(document).width() > 752) {
             $('#contact').show()
