@@ -388,6 +388,38 @@ html, body
     backdrop-filter: blur(5px);
 }
 
+/* URL scraper styles*/
+
+#scrape_container {
+    width: 400px;
+    height: 400px;
+    border-radius: 50px;
+    background-image: url("./Images/URL\ Scraper.png");
+    background-size: fill;
+    background-color: #7dd6d3;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    box-shadow: 0px 7px 10px 1px rgba(0, 0, 0, 0.5);
+    transition: transform 250ms linear;
+}
+
+#scrape_title {
+    width: 50%;
+    height: max-content;
+    border-radius: 0 30px 0 0;
+    background-color: rgba(56, 56, 56, 0.6);
+    backdrop-filter: blur(5px);
+    transform: translateX(-50%);
+}
+
+#scrape_info {
+    width: 100%;
+    height: max-content;
+    border-radius: 0px 0px 50px 50px;
+    background-color: rgba(56, 56, 56, 0.6);
+    backdrop-filter: blur(5px);
+}
+
 /* Intro with dropdown project styles*/
 
 #isdn_container {
@@ -516,6 +548,7 @@ html, body
 /* Card container hover effects */
 
 #space_tour_container:hover,
+#scrape_container:hover,
 #isdn_container:hover, 
 #ten_k_container:hover, 
 #huddle_container:hover,
@@ -533,6 +566,8 @@ html, body
 /* Code and demo button styles */
 
 #space_tour_challenge,
+#scrape_code,
+#scrape_demo,
 #isdn_code,
 #isdn_demo,
 #ten_k_code, 
@@ -549,7 +584,15 @@ html, body
     transition: transform 100ms linear;
 }
 
+#scrape_code,
+#scrape_demo {
+    width: 5em;
+    padding: .25em .5em .25em .5em;
+}
+
 #space_tour_challenge:hover,
+#scrape_code:hover,
+#scrape_demo:hover,
 #isdn_code:hover,
 #isdn_demo:hover,
 #ten_k_code:hover, 
@@ -563,7 +606,7 @@ html, body
 
 /* Project languages styles */
 
-#space_tour_lang, #isdn_lang, #ten_lang {
+#space_tour_lang, #isdn_lang, #ten_lang, #scrape_lang {
     border: 2px solid #00ffed;
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.6);
@@ -575,9 +618,16 @@ html, body
 .react,
 .tailwind,
 .jquery,
-.bootstrap {
+.bootstrap,
+.axios {
     height: 30px;
     width: 30px;
+}
+
+.cheerio {
+    font-size: x-small;
+    font-weight: 700;
+    margin: 0 auto;
 }
 
 /* temp in progress status */
