@@ -21,26 +21,25 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-Color samples:
-Dark Purple ( #2f0068 )
-Dark Purple/Blue ( #0a0c2e )
-Light blue ( #003258 )
-Greenish Blue ( #44ffb5 )
-Subdued Greenish Blue ( #00ffed )
-Blueish Green ( #00d4b5 )
-Orange ( #ff8800 )
-Yellow ( #e7dc00 )
-Lighter Yellow ( #f9f047 )
-Red ( #940000 )
-White ( #d8e4ec )
-Greyish White ( #cccde0 )
-Greyish Blue ( #131328 )
-*/
+
+/*Color samples:*/
+$darkPurple: #2f0068;
+$darkPurple_Blue: #0a0c2e;
+$lightBlue: #003258;
+$greenBlue: #44ffb5;
+$subduedGreen_Blue: #00ffed;
+$blueGreen: #00d4b5;
+$orange: #ff8800;
+$yellow: #e7dc00;
+$lighterYellow: #f9f047;
+$red: #940000;
+$white: #d8e4ec;
+$greyishWhite: #cccde0;
+$greyishBlue: #131328;
 
 
 * {
-    color: #d8e4ec;
+    color: $white;
     font-family: 'Prompt', sans-serif;
 }
 
@@ -48,12 +47,12 @@ html, body
 {
     height: 100%;
     width: 100%;
-    background-color: #0a0c2e;
+    background-color: $darkPurple_Blue;
     scroll-behavior: smooth;
 }
 
 #header_content {
-    background-color: #131328;
+    background-color: $greyishBlue;
     box-shadow: 0px 7px 10px 1px rgba(0, 0, 0, 0.300);
 }
 
@@ -71,7 +70,7 @@ html, body
     background-image: url("./Images/name-bg.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    color: #131328;
+    color: $greyishBlue;
 }
 
 #pg_nav {
@@ -82,7 +81,7 @@ html, body
     width: 20rem;
     border-radius: 0 0 4rem 0;
     box-shadow: 0px 7px 10px 1px rgba(0, 0, 0, 0.300);
-    background-color: #131328;
+    background-color: $greyishBlue;
 
 }
 
@@ -97,7 +96,7 @@ html, body
 
 #cpy_border {
     border: solid 1px;
-    border-color: #d8e4ec;
+    border-color: $white;
     height: 1em;
 }
 
@@ -668,7 +667,7 @@ html, body
 
     #contact_label_container {
         width: 25%;
-        border-bottom: solid 1px #d8e4ec;
+        border-bottom: solid 1px $white;
     }
 
     #me_text_circle {
@@ -679,8 +678,8 @@ html, body
 @media (max-width: 753px) {
 
     #me_text_circle {
-        width: 16.5rem;
-        height: 16.5rem;
+        width: 16rem;
+        height: 16rem;
         border-radius: 50%;
         background-color: #00ffee51;
         box-shadow: 3px 7px 20px 1px rgba(0, 0, 0, 0.5);
@@ -716,6 +715,11 @@ html, body
     }
 
     #me_text_circle {
+        width: 16rem;
+        height: 16rem;
+        border-radius: 50%;
+        background-color: #00ffee51;
+        box-shadow: 3px 7px 20px 1px rgba(0, 0, 0, 0.5);
         transform: translateX(4.5rem) translateY(-18rem);
     
     }
@@ -760,8 +764,8 @@ html, body
 @media (max-width: 550px) {
 
     #me_text {
-        width: 16rem;
-        line-height: 1.7rem;
+        width: 17rem;
+        line-height: 1.85rem;
         font-size: small;
         transform: translateX(3rem) translateY(5rem);
     }
