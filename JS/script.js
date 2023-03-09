@@ -203,21 +203,6 @@ $(() => {
         });
     });
 
-    // Temp 'challenge' button effect, to be replaced with below code when project is finished
-    $('#space_tour_challenge').hover(() => {
-        // Turns text red(#940000) and background white(#d8e4ec)
-        $('#space_tour_challenge').css({
-            'color' : '#940000',
-            'background-color' : '#d8e4ec'
-        });
-    }, () => {
-        // Turns text back to white(#940000) and background back to red(#940000)
-        $('#space_tour_challenge').css({
-            'color' : '#d8e4ec',
-            'background-color' : '#940000'
-        });
-    });
-
     // #space_tour_code button hover effect
     $('#space_tour_code').hover(() => {
         // Turns text red(#940000) and background white(#d8e4ec)
@@ -228,6 +213,21 @@ $(() => {
     }, () => {
         // Turns text back to white(#940000) and background back to red(#940000)
         $('#space_tour_code').css({
+            'color' : '#d8e4ec',
+            'background-color' : '#940000'
+        });
+    });
+
+    // Temp 'challenge' button effect, to be replaced with below code when project is finished
+    $('#space_tour_challenge').hover(() => {
+        // Turns text red(#940000) and background white(#d8e4ec)
+        $('#space_tour_challenge').css({
+            'color' : '#940000',
+            'background-color' : '#d8e4ec'
+        });
+    }, () => {
+        // Turns text back to white(#940000) and background back to red(#940000)
+        $('#space_tour_challenge').css({
             'color' : '#d8e4ec',
             'background-color' : '#940000'
         });
