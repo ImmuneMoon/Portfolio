@@ -218,7 +218,7 @@ $(() => {
         });
     });
 
-    // Temp 'challenge' button effect, to be replaced with below code when project is finished
+    // Temp 'info' button effect, to be replaced with below code when project is finished
     $('#space_tour_challenge').hover(() => {
         // Turns text red(#940000) and background white(#d8e4ec)
         $('#space_tour_challenge').css({
