@@ -566,6 +566,7 @@ html, body
 /* Code and demo button styles */
 
 #space_tour_challenge,
+#space_tour_code,
 #scrape_code,
 #scrape_demo,
 #isdn_code,
@@ -591,6 +592,7 @@ html, body
 }
 
 #space_tour_challenge:hover,
+#space_tour_code:hover,
 #scrape_code:hover,
 #scrape_demo:hover,
 #isdn_code:hover,

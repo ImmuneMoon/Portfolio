@@ -218,7 +218,6 @@ $(() => {
         });
     });
 
-/*
     // #space_tour_code button hover effect
     $('#space_tour_code').hover(() => {
         // Turns text red(#940000) and background white(#d8e4ec)
@@ -234,6 +233,7 @@ $(() => {
         });
     });
 
+/*
     // #space_tour_demo button hover effect
     $('#space_tour_demo').hover(() => {
         // Turns text red(#940000) and background white(#d8e4ec)
