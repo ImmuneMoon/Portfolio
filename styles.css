@@ -251,11 +251,15 @@ html, body
     font-family: 'Noto Nastaliq Urdu', serif;
     font-size: 25px;
     font-weight: bold;
+    border: solid 3px;
+    border-radius: 40px;
+    width: max-content;
 }
 
 #hx_desc {
     font-size: 20px;
     font-weight: 300;
+    text-decoration: underline;
 }
 
 #hx_text {
@@ -315,11 +319,15 @@ html, body
     font-family: 'IBM Plex Mono', monospace;
     font-size: 25px;
     font-weight: bolder;
+    border: solid 3px;
+    border-radius: 40px;
+    width: max-content;
 }
 
 #fcc_desc {
     font-size: 20px;
     font-weight: 300;
+    text-decoration: underline;
 }
 
 #fcc_text {
@@ -330,12 +338,12 @@ html, body
     font-size: 15px;
 }
 
-#RWD {
+#rwd, #jad {
     border-radius: 50px;
     transition: transform 100ms linear;
 }
 
-#RWD:hover {
+#rwd:hover, #jad:hover {
     transform: scale(1.015);
 }
 
