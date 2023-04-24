@@ -305,9 +305,13 @@ html, body
 
 /* Freecodecamp cert styles */
 
+#fcc {
+    min-width: min-content;
+}
+
 #fcc_container {
     max-width: max-content;
-    min-width: 24rem;
+    min-width: 23rem;
     border-radius: 100px 25px 100px 100px;
     background-color: #003258;
     box-shadow: 0px 7px 10px 1px rgba(0, 0, 0, 0.5);
