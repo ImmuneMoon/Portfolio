@@ -152,6 +152,7 @@ function projectClick() {
 // Waits for DOM load
 $(() => {
     let distance = $(window).scrollTop();
+    let width = $(document).width();
     // Copy icon hover effect
     $('#email').hover(() => {
         // Turns green/blue (#00d4b5)
@@ -546,7 +547,6 @@ $(() => {
     document.addEventListener('click', (event) => {
         let element = []
         element.push(event.target);
-        let width = $(document).width();
         let contactArr = [
             $(':header')[0],
             $('#header_content')[0],
