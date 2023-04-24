@@ -546,32 +546,34 @@ $(() => {
     document.addEventListener('click', (event) => {
         let element = []
         element.push(event.target);
-
+        let width = $(document).width();
+        let contactArr = [
+            $(':header')[0],
+            $('#header_content')[0],
+            $('#md_header')[0],
+            $('#name-container')[0],
+            $('#name')[0],
+            $('#contact-container')[0],
+            $('#contact_label_container')[0],
+            $('#contact_label')[0],
+            $('#contact')[0],
+            $('#menu_icn')[0],
+            $('#email')[0],
+            $('#cpy_border')[0],
+            $('#copy_icn')[0],
+            $('#github')[0],
+            $('#linkedin')[0]
+        ]
         // On medium or smaller screens
-        if ($(document).width() < 753) {
+        if (width < 753) {
             /* If element isn't any within the contact dropdown when a click is detected, 
                 the contact dropdown is hidden 
             */
-            if (element.includes($(':header')[0]) || 
-                element.includes($('#header_content')[0]) || 
-                element.includes($('#md_header')[0]) || 
-                element.includes($('#name-container')[0]) || 
-                element.includes($('#name')[0]) || 
-                element.includes($('#contact-container')[0]) || 
-                element.includes($('#contact_label_container')[0]) || 
-                element.includes($('#contact_label')[0]) || 
-                element.includes($('#contact')[0]) || 
-                element.includes($('#menu_icn')[0]) || 
-                element.includes($('#email')[0]) || 
-                element.includes($('#cpy_border')[0]) ||
-                element.includes($('#copy_icn')[0]) || 
-                element.includes($('#github')[0]) || 
-                element.includes($('#linkedin')[0])) {
-
+            if (contactArr.includes(element[0])) {
                 return
             }
             else {
-                $('#contact').hide()
+                $('#contact').hide();
                 $('#header_content').css({
                     'grid-template-rows' : '1',
                     'border-radius' : '0'
@@ -585,6 +587,7 @@ $(() => {
                 'border-radius' : '0 0 1rem 0',
                 'background' : 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)'
             });
+            $('#contact').show();
         }
 
         // Highlights about nav button on click
@@ -639,7 +642,7 @@ $(() => {
     // Listens for window resize
     window.addEventListener('resize', () => {
         // Shows #contact in sizes above tailwind's medium size
-        if ($(document).width() > 752) {
+        if (width > 752) {
             $('#contact').show()
             $('#sandwich_menu').hide()
             $('#header_content').css({
@@ -647,7 +650,7 @@ $(() => {
             });
         }
         // Hides #contact in sizes below tailwind's medium size
-        else if ($(document).width() < 753) {
+        else if (width < 753) {
             $('#contact').hide()
             $('#sandwich_menu').show()
             $('#header').css({
@@ -681,7 +684,7 @@ $(() => {
         }
 
         // Highlighs about nav button in about section when scrolled
-        if (scroll >= 340 && scroll < 2300) {
+        if (scroll >= 340 && scroll < 2700) {
             // Nav bar highlight
             $('#about_direct').css({
                 'border-radius' : '0 0 1rem 1rem',
@@ -696,7 +699,7 @@ $(() => {
         }
         
         // Highlighs projects nav button in project section when scrolled
-        if (scroll >= 2300) {
+        if (scroll >= 2700) {
             // Nav bar highlight
             $('#project_direct').css({
                 'border-radius' : '0 0 4rem 1rem',
@@ -739,7 +742,7 @@ $(() => {
             });
 
             // Makes sure the contact dropdown hides when the viewport is below 752px
-            if ($(document).width() < 752) {
+            if (width < 752) {
                 $('#contact').hide()
             }
         }
