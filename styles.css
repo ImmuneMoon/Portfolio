@@ -42,10 +42,12 @@ Greyish Blue ( #131328 )
 * {
     color: #d8e4ec;
     font-family: 'Prompt', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html, body
-{
+html, body {
     height: 100%;
     width: 100%;
     background-color: #0a0c2e;
