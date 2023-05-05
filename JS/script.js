@@ -144,7 +144,7 @@ function projectNavClick() {
 
 // Waits for DOM load
 $(document).ready(() => {
-    let distance = $(window).scrollTop();
+    let $distance = $(window).scrollTop();
     const navFocusColor = 'linear-gradient(to top, rgba(0, 255, 238, 0.318) 37%, #00000000 100%)';
     const navHoverColor = 'linear-gradient(to top, rgba(0, 255, 238, 0.5) 37%, #00000000 100%)';
     
@@ -309,8 +309,7 @@ $(document).ready(() => {
     });
 */  
 
-    if (distance > headerBreak) {
-        console.log('nav should be fixed to top');
+    if ($distance > headerBreak) {
         $('#pg_nav').css({
             'position' : 'fixed',
             'top' : '0px'
@@ -323,7 +322,7 @@ $(document).ready(() => {
     console.log('width', $width);
     if ($width > mediumWidth) {
 
-        if (distance < contactBreak) {
+        if ($distance < contactBreak) {
             console.log('distance < contactBreak');
             $('#contact_direct').css({
                 'border-radius' : '0 0 1rem 0',
@@ -331,13 +330,13 @@ $(document).ready(() => {
             });
         }
 
-        else if (distance > contactBreak && distance < aboutBreak) {
+        else if ($distance > contactBreak && $distance < aboutBreak) {
             $('#about_direct').css({
                 'border-radius' : '0 0 1rem 1rem',
                 'background' : navFocusColor
             });
         }
-        else if (distance > aboutBreak) {
+        else if ($distance > aboutBreak) {
             $('#project_direct').css({
                 'border-radius' : '0 0 4rem 1rem',
                 'background' : navFocusColor
@@ -353,14 +352,14 @@ $(document).ready(() => {
                 'background' : navHoverColor
             });
         }, () => {
-            distance = $(window).scrollTop();
-            if (distance > contactBreak) {
+            $distance = $(window).scrollTop();
+            if ($distance > contactBreak) {
                 $('#contact_direct').css({
                     'border-radius' : '0',
                     'background' : 'none'
                 });
             }
-            else if (distance < contactBreak) {
+            else if ($distance < contactBreak) {
                 $('#contact_direct').css({
                     'border-radius' : '0 0 1rem 0',
                     'background' : navFocusColor
@@ -375,14 +374,14 @@ $(document).ready(() => {
                 'background' : navHoverColor
             });
         }, () => {
-            distance = $(window).scrollTop();
-            if (distance <= contactBreak || distance >= aboutBreak) {
+            $distance = $(window).scrollTop();
+            if ($distance <= contactBreak || $distance >= aboutBreak) {
                 $('#about_direct').css({
                     'border-radius' : '0',
                     'background' : 'none'
                 });
             }
-            else if (distance >= contactBreak && distance <= aboutBreak) {
+            else if ($distance >= contactBreak && $distance <= aboutBreak) {
                 $('#about_direct').css({
                     'border-radius' : '0 0 1rem 1rem',
                     'background' : navFocusColor
@@ -397,14 +396,14 @@ $(document).ready(() => {
                 'background' : navHoverColor
             });
         }, () => {
-            distance = $(window).scrollTop();
-            if (distance < aboutBreak) {
+            $distance = $(window).scrollTop();
+            if ($distance < aboutBreak) {
                 $('#project_direct').css({
                     'border-radius' : '0',
                     'background' : 'none'
                 });
             }
-            else if (distance > aboutBreak) {
+            else if ($distance > aboutBreak) {
                 $('#project_direct').css({
                     'border-radius' : '0 0 4rem 1rem',
                     'background' : navFocusColor
@@ -415,7 +414,7 @@ $(document).ready(() => {
     // Medium or lower screens
     else {
 
-        if (distance < contactBreakMd) {
+        if ($distance < contactBreakMd) {
             $('#contact_direct').css({
                 'border-radius' : '0 0 1rem 0',
                 'background' : navFocusColor
@@ -431,13 +430,13 @@ $(document).ready(() => {
             });
         }
 
-        if (distance > contactBreakMd && distance < aboutBreakMd) {
+        if ($distance > contactBreakMd && distance < aboutBreakMd) {
             $('#about_direct').css({
                 'border-radius' : '0 0 1rem 1rem',
                 'background' : navFocusColor
             });
         }
-        else if (distance > aboutBreakMd) {
+        else if ($distance > aboutBreakMd) {
             $('#project_direct').css({
                 'border-radius' : '0 0 4rem 1rem',
                 'background' : navFocusColor
@@ -452,14 +451,14 @@ $(document).ready(() => {
                 'background' : navHoverColor
             });
         }, () => {
-            distance = $(window).scrollTop();
-            if (distance > contactBreakMd) {
+            $distance = $(window).scrollTop();
+            if ($distance > contactBreakMd) {
                 $('#contact_direct').css({
                     'border-radius' : '0',
                     'background' : 'none'
                 });
             }
-            else if (distance < contactBreakMd) {
+            else if ($distance < contactBreakMd) {
                 $('#contact_direct').css({
                     'border-radius' : '0 0 1rem 0',
                     'background' : navFocusColor
@@ -474,14 +473,14 @@ $(document).ready(() => {
                 'background' : navHoverColor
             });
         }, () => {
-            distance = $(window).scrollTop();
-            if (distance <= contactBreakMd || distance >= aboutBreakMd) {
+            $distance = $(window).scrollTop();
+            if ($distance <= contactBreakMd || $distance >= aboutBreakMd) {
                 $('#about_direct').css({
                     'border-radius' : '0',
                     'background' : 'none'
                 });
             }
-            else if (distance >= contactBreakMd && distance <= aboutBreakMd) {
+            else if ($distance >= contactBreakMd && $distance <= aboutBreakMd) {
                 $('#about_direct').css({
                     'border-radius' : '0 0 1rem 1rem',
                     'background' : navFocusColor
@@ -496,14 +495,14 @@ $(document).ready(() => {
                 'background' : navHoverColor
             });
         }, () => {
-            distance = $(window).scrollTop();
-            if (distance < aboutBreakMd) {
+            $distance = $(window).scrollTop();
+            if ($distance < aboutBreakMd) {
                 $('#project_direct').css({
                     'border-radius' : '0',
                     'background' : 'none'
                 });
             }
-            else if (distance > aboutBreakMd) {
+            else if ($distance > aboutBreakMd) {
                 $('#project_direct').css({
                     'border-radius' : '0 0 4rem 1rem',
                     'background' : navFocusColor
@@ -607,13 +606,12 @@ $(document).ready(() => {
 
     });
     $(window).scroll(function() {
-        distance = $(window).scrollTop();
-        console.log(distance);
+        $distance = $(window).scrollTop();
         /* When the viewport is below 87px, the page nav will stick to the top of the window 
         and go back in place then scrolled above 87px height, 87 px being where the header ends
         */
         
-        if (distance > headerBreak) {
+        if ($distance > headerBreak) {
             $('#pg_nav').css({
                 'position' : 'fixed',
                 'top' : '0px'
@@ -642,7 +640,7 @@ $(document).ready(() => {
         if ($width > mediumWidth) {
 
             // Highlighs contact nav button in contact section when within the relevant screen area
-            if (distance < contactBreak) {
+            if ($distance < contactBreak) {
                 // Nav bar highlight
                 $('#contact_direct').css({
                     'border-radius' : '0 0 1rem 0',
@@ -657,14 +655,14 @@ $(document).ready(() => {
             }
 
             // Highlighs about nav button in about section
-            if (distance >= contactBreak && distance <= aboutBreak) {
+            if ($distance >= contactBreak && $distance <= aboutBreak) {
                 // Nav bar highlight
                 $('#about_direct').css({
                     'border-radius' : '0 0 1rem 1rem',
                     'background' : navFocusColor
                 });
             }
-            else if (distance <= contactBreak || distance >= aboutBreak) {
+            else if ($distance <= contactBreak || $distance >= aboutBreak) {
                 $('#about_direct').css({
                     'border-radius' : '0',
                     'background' : 'none'
@@ -672,7 +670,7 @@ $(document).ready(() => {
             }
             
             // Highlighs projects nav button in project section
-            if (distance > aboutBreak) {
+            if ($distance > aboutBreak) {
                 // Nav bar highlight
                 $('#project_direct').css({
                     'border-radius' : '0 0 4rem 1rem',
@@ -689,7 +687,7 @@ $(document).ready(() => {
         else {
 
             // Highlighs contact nav button in contact section when within the relevant screen area
-            if (distance < contactBreakMd) {
+            if ($distance < contactBreakMd) {
                 // Nav bar highlight
                 $('#contact_direct').css({
                     'border-radius' : '0 0 1rem 0',
@@ -704,14 +702,14 @@ $(document).ready(() => {
             }
 
             // Highlighs about nav button in about section
-            if (distance >= contactBreakMd && distance <= aboutBreakMd) {
+            if ($distance >= contactBreakMd && $distance <= aboutBreakMd) {
                 // Nav bar highlight
                 $('#about_direct').css({
                     'border-radius' : '0 0 1rem 1rem',
                     'background' : navFocusColor
                 });
             }
-            else if (distance <= contactBreakMd || distance >= aboutBreakMd) {
+            else if ($distance <= contactBreakMd || $distance >= aboutBreakMd) {
                 $('#about_direct').css({
                     'border-radius' : '0',
                     'background' : 'none'
@@ -719,7 +717,7 @@ $(document).ready(() => {
             }
             
             // Highlighs projects nav button in project section
-            if (distance > aboutBreakMd) {
+            if ($distance > aboutBreakMd) {
                 // Nav bar highlight
                 $('#project_direct').css({
                     'border-radius' : '0 0 4rem 1rem',
