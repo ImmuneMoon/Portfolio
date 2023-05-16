@@ -136,6 +136,7 @@ html, body {
 #jquery:hover,
 #react:hover, 
 #python:hover, 
+#django:hover, 
 #flask:hover, 
 #sql:hover, 
 #c_lang:hover {
@@ -149,11 +150,12 @@ html, body {
 #javascript:hover::before, 
 #jquery:hover::before, 
 #react:hover::before,
-#python:hover::before, 
+#python:hover::before,
+#django:hover::before, 
 #flask:hover::before, 
 #sql:hover::before, 
 #c_lang:hover::before {
-    width: max-content;
+    width: min-content;
     position: absolute;
     content: attr(data-tooltip);
     font-size: small;
@@ -755,6 +757,7 @@ html, body {
     #jquery,
     #react, 
     #python, 
+    #django,
     #flask, 
     #sql, 
     #c_lang {

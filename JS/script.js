@@ -5,10 +5,12 @@ const mediumWidth = 752;
 
 // Window distance from top settings
 
+// --> MAKE THE SCREEN BREAK POINTS ASSIGNED TO DIVS ON THE PAGE POSSIBLY?? <--
+
 // Top of the page
 const pageTop = 0;
 // The point where the header ends
-const headerBreak = 87
+const headerBreak = 87;
 // The point on the page the contact section ends
 const contactBreak = 740;
 const contactBreakMd = 772;
