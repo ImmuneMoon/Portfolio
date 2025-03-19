@@ -3,6 +3,7 @@
 /* Name Plate */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 /* Web Dev Text */
+@import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 /* About Me Heading */
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap');
@@ -119,13 +120,17 @@ html, body {
 }
 
 #intro {
-    font-family: 'Anton', sans-serif;
-    font-size: 6em;
+    font-family: 'Tektur', sans-serif;
+    font-weight: bold;
+    font-size: 5em;
+    line-height: 5rem;
     color: rgb(249, 240, 71);
+    margin-bottom: 2rem;
 }
 
 .lang {
     width: 2em;
+    margin-bottom: 2rem;
 }
 
 #htmlang:hover, 
