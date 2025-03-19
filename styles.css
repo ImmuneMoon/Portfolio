@@ -136,6 +136,7 @@ html, body {
 #jquery:hover,
 #react:hover, 
 #python:hover, 
+#GML:hover, 
 #django:hover, 
 #flask:hover, 
 #sql:hover, 
@@ -151,6 +152,7 @@ html, body {
 #jquery:hover::before, 
 #react:hover::before,
 #python:hover::before,
+#GML:hover::before,
 #django:hover::before, 
 #flask:hover::before, 
 #sql:hover::before, 
@@ -207,9 +209,9 @@ html, body {
 
 #about_me {
     font-family: 'Londrina Outline', cursive;
-    font-size: 6rem;
+    font-size: 3rem;
     font-weight: bolder;
-    line-height: 5rem;
+    line-height: 4rem;
     transform: translateX(-15rem) translateY(-5rem);
 }
 
