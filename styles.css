@@ -210,10 +210,10 @@ html, body {
 
 #about_me {
     font-family: 'Londrina Outline', cursive;
-    font-size: 5rem;
+    font-size: 10em;
     font-weight: bolder;
-    line-height: 6rem;
-    transform: translateX(-5rem) translateY(-1rem);
+    line-height: 10rem;
+    transform: translateX(-10rem) translateY(-7rem);
 }
 
 #me_text {
