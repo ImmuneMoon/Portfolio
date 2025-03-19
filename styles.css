@@ -120,12 +120,12 @@ html, body {
 
 #intro {
     font-family: 'Anton', sans-serif;
-    font-size: 4em;
+    font-size: 6em;
     color: rgb(249, 240, 71);
 }
 
 .lang {
-    width: 1.75em;
+    width: 2em;
 }
 
 #htmlang:hover, 
@@ -209,9 +209,9 @@ html, body {
 
 #about_me {
     font-family: 'Londrina Outline', cursive;
-    font-size: 3rem;
+    font-size: 1rem;
     font-weight: bolder;
-    line-height: 4rem;
+    line-height: 1rem;
     transform: translateX(-15rem) translateY(-5rem);
 }
 
