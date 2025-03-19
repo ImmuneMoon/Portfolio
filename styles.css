@@ -130,7 +130,7 @@ html, body {
 
 .lang {
     width: 2em;
-    margin-bottom: 2rem;
+    margin-bottom: .5rem;
 }
 
 #htmlang:hover, 
@@ -176,6 +176,7 @@ html, body {
 }
 
 #resume {
+    margin-top: 1.5rem;
     background-color: #940000;
     width: 7em;
     height: 2em;
