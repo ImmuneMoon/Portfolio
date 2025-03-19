@@ -115,7 +115,7 @@ html, body {
 
 #creds_section {
     margin-top: 10rem;
-    margin-bottom: 47rem;
+    margin-bottom: 100vh;
 }
 
 #intro {
@@ -136,7 +136,7 @@ html, body {
 #jquery:hover,
 #react:hover, 
 #python:hover, 
-#GML:hover, 
+#gml:hover, 
 #django:hover, 
 #flask:hover, 
 #sql:hover, 
@@ -152,7 +152,7 @@ html, body {
 #jquery:hover::before, 
 #react:hover::before,
 #python:hover::before,
-#GML:hover::before,
+#gml:hover::before,
 #django:hover::before, 
 #flask:hover::before, 
 #sql:hover::before, 
@@ -188,38 +188,40 @@ html, body {
 }
 
 #about_container {
-    width: 100%;
-    margin-bottom: 20rem;
+    width: auto;
+    margin-bottom: 27vh;
 }
 
 #me_container {
+    height:auto;
     width: auto;
 }
 
 /* adjust this to adjust about me section position */
 #me_text_circle {
-    width: 22rem;
-    height: 22rem;
+    width: 50vh;
+    height: 50vh;
     border-radius: 50%;
     background-color: #00ffee51;
     box-shadow: 3px 7px 20px 1px rgba(0, 0, 0, 0.5);
-    transform: translateX(12rem) translateY(-15rem);
+    margin-bottom: 65vh;
 
 }
 
 #about_me {
     font-family: 'Londrina Outline', cursive;
-    font-size: 1rem;
+    font-size: 5rem;
     font-weight: bolder;
-    line-height: 1rem;
-    transform: translateX(-15rem) translateY(-5rem);
+    line-height: 6rem;
+    transform: translateX(-5rem) translateY(-1rem);
 }
 
 #me_text {
-    width: 28rem;
-    line-height: 2.5rem;
-    font-size: larger;
-    transform: translateX(5rem) translateY(8.5rem);
+    width: 70vw;
+    height: 100%;
+    line-height: 2rem;
+    font-size: 1.5rem;
+    transform: translateX(5rem) translateY(15rem);
 }
 
 /* Certifications section styles */
@@ -722,10 +724,10 @@ html, body {
     }
 
     #me_text {
-        width: 21rem;
-        line-height: 2rem;
-        font-size: .9rem;
-        transform: translateX(3rem) translateY(5rem);
+        width: 70vw;
+        line-height: 1.25rem;
+        font-size: 1rem;
+        transform: translateX(3rem) translateY(7rem);
     }
     
 }
@@ -759,6 +761,7 @@ html, body {
     #jquery,
     #react, 
     #python, 
+    #gml, 
     #django,
     #flask, 
     #sql, 
@@ -785,10 +788,12 @@ html, body {
 @media (max-width: 550px) {
 
     #me_text {
-        width: 16rem;
-        line-height: 1.7rem;
-        font-size: small;
-        transform: translateX(3rem) translateY(5rem);
+        display: flex;
+        width: 100%;
+        line-height: 1.5rem;
+        font-size: .75rem;
+        text-align: center;
+        transform: translateX(0rem) translateY(8rem);
     }
 
 }

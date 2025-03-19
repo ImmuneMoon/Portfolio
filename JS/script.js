@@ -15,8 +15,8 @@ const headerBreak = 87;
 const contactBreak = 740;
 const contactBreakMd = 772;
 // The point on the page the about section ends
-const aboutBreak = 2900;
-const aboutBreakMd = 3500;
+const aboutBreak = 3500;
+const aboutBreakMd = 3850;
 // For if new content is added in the future & a project break is needed
 //const projectBreak = TBD;
 
