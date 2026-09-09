@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { ProjectCard, type ProjectLink } from "@/components/portfolio/project-card";
 import { Chrome, ChevronDown, ChevronUp, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -68,13 +68,13 @@ const initialProjects = [
       },
       {
         url: 'https://chromewebstore.google.com/detail/pocket-tabs/kkjcdigdligbafneihdpciefhnoflnbc',
-        label: 'Chrome Extension',
+        label: 'Chrome Web Store',
         icon: <Chrome className="mr-2 h-4 w-4" />,
         variant: 'default'
       },
       {
         url: 'https://addons.mozilla.org/en-US/firefox/addon/pocket-tabs-browser-extension/',
-        label: 'Firefox Extension',
+        label: 'Firefox Add-ons',
         icon: <FirefoxIcon className="mr-2 h-4 w-4" />,
         variant: 'accent'
       }
@@ -177,12 +177,24 @@ const initialProjects = [
 
 export function ProjectsSection() {
   const [isOpen, setIsOpen] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  const handleOpenChange = (open: boolean) => {
+    setIsOpen(open);
+    if (!open && triggerRef.current) {
+      setTimeout(() => {
+        triggerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 250);
+    }
+  };
+
   const teaserCount = 4;
   const teaserProjects = initialProjects.slice(0, teaserCount);
   const moreProjects = initialProjects.slice(teaserCount);
 
   return (
-    <section id="projects" className="w-full py-12 md:py-24 lg:py-32">
+    <section ref={sectionRef} id="projects" className="w-full py-12 md:py-24 lg:py-32">
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
@@ -193,7 +205,7 @@ export function ProjectsSection() {
           </div>
         </div>
 
-        <div className="relative mx-auto mt-12">
+        <div className="relative mx-auto mt-12" style={{ overflowAnchor: 'none' }}>
           <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
             {teaserProjects.map((project) => (
               <ProjectCard
@@ -203,7 +215,7 @@ export function ProjectsSection() {
             ))}
           </div>
 
-          <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-full">
+          <Collapsible open={isOpen} onOpenChange={handleOpenChange} className="w-full">
             <CollapsibleContent className="space-y-8 overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
               <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mt-8">
                 {moreProjects.map((project) => (
@@ -222,6 +234,9 @@ export function ProjectsSection() {
             <div className="flex justify-center mt-12 relative z-20">
               <CollapsibleTrigger asChild>
                 <Button
+                  ref={triggerRef}
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={(e) => e.currentTarget.blur()}
                   variant="default"
                   size="lg"
                   className="bg-primary hover:bg-secondary text-primary-foreground hover:text-secondary-foreground font-medium transition-all shadow-md"

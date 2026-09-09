@@ -298,30 +298,24 @@ const skillCategories = [
 
 export function SkillsSection() {
   const [isOpen, setIsOpen] = useState(false);
-  const skillsButtonRef = useRef<HTMLButtonElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
-  const handleSkillsToggle = useCallback(() => {
-    const btn = skillsButtonRef.current;
-    if (btn) {
-      const offsetBefore = btn.getBoundingClientRect().top;
-      setIsOpen(prev => {
-        requestAnimationFrame(() => {
-          const offsetAfter = btn.getBoundingClientRect().top;
-          window.scrollBy(0, offsetAfter - offsetBefore);
-        });
-        return !prev;
-      });
-    } else {
-      setIsOpen(prev => !prev);
+  const handleOpenChange = (open: boolean) => {
+    setIsOpen(open);
+    if (!open && triggerRef.current) {
+      setTimeout(() => {
+        triggerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 250);
     }
-  }, []);
+  };
 
   const teaserCount = 2;
   const teaserCategories = skillCategories.slice(0, teaserCount);
   const moreCategories = skillCategories.slice(teaserCount);
 
   return (
-    <section id="skills" className="relative w-full bg-secondary py-12 md:py-24 lg:py-32">
+    <section ref={sectionRef} id="skills" className="relative w-full bg-secondary py-12 md:py-24 lg:py-32">
       <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-background to-transparent pointer-events-none" />
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent pointer-events-none" />
       
@@ -354,23 +348,25 @@ export function SkillsSection() {
             ))}
           </div>
 
-          <Collapsible open={isOpen} onOpenChange={() => {}} className="w-full">
-            <CollapsibleContent className="space-y-12 overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down mt-12">
-              {moreCategories.map((category) => (
-                <div key={category.name} className="space-y-6">
-                  <div className="flex items-center gap-4 w-full">
-                    <h3 className="font-headline text-xl font-bold text-primary/80 whitespace-nowrap">
-                      {category.name}
-                    </h3>
-                    <div className="h-px w-full bg-primary/10" />
+          <Collapsible open={isOpen} onOpenChange={handleOpenChange} className="w-full">
+            <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
+              <div className="mt-12 space-y-12">
+                {moreCategories.map((category) => (
+                  <div key={category.name} className="space-y-6">
+                    <div className="flex items-center gap-4 w-full">
+                      <h3 className="font-headline text-xl font-bold text-primary/80 whitespace-nowrap">
+                        {category.name}
+                      </h3>
+                      <div className="h-px w-full bg-primary/10" />
+                    </div>
+                    <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                      {category.skills.map((skill) => (
+                        <SkillCard key={skill.name} skill={skill} />
+                      ))}
+                    </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-                    {category.skills.map((skill) => (
-                      <SkillCard key={skill.name} skill={skill} />
-                    ))}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </CollapsibleContent>
 
             {!isOpen && moreCategories.length > 0 && (
@@ -378,14 +374,15 @@ export function SkillsSection() {
             )}
 
             <div className="flex justify-center mt-12 relative z-20">
-              <Button 
-                ref={skillsButtonRef}
-                variant="default" 
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium transition-all shadow-md"
-                onClick={handleSkillsToggle}
-                onMouseDown={(e) => e.preventDefault()}
-              >
+              <CollapsibleTrigger asChild>
+                <Button 
+                  ref={triggerRef}
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={(e) => e.currentTarget.blur()}
+                  variant="default" 
+                  size="lg" 
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium transition-all shadow-md"
+                >
                 {isOpen ? (
                   <>
                     <ChevronUp className="mr-2 h-4 w-4" />
@@ -397,7 +394,8 @@ export function SkillsSection() {
                     Show More
                   </>
                 )}
-              </Button>
+                </Button>
+              </CollapsibleTrigger>
             </div>
           </Collapsible>
         </div>
