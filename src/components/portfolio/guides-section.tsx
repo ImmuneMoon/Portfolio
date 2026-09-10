@@ -1,12 +1,12 @@
 'use client';
 
-import { ProjectCard } from "@/components/portfolio/project-card";
+import { ProjectCard, type Project } from "@/components/portfolio/project-card";
 
-const initialGuides = [
+const initialGuides: Project[] = [
   {
     name: 'Building Firebase Apps in Google Antigravity IDE',
     description: 'A comprehensive guide on leveraging the Antigravity IDE and its Firebase MCP server to rapidly build, deploy, and manage Firebase applications. Covers authentication, Firestore rules, and backend functions.',
-    image: '/images/firebase-guide.png',
+    image: '/images/firebase-guide.webp',
     tags: ['Firebase', 'Google Cloud', 'Antigravity IDE', 'Documentation'],
     codeUrl: 'https://github.com/ImmuneMoon/Building-Firebase-Apps-in-Google-Antigravity-IDE',
     codeButtonText: 'Read Guide'
@@ -14,7 +14,7 @@ const initialGuides = [
   {
     name: 'Windows System Repair Guide',
     description: 'An advanced, step-by-step technical guide on diagnosing and repairing Windows system corruption using DISM, SFC, and CHKDSK. Designed to help IT professionals and power users restore system stability.',
-    image: '/images/windows-repair.png',
+    image: '/images/windows-repair.webp',
     tags: ['Windows', 'SysAdmin', 'Troubleshooting', 'Technical Writing'],
     codeUrl: 'https://github.com/ImmuneMoon/DISM-SFC-CHKDSK-Windows-Repair-Guide',
     codeButtonText: 'Read Guide'
@@ -22,7 +22,7 @@ const initialGuides = [
   {
     name: 'Windows 11 Local User Administration',
     description: 'Detailed instructions on bypassing Microsoft Account requirements during Windows 11 setup and enabling local user accounts. Includes insights into Windows deployment and local group policy.',
-    image: '/images/windows-account.png',
+    image: '/images/windows-account.webp',
     tags: ['Windows 11', 'OOBE', 'Administration', 'Documentation'],
     codeUrl: 'https://github.com/ImmuneMoon/Enable-a-local-user-in-Windows11-no-microsoft-account-',
     codeButtonText: 'Read Guide'
@@ -47,7 +47,7 @@ export function GuidesSection() {
             {initialGuides.map((guide) => (
               <ProjectCard
                 key={guide.name}
-                project={guide as any}
+                project={guide}
               />
             ))}
           </div>

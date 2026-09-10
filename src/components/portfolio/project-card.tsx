@@ -15,7 +15,7 @@ export type ProjectLink = {
   variant?: "default" | "secondary" | "outline" | "ghost" | "link" | "accent";
 };
 
-type Project = {
+export type Project = {
   name: string;
   description: string;
   image: string;

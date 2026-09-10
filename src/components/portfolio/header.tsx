@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import { ThemeToggle } from "@/components/portfolio/theme-toggle";
 
 export function Header() {
   const Logo = () => (
@@ -25,6 +26,7 @@ export function Header() {
           <Logo />
           <span className="font-headline text-lg font-bold">Fulllion Creative Works</span>
         </a>
+        <div className="flex items-center gap-2">
         <nav className="hidden items-center gap-6 md:flex">
           <a href="#about" className="text-sm font-medium hover:text-primary transition-colors">
             About
@@ -45,6 +47,7 @@ export function Header() {
             Contact
           </a>
         </nav>
+        <ThemeToggle />
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" className="md:hidden">
@@ -67,11 +70,11 @@ export function Header() {
               <a href="#projects" className="text-sm font-medium hover:text-primary transition-colors">
                 Projects
               </a>
-              <a href="#certifications" className="text-sm font-medium hover:text-primary transition-colors">
-                Certifications
-              </a>
               <a href="#guides" className="text-sm font-medium hover:text-primary transition-colors">
                 Guides
+              </a>
+              <a href="#certifications" className="text-sm font-medium hover:text-primary transition-colors">
+                Certifications
               </a>
               <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">
                 Contact
@@ -79,6 +82,7 @@ export function Header() {
             </div>
           </SheetContent>
         </Sheet>
+        </div>
       </div>
     </header>
   );

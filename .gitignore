@@ -45,3 +45,15 @@ next-env.d.ts
 firebase-debug.log
 firebase-debug.*.log
 firestore-debug.log
+
+# source/unused images kept locally, not shipped
+/public/images/hero.png
+/public/images/intro-section-with-dropdown-nav-screenshot.png
+/public/images/Superpoweroptions.png
+/public/images/huddle-screenshot.png
+/public/images/order-card-screenshot.png
+/public/images/windows-repair.png
+/public/images/windows-account.png
+/public/images/firebase-guide.png
+/public/images/SheetForge.png
+/public/images/Space-tourism-screenshot.png

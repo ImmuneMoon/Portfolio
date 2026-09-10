@@ -9,7 +9,8 @@ const firebaseConfig = {
   projectId: "portfolio-4mkvh",
   storageBucket: "portfolio-4mkvh.firebasestorage.app",
   messagingSenderId: "654300194401",
-  appId: "1:654300194401:web:36063972e49756a7f62c20"
+  appId: "1:654300194401:web:36063972e49756a7f62c20",
+  measurementId: "G-QJQR2XFZBB"
 };
 
 // Initialize Firebase for client-side

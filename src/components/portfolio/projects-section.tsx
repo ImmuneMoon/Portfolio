@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from "react";
-import { ProjectCard, type ProjectLink } from "@/components/portfolio/project-card";
+import { ProjectCard, type Project, type ProjectLink } from "@/components/portfolio/project-card";
 import { Chrome, ChevronDown, ChevronUp, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -28,7 +28,16 @@ const EyeIcon = ({ className }: { className?: string }) => (
   <Eye className={cn("h-4 w-4", className)} />
 );
 
-const initialProjects = [
+const initialProjects: Project[] = [
+  {
+    name: 'CLI Cheat Sheet',
+    description: 'A cross-platform command reference showing Windows CMD, PowerShell, and Bash (Linux and macOS) side by side, plus Git workflows and developer setup guides. Every row shows the same task in all three shells with flags explained and gotchas called out. Published as a searchable single-file HTML page with dark mode and click-to-copy commands, and auto-built into Markdown, PDF, and Word via GitHub Actions.',
+    image: '/images/cli-cheat-sheet.png',
+    tags: ['CLI', 'PowerShell', 'Bash', 'CMD', 'Git', 'Node.js', 'GitHub Actions', 'Documentation'],
+    codeUrl: 'https://github.com/ImmuneMoon/CLI-Cheat-Sheet',
+    demoUrl: 'https://immunemoon.github.io/CLI-Cheat-Sheet/',
+    demoButtonText: 'Live Site'
+  },
   {
     name: 'Waypoint',
     description: 'A portable desktop companion for tabletop RPG campaigns. Features linked data maps, hex-grid play maps with tokens and scene art, planners, and peer-to-peer multiplayer so a GM can host and players join with a room code. Integrates with ShadowBase character sheets. Built on Electron.',
@@ -78,7 +87,7 @@ const initialProjects = [
         icon: <FirefoxIcon className="mr-2 h-4 w-4" />,
         variant: 'accent'
       }
-    ] as ProjectLink[]
+    ] satisfies ProjectLink[]
   },
   {
     name: 'Windows Context Menu Restore',
@@ -106,12 +115,12 @@ const initialProjects = [
         icon: <FirefoxIcon className="mr-2 h-4 w-4" />,
         variant: 'accent'
       }
-    ] as ProjectLink[]
+    ] satisfies ProjectLink[]
   },
   {
     name: 'Sheet Forge',
     description: 'A Next.js application for crafting and managing tabletop RPG character sheets. It features an interactive sheet display, text input fields, and PDF generation for easy printing and sharing.',
-    image: '/images/SheetForge.png',
+    image: '/images/SheetForge.webp',
     tags: ['Next.js', 'React', 'TypeScript', 'Firebase', 'jspdf'],
     demoUrl: 'https://sheetforge.net/',
     demoButtonText: 'Live Site'
@@ -140,7 +149,7 @@ const initialProjects = [
   {
     name: 'Space Tourism Website',
     description: 'A multi-page informational website for a conceptual space tourism company. This project, a challenge from Frontendmentor, is built with React to create a dynamic and responsive user experience with multiple views and data-driven content.',
-    image: '/images/Space-tourism-screenshot.png',
+    image: '/images/Space-tourism-screenshot.webp',
     tags: ['React', 'Frontend', 'CSS', 'HTML'],
     codeUrl: 'https://github.com/ImmuneMoon/space-tourism-website',
     demoUrl: 'https://immunemoon.github.io/space-tourism-website/',
@@ -158,7 +167,7 @@ const initialProjects = [
   {
     name: 'Intro Section w/ Dropdown Nav',
     description: 'A responsive landing page component featuring a complex, dynamic dropdown navigation menu. This Frontendmentor challenge was built using Tailwind CSS for a modern, utility-first approach to styling, with jQuery handling the interactive menu logic.',
-    image: '/images/intro-section-with-dropdown-nav-screenshot.png',
+    image: '/images/intro-section-with-dropdown-nav-screenshot.webp',
     tags: ['HTML', 'Tailwind CSS', 'jQuery', 'Frontend'],
     codeUrl: 'https://github.com/ImmuneMoon/Intro-section-with-dropdown',
     demoUrl: 'https://immunemoon.github.io/Intro-section-with-dropdown/',
@@ -210,7 +219,7 @@ export function ProjectsSection() {
             {teaserProjects.map((project) => (
               <ProjectCard
                 key={project.name}
-                project={project as any}
+                project={project}
               />
             ))}
           </div>
@@ -221,7 +230,7 @@ export function ProjectsSection() {
                 {moreProjects.map((project) => (
                   <ProjectCard
                     key={project.name}
-                    project={project as any}
+                    project={project}
                   />
                 ))}
               </div>

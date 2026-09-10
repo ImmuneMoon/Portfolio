@@ -26,7 +26,7 @@ export function HeroSection() {
           </div>
           <div className="flex items-center justify-center">
              <Avatar className="h-64 w-64 border-4 border-primary shadow-lg bg-neutral-800">
-                <AvatarImage src="/images/hero.png" alt="A portrait of the site owner" />
+                <AvatarImage src="/images/hero.webp" alt="A portrait of the site owner" />
                 <AvatarFallback>FCW Hero Image</AvatarFallback>
             </Avatar>
           </div>

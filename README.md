@@ -6,7 +6,7 @@ A modern, responsive, and highly interactive personal portfolio website built to
 
 ## ✨ Features
 
-- **Modern UI/UX**: Built with a sleek, dark-themed design and smooth micro-animations.
+- **Modern UI/UX**: Clean light theme with a one-click dark mode and smooth micro-animations.
 - **Projects Showcase**: Interactive project cards with expandable details, screenshots, and direct links to GitHub repositories and releases.
 - **Dynamic Skills Section**: Categorized technical skills with custom SVG icons and smooth collapsible transitions.
 - **Responsive Layout**: Fully optimized for desktop, tablet, and mobile viewing with a custom mobile navigation sheet.
@@ -27,8 +27,8 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-cd YOUR_REPO_NAME
+git clone https://github.com/ImmuneMoon/Portfolio.git
+cd Portfolio
 ```
 
 ### 2. Install dependencies
