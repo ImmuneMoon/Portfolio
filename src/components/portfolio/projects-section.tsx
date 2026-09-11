@@ -36,7 +36,7 @@ const initialProjects: Project[] = [
     tags: ['CLI', 'PowerShell', 'Bash', 'CMD', 'Git', 'Node.js', 'GitHub Actions', 'Documentation'],
     codeUrl: 'https://github.com/ImmuneMoon/CLI-Cheat-Sheet',
     demoUrl: 'https://immunemoon.github.io/CLI-Cheat-Sheet/',
-    demoButtonText: 'Live Site'
+    demoButtonText: 'GitHub Pages'
   },
   {
     name: 'Waypoint',
@@ -53,7 +53,7 @@ const initialProjects: Project[] = [
     image: '/images/super-power-options.png',
     tags: ['Python', 'Custom-Tkinter', 'GUI', 'Windows Scripting', 'CLI'],
     codeUrl: 'https://github.com/ImmuneMoon/Super-Power-Options/releases',
-    codeButtonText: 'Github Release',
+    codeButtonText: 'GitHub Release',
   },
   {
     name: 'ShadowBase Campaign Manager',
@@ -95,7 +95,7 @@ const initialProjects: Project[] = [
     image: '/images/MenuIcon.png',
     tags: ['Windows', 'Utility', 'Fix', 'Executable', 'Inno'],
     codeUrl: 'https://github.com/ImmuneMoon/Restore-Legacy-Context-Menu/releases/tag/v1.0.0',
-    codeButtonText: 'Github Release'
+    codeButtonText: 'GitHub Release'
   },
   {
     name: 'G-Suite Dark Mode Extension',
@@ -134,10 +134,12 @@ const initialProjects: Project[] = [
   },
   {
     name: 'Build Deploy Run',
-    description: "A work in progress tool that simplifies building and deploying Python applications as both executables and Docker images. It features a GUI installer for environment setup and a powerful CLI.",
+    description: "A desktop app that packages any Python project as a one-file Windows EXE, a Docker image, or both. Point it at a project folder and an entrypoint, pick a build target, and click Build. It drops a self-contained PyInstaller toolchain into the project with its own virtual environment, generates a Dockerfile when one is missing, and leaves behind a batch script for rebuilds. Also runs headless from the command line for scripts and CI.",
     image: '/images/builddeployrun.png',
-    tags: ['Python', 'Docker', 'CLI', 'Bash', 'DevOps', 'PowerShell'],
-    codeUrl: 'https://github.com/ImmuneMoon/Build-Deploy-Run'
+    tags: ['Python', 'PyInstaller', 'Docker', 'GUI', 'CLI', 'DevOps', 'Windows'],
+    codeUrl: 'https://github.com/ImmuneMoon/Build-Deploy-Run',
+    demoUrl: 'https://github.com/ImmuneMoon/Build-Deploy-Run/releases',
+    demoButtonText: 'Download'
   },
   {
     name: 'Proj ADV',
@@ -153,7 +155,7 @@ const initialProjects: Project[] = [
     tags: ['React', 'Frontend', 'CSS', 'HTML'],
     codeUrl: 'https://github.com/ImmuneMoon/space-tourism-website',
     demoUrl: 'https://immunemoon.github.io/space-tourism-website/',
-    demoButtonText: 'Static Site'
+    demoButtonText: 'GitHub Pages'
   },
   {
     name: 'URL Web Scraper',
@@ -171,7 +173,7 @@ const initialProjects: Project[] = [
     tags: ['HTML', 'Tailwind CSS', 'jQuery', 'Frontend'],
     codeUrl: 'https://github.com/ImmuneMoon/Intro-section-with-dropdown',
     demoUrl: 'https://immunemoon.github.io/Intro-section-with-dropdown/',
-    demoButtonText: 'Static Site'
+    demoButtonText: 'GitHub Pages'
   },
   {
     name: '10,000 Hour Calculator',
@@ -180,7 +182,7 @@ const initialProjects: Project[] = [
     tags: ['HTML', 'Bootstrap', 'jQuery', 'JavaScript'],
     codeUrl: 'https://github.com/ImmuneMoon/10-000-Hour-Calculator',
     demoUrl: 'https://immunemoon.github.io/10-000-Hour-Calculator/',
-    demoButtonText: 'Static Site'
+    demoButtonText: 'GitHub Pages'
   }
 ];
 
