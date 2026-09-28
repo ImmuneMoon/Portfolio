@@ -126,13 +126,6 @@ const initialProjects: Project[] = [
     demoButtonText: 'Live Site'
   },
   {
-    name: 'Commerce',
-    description: 'An eBay-like e-commerce auction site built as a full-stack web application. It features user authentication, listing creation, bidding, watchlists, and categories, powered by Django and Python.',
-    image: '/images/commerce.png',
-    tags: ['Python', 'Django', 'SQLite', 'Full-Stack', 'CS50'],
-    codeUrl: 'https://github.com/ImmuneMoon/commerce'
-  },
-  {
     name: 'Build Deploy Run',
     description: "A desktop app that packages any Python project as a one-file Windows EXE, a Docker image, or both. Point it at a project folder and an entrypoint, pick a build target, and click Build. It drops a self-contained PyInstaller toolchain into the project with its own virtual environment, generates a Dockerfile when one is missing, and leaves behind a batch script for rebuilds. Also runs headless from the command line for scripts and CI.",
     image: '/images/builddeployrun.png',
