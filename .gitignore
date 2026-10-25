@@ -65,3 +65,20 @@ firestore-debug.log
 
 # Local tooling instructions (references machine paths)
 /CLAUDE.md
+
+# Credentials that should never be committed
+*.key
+*.p12
+*.pfx
+serviceAccount*.json
+*-firebase-adminsdk-*.json
+
+# Personal Claude Code settings
+.claude/settings.local.json
+
+# Firebase Studio and Antigravity workspace files (kept locally, not part of the site)
+/.idx/
+/.agents/
+/skills-lock.json
+/metadata.json
+/.modified
