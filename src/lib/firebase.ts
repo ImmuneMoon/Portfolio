@@ -1,6 +1,5 @@
 // Import the functions you need from the SDKs you need
 import { getApp, getApps, initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -13,13 +12,8 @@ const firebaseConfig = {
   measurementId: "G-QJQR2XFZBB"
 };
 
-// Initialize Firebase for client-side
+// Initialize Firebase
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
-if (typeof window !== "undefined") {
-  if ("measurementId" in firebaseConfig) {
-    getAnalytics(app);
-  }
-}
+export { app, firebaseConfig };
 
-export { app };
