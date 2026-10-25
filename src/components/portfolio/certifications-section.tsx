@@ -35,7 +35,7 @@ export function CertificationsSection() {
   return (
     <section id="certifications" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
       {/* Optional subtle gradient to match the skills section feel */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-32 bg-linear-to-b from-background to-transparent pointer-events-none" />
       
       <div className="container relative mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -49,7 +49,7 @@ export function CertificationsSection() {
 
         <div className="grid gap-8 mt-12 sm:grid-cols-1 md:grid-cols-2">
           {certifications.map((cert, index) => (
-            <Card key={index} className="flex flex-col h-full border-none shadow-sm hover:shadow-md transition-shadow bg-card/50 backdrop-blur-sm">
+            <Card key={index} className="flex flex-col h-full border-none shadow-xs hover:shadow-md transition-shadow bg-card/50 backdrop-blur-xs">
               <CardHeader className="flex flex-row items-start gap-4 space-y-0">
                 <div className="rounded-xl bg-primary/10 p-3 text-primary ring-1 ring-primary/20">
                   <Award className="h-6 w-6" />
@@ -66,7 +66,7 @@ export function CertificationsSection() {
                   </CardDescription>
                 </div>
               </CardHeader>
-              <CardContent className="flex-grow pt-2">
+              <CardContent className="grow pt-2">
                 <div className="flex flex-wrap gap-2">
                   {cert.skills.map((skill) => (
                     <Badge 

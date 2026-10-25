@@ -2,7 +2,8 @@
 
 import { useState, useRef } from "react";
 import { ProjectCard, type Project, type ProjectLink } from "@/components/portfolio/project-card";
-import { Chrome, ChevronDown, ChevronUp, Eye } from "lucide-react";
+import { ChevronDown, ChevronUp, Eye } from "lucide-react";
+import { ChromeIcon } from "@/components/portfolio/brand-icons";
 import { Button } from "@/components/ui/button";
 import {
   Collapsible,
@@ -10,6 +11,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
+import { EarlierWork } from "@/components/portfolio/earlier-work";
 
 const FirefoxIcon = ({ className }: { className?: string }) => (
   <svg
@@ -78,7 +80,7 @@ const initialProjects: Project[] = [
       {
         url: 'https://chromewebstore.google.com/detail/pocket-tabs/kkjcdigdligbafneihdpciefhnoflnbc',
         label: 'Chrome Web Store',
-        icon: <Chrome className="mr-2 h-4 w-4" />,
+        icon: <ChromeIcon className="mr-2 h-4 w-4" />,
         variant: 'default'
       },
       {
@@ -106,7 +108,7 @@ const initialProjects: Project[] = [
       {
         url: 'https://chromewebstore.google.com/detail/g-suite-dark-mode/jkagjbekbcbclacgfpjhdbmkdlgdgiop',
         label: 'Chrome Web Store',
-        icon: <Chrome className="mr-2 h-4 w-4" />,
+        icon: <ChromeIcon className="mr-2 h-4 w-4" />,
         variant: 'default'
       },
       {
@@ -135,22 +137,6 @@ const initialProjects: Project[] = [
     demoButtonText: 'Download'
   },
   {
-    name: 'Proj ADV',
-    description: "A work in progress 2D monster-battling RPG built in GameMaker. As the lead programmer, I contributed to game design, mechanics, and art, collaborating with a small team to bring the retro-style world to life.",
-    image: '/images/ProjADV.png',
-    tags: ['GameMaker', 'GML', 'Game Design', 'JSON', '2D Animation'],
-    codeUrl: 'https://github.com/ImmuneMoon/Proj-ADV'
-  },
-  {
-    name: 'Space Tourism Website',
-    description: 'A multi-page informational website for a conceptual space tourism company. This project, a challenge from Frontendmentor, is built with React to create a dynamic and responsive user experience with multiple views and data-driven content.',
-    image: '/images/Space-tourism-screenshot.webp',
-    tags: ['React', 'Frontend', 'CSS', 'HTML'],
-    codeUrl: 'https://github.com/ImmuneMoon/space-tourism-website',
-    demoUrl: 'https://immunemoon.github.io/space-tourism-website/',
-    demoButtonText: 'GitHub Pages'
-  },
-  {
     name: 'URL Web Scraper',
     description: 'A practical command-line tool built with Node.js that scrapes all URLs from a specified webpage. It uses Axios for making HTTP requests and Cheerio.js for parsing the server-side DOM, then outputs the results as a list and a JSON object.',
     image: '/images/URL Scraper.png',
@@ -159,24 +145,6 @@ const initialProjects: Project[] = [
     demoUrl: 'https://youtu.be/q44qvjjfCgM',
     demoButtonText: 'Video Demo'
   },
-  {
-    name: 'Intro Section w/ Dropdown Nav',
-    description: 'A responsive landing page component featuring a complex, dynamic dropdown navigation menu. This Frontendmentor challenge was built using Tailwind CSS for a modern, utility-first approach to styling, with jQuery handling the interactive menu logic.',
-    image: '/images/intro-section-with-dropdown-nav-screenshot.webp',
-    tags: ['HTML', 'Tailwind CSS', 'jQuery', 'Frontend'],
-    codeUrl: 'https://github.com/ImmuneMoon/Intro-section-with-dropdown',
-    demoUrl: 'https://immunemoon.github.io/Intro-section-with-dropdown/',
-    demoButtonText: 'GitHub Pages'
-  },
-  {
-    name: '10,000 Hour Calculator',
-    description: 'A web-based calculator that helps users determine how long it will take to achieve 10,000 hours of practice in a skill. The user interface is built with the Bootstrap framework, and the calculation logic is powered by jQuery.',
-    image: '/images/10k-calc-screenshot.png',
-    tags: ['HTML', 'Bootstrap', 'jQuery', 'JavaScript'],
-    codeUrl: 'https://github.com/ImmuneMoon/10-000-Hour-Calculator',
-    demoUrl: 'https://immunemoon.github.io/10-000-Hour-Calculator/',
-    demoButtonText: 'GitHub Pages'
-  }
 ];
 
 export function ProjectsSection() {
@@ -229,10 +197,11 @@ export function ProjectsSection() {
                   />
                 ))}
               </div>
+              <EarlierWork />
             </CollapsibleContent>
 
             {!isOpen && moreProjects.length > 0 && (
-              <div className="absolute bottom-16 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
+              <div className="absolute bottom-16 left-0 right-0 h-32 bg-linear-to-t from-background to-transparent z-10 pointer-events-none" />
             )}
 
             <div className="flex justify-center mt-12 relative z-20">

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Github, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+import { GithubIcon } from "@/components/portfolio/brand-icons";
 
 export function Footer() {
   return (
@@ -18,7 +19,7 @@ export function Footer() {
             </Button>
             <Button size="icon" variant="ghost" asChild>
               <a href="https://github.com/ImmuneMoon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <Github className="h-6 w-6" />
+                <GithubIcon className="h-6 w-6" />
               </a>
             </Button>
             <Button size="icon" variant="ghost" asChild>

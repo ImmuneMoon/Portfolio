@@ -99,7 +99,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
       </CardHeader>
-      <CardContent className="flex-grow flex flex-col space-y-4">
+      <CardContent className="grow flex flex-col space-y-4">
         <div className="aspect-video overflow-hidden rounded-md border bg-neutral-800">
            <Image
             src={project.image}
@@ -110,7 +110,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             data-ai-hint={project.imageAiHint}
           />
         </div>
-        <CardDescription className="flex-grow">{project.description}</CardDescription>
+        <CardDescription className="grow">{project.description}</CardDescription>
       </CardContent>
        <CardFooter className="mt-auto pt-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
