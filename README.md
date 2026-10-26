@@ -1,5 +1,13 @@
 # Fulllion Creative Works - Portfolio
 
+[![Live site](https://img.shields.io/website?url=https%3A%2F%2Ffulllioncreativeworks.com%2F&label=live%20site&up_message=online&down_message=offline)](https://fulllioncreativeworks.com/)
+![Next.js 16](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white)
+![React 19](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![Tailwind CSS 4](https://img.shields.io/badge/Tailwind%20CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
+![shadcn/ui](https://img.shields.io/badge/UI-shadcn%2Fui-000000?logo=shadcnui&logoColor=white)
+![Firebase App Hosting](https://img.shields.io/badge/Hosting-Firebase%20App%20Hosting-FFCA28?logo=firebase&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
+
 A modern, responsive, and highly interactive personal portfolio website built to showcase my projects, skills, certifications, and technical guides.
 
 🌍 **Live Site**: [https://fulllioncreativeworks.com/](https://fulllioncreativeworks.com/)
