@@ -42,7 +42,7 @@ const initialProjects: Project[] = [
   },
   {
     name: 'Waypoint',
-    description: 'A portable desktop companion for tabletop RPG campaigns. Features linked data maps, hex-grid play maps with tokens and scene art, planners, and peer-to-peer multiplayer so a GM can host and players join with a room code. Integrates with ShadowBase character sheets. Built on Electron.',
+    description: 'A portable desktop companion for tabletop RPG campaigns. Features linked data maps, hex-grid play maps with tokens and scene art, planners, and peer-to-peer multiplayer so a GM can host and players join with a room code. Players can join from their own copy or a web browser. Built on Electron.',
     image: '/images/waypoint.png',
     tags: ['Electron', 'JavaScript', 'WebRTC', 'P2P', 'Desktop App', 'Inno'],
     codeUrl: 'https://github.com/ImmuneMoon/Waypoint',
@@ -51,19 +51,18 @@ const initialProjects: Project[] = [
   },
   {
     name: 'Super Power Options',
-    description: "A user-friendly Windows application for scheduling power actions like timed shutdowns or sleep mode. It provides a convenient GUI, eliminating the need for command-line scripts.",
+    description: 'A cross-platform desktop app for scheduling sleep, hibernate, restart, or shutdown on Windows, macOS, and Linux. Count down from any duration or pick an exact date and time, follow the countdown from the system tray, and the app keeps the machine awake until it acts. GitHub Actions builds releases for all three platforms.',
     image: '/images/super-power-options.png',
-    tags: ['Python', 'Custom-Tkinter', 'GUI', 'Windows Scripting', 'CLI'],
-    codeUrl: 'https://github.com/ImmuneMoon/Super-Power-Options/releases',
-    codeButtonText: 'GitHub Release',
+    tags: ['Python', 'CustomTkinter', 'Cross-Platform', 'Windows', 'macOS', 'Linux', 'PyInstaller', 'GitHub Actions'],
+    codeUrl: 'https://github.com/ImmuneMoon/Super-Power-Options',
+    demoUrl: 'https://github.com/ImmuneMoon/Super-Power-Options/releases/latest',
+    demoButtonText: 'Download'
   },
   {
     name: 'ShadowBase Campaign Manager',
-    description: 'A comprehensive online campaign management tool for a "Star Wars" GURPS campaign. It provides tools for character creation that works in conjunction with the FoundryVTT system, resource management, campaign documentation, and is installable as a PWA. Built with Next.js, Firebase, and Genkit.',
+    description: 'A campaign management web app built for a tabletop RPG group. It handles character creation that syncs with a companion Foundry VTT system, resource tracking, and campaign documentation, and installs as a PWA. Built with Next.js, Firebase, and Genkit.',
     image: '/images/shadowbase.png',
-    tags: ['Next.js', 'React', 'Firebase', 'Genkit', 'Tailwind CSS', 'PWA', 'AdSense', 'FoundryVTT'],
-    demoUrl: 'https://shadow-base.com/',
-    demoButtonText: 'Live Site'
+    tags: ['Next.js', 'React', 'Firebase', 'Genkit', 'Tailwind CSS', 'PWA', 'FoundryVTT']
   },
   {
     name: 'Pocket Tabs',
