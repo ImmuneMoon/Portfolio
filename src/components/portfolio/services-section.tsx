@@ -1,11 +1,14 @@
 'use client';
 
+import type { CSSProperties } from "react";
 import { Check, Globe, ShoppingCart, Wrench } from "lucide-react";
 import { TagBadge } from "@/components/portfolio/tag-badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ShowMoreButton } from "@/components/portfolio/show-more-button";
 import { usePeekCollapse } from "@/components/portfolio/use-peek-collapse";
+import { ScrambleText } from "@/components/portfolio/scramble-text";
+import { EFFECTS } from "@/lib/effects";
 
 // PLACEHOLDER PRICES: set each `price` after checking local rates. Until then the
 // cards show "Pricing on request" so the section can go live without a number.
@@ -111,7 +114,7 @@ export function ServicesSection() {
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div data-reveal="" className="space-y-2">
-            <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-5xl">Services</h2>
+            <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-5xl"><ScrambleText text="Services" /></h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Websites, online stores, and custom tools for small businesses. Three packages with a fixed price and a
               clear process, built with the same stack that runs this site.
@@ -131,10 +134,13 @@ export function ServicesSection() {
           >
             <div ref={contentRef} className="relative">
               <div data-reveal-group="" className="grid gap-8 md:grid-cols-3">
-                {packages.map((pkg) => {
+                {packages.map((pkg, index) => {
                   const Icon = pkg.icon;
                   return (
                     <Card key={pkg.name} data-reveal="" className="spotlight flex h-full flex-col transition-shadow hover:shadow-xl">
+                      {EFFECTS.borderBeam && (
+                        <span aria-hidden="true" className="beam" style={{ "--beam-offset": index } as CSSProperties} />
+                      )}
                       <CardHeader data-peek-end="">
                         <div className="mb-2 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
                           <Icon className="h-6 w-6" />

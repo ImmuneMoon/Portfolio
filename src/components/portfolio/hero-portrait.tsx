@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { PORTRAIT_BACKGROUND, PortraitSvg } from "@/components/portfolio/portrait-svg";
+import { EFFECTS } from "@/lib/effects";
 
 /** Largest tilt, in degrees, when the pointer is at the edge of the hero. */
 const MAX_TILT = 12;
@@ -68,7 +69,7 @@ export function HeroPortrait() {
           className="h-64 w-64 overflow-hidden rounded-full border-4 border-primary shadow-[0_0_40px_hsl(var(--primary)/0.35)]"
           style={{ backgroundColor: PORTRAIT_BACKGROUND }}
         >
-          <PortraitSvg className="portrait h-full w-full" />
+          <PortraitSvg className={EFFECTS.wordmarkGlitch ? "portrait glitch h-full w-full" : "portrait h-full w-full"} />
         </div>
       </div>
     </div>

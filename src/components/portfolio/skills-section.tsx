@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { 
   Collapsible,
@@ -12,6 +12,8 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
+import { ScrambleText } from "@/components/portfolio/scramble-text";
+import { EFFECTS, prefersReducedMotion } from "@/lib/effects";
 
 const skillCategories = [
   {
@@ -371,7 +373,7 @@ export function SkillsSection() {
       <div className="container relative mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div data-reveal="" className="space-y-2">
-            <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-5xl text-primary"> My Skills </h2>
+            <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-5xl text-primary"><ScrambleText text="My Skills" /></h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               A collection of technologies and tools I use to bring ideas to life. Categorized by domain expertise.
             </p>
@@ -453,7 +455,42 @@ export function SkillsSection() {
   );
 }
 
+/** Draws each icon's outline and then fills it in, the first time the icon is on screen. */
+function useIconDraw() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const box = ref.current;
+    if (!box || !EFFECTS.iconDraw || prefersReducedMotion()) return;
+
+    const shapes = box.querySelectorAll<SVGGeometryElement>("path, circle, rect, ellipse, polygon, polyline, line");
+    for (const shape of shapes) {
+      if (shape.closest("clipPath, defs, mask")) continue;
+      const style = getComputedStyle(shape);
+      const filled = style.fill !== "none";
+      if (!filled && style.stroke === "none") continue;
+      shape.style.setProperty("--len", `${Math.ceil(shape.getTotalLength()) + 1}`);
+      shape.classList.add(filled ? "draw-fill" : "draw-stroke");
+    }
+    box.classList.add("icon-draw");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        observer.disconnect();
+        box.classList.add("is-drawn");
+      },
+      { threshold: 0.6 }
+    );
+    observer.observe(box);
+    return () => observer.disconnect();
+  }, []);
+
+  return ref;
+}
+
 function SkillCard({ skill }: { skill: { name: string; icon: React.ReactNode; url: string } }) {
+  const iconRef = useIconDraw();
   return (
     <a
       href={skill.url}
@@ -463,7 +500,7 @@ function SkillCard({ skill }: { skill: { name: string; icon: React.ReactNode; ur
       className="group rounded-lg focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2"
     >
       <Card className="spotlight flex h-full flex-col items-center justify-center p-6 text-center transition-transform group-hover:scale-105 group-hover:shadow-lg bg-card/50 backdrop-blur-xs border-none shadow-xs">
-        <div className="text-primary flex items-center justify-center w-8 h-8">
+        <div ref={iconRef} className="skill-icon text-primary flex items-center justify-center w-8 h-8">
           {skill.icon}
         </div>
         <p className="mt-4 text-sm font-medium">{skill.name}</p>

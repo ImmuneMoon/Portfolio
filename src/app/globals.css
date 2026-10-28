@@ -363,7 +363,7 @@
 }
 @keyframes pt-letter-hop {
   0%, 100% { translate: 0 0; }
-  40% { translate: 0 -14%; }
+  40% { translate: 0 -16px; } /* SVG user units, so the O and its hole move together */
 }
 @media (prefers-reduced-motion: no-preference) {
   .portrait .pt-strands { animation: pt-sway 4.5s ease-in-out infinite alternate; }
@@ -456,3 +456,229 @@
 .cert-link:focus-visible .cert-link-icon { opacity: 1; translate: 2px -2px; }
 .cert-link:focus-visible { outline: none; }
 .cert-link:focus-visible::after { border-radius: inherit; box-shadow: 0 0 0 2px hsl(var(--ring)); }
+
+/* ------------------------------------------------------------------------------
+   Extra effects. Each one has an on/off flag in src/lib/effects.ts, and all of them
+   stand still for visitors who ask for reduced motion.
+   ------------------------------------------------------------------------------ */
+
+/* Theme wipe (theme-toggle.tsx): the new theme grows as a circle from the toggle.
+   The browser's default cross-fade is turned off so only the circle shows. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Heading scramble (scramble-text.tsx). The box keeps its settled size while shuffling. */
+.scramble-text {
+  display: inline-block;
+  overflow: clip;
+}
+
+/* Scroll progress line along the bottom of the header. */
+.scroll-progress {
+  display: none;
+}
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-progress {
+      display: block;
+      position: absolute;
+      inset: auto 0 -1px 0;
+      height: 2px;
+      pointer-events: none;
+      transform-origin: left center;
+      background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+      box-shadow: 0 0 10px hsl(var(--accent) / 0.6);
+      animation: scroll-progress linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+}
+@keyframes scroll-progress {
+  from { scale: 0 1; }
+  to { scale: 1 1; }
+}
+
+/* Magnetic hero buttons (magnetic.tsx). */
+.magnetic {
+  display: flex;
+  transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.magnetic > * { flex: 1; }
+
+/* Aurora behind the hero: three soft colour blobs drifting slowly. */
+.hero-aurora {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  /* Fade out toward the bottom so the hero blends into the next section. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent);
+}
+.hero-aurora > span {
+  position: absolute;
+  width: 42rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.16;
+}
+.hero-aurora > span:nth-child(1) { background: hsl(var(--primary)); top: -18rem; left: -12rem; }
+.hero-aurora > span:nth-child(2) { background: hsl(var(--accent)); top: 4rem; right: -16rem; width: 36rem; }
+.hero-aurora > span:nth-child(3) { background: hsl(25 100% 50%); bottom: -24rem; left: 30%; width: 30rem; opacity: 0.12; }
+.dark .hero-aurora > span { opacity: 0.22; }
+.dark .hero-aurora > span:nth-child(3) { opacity: 0.1; }
+@keyframes aurora-drift {
+  0%, 100% { translate: 0 0; scale: 1; }
+  33% { translate: 6rem 3rem; scale: 1.15; }
+  66% { translate: -4rem 5rem; scale: 0.9; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-aurora > span:nth-child(1) { animation: aurora-drift 22s ease-in-out infinite; }
+  .hero-aurora > span:nth-child(2) { animation: aurora-drift 26s ease-in-out infinite reverse; }
+  .hero-aurora > span:nth-child(3) { animation: aurora-drift 18s ease-in-out -6s infinite; }
+}
+
+/* Rotating hero title (rotating-title.tsx). Two lines are reserved so roles of
+   different lengths don't push the page around. */
+.rotating-title {
+  display: block;
+  min-height: 2lh;
+  perspective: 600px;
+}
+.rotating-title-word {
+  display: block;
+  transform-origin: 50% 100%;
+}
+@keyframes title-flip-in {
+  from { opacity: 0; transform: rotateX(80deg) translateY(0.15em); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .rotating-title-word { animation: title-flip-in 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+}
+
+/* Border beam on the Services package cards: a light that runs round the edge.
+   @property lets the conic gradient's angle animate. */
+@property --beam-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+.beam {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  pointer-events: none;
+  background: conic-gradient(from var(--beam-angle), transparent 0 68%, hsl(var(--accent) / 0.9) 84%, hsl(var(--primary)) 93%, transparent 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0.55;
+  transition: opacity 0.3s ease;
+}
+:hover > .beam { opacity: 1; }
+@keyframes beam-spin { to { --beam-angle: 360deg; } }
+@media (prefers-reduced-motion: no-preference) {
+  .beam { animation: beam-spin 5s linear infinite; }
+  /* Offset each card's beam so the three don't run in step. */
+  .beam { animation-delay: calc(var(--beam-offset, 0) * -1.66s); }
+}
+
+/* Certification flip cards (certifications-section.tsx). Both faces share one grid
+   cell, so the card is as tall as its taller face. */
+.flip-card { perspective: 1400px; }
+.flip-inner {
+  display: grid;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+.flip-face {
+  grid-area: 1 / 1;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-back { transform: rotateY(180deg); }
+.flip-card[data-flipped] .flip-inner { transform: rotateY(180deg); }
+.flip-toggle { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .flip-inner { transition: none; }
+}
+
+/* Skill icons draw their outline, then fill in (skills-section.tsx adds the classes
+   and --len, each path's length, once the icon is on screen). */
+@keyframes icon-draw { to { stroke-dashoffset: 0; } }
+@keyframes icon-fill { to { fill-opacity: 1; stroke-opacity: 0; } }
+@media (prefers-reduced-motion: no-preference) {
+  .icon-draw .draw-fill,
+  .icon-draw .draw-stroke {
+    stroke-dasharray: var(--len);
+    stroke-dashoffset: var(--len);
+  }
+  .icon-draw .draw-fill {
+    stroke: currentColor;
+    stroke-width: 0.4;
+    fill-opacity: 0;
+  }
+  .icon-draw.is-drawn .draw-fill { animation: icon-draw 1.2s ease forwards, icon-fill 0.5s ease 0.9s forwards; }
+  .icon-draw.is-drawn .draw-stroke { animation: icon-draw 1.2s ease forwards; }
+}
+
+/* Section dividers, CSSBattle-style: one element draws a fading line, a diamond that
+   turns now and then, and a dot either side. */
+.fx-divider {
+  position: relative;
+  height: 2rem;
+  width: min(30rem, 70%);
+  margin: 0 auto;
+  background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), transparent) center / 100% 1px no-repeat;
+}
+.fx-divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.7rem;
+  height: 0.7rem;
+  margin: -0.35rem;
+  rotate: 45deg;
+  border: 1.5px solid hsl(var(--accent));
+  background: hsl(var(--background));
+  box-shadow: 0 0 10px hsl(var(--accent) / 0.5);
+}
+.fx-divider::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at calc(50% - 1.6rem) 50%, hsl(var(--primary)) 0.15rem, transparent 0.2rem),
+    radial-gradient(circle at calc(50% + 1.6rem) 50%, hsl(var(--primary)) 0.15rem, transparent 0.2rem);
+}
+@keyframes divider-turn {
+  0%, 70% { rotate: 45deg; }
+  100% { rotate: 225deg; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .fx-divider::before { animation: divider-turn 5s cubic-bezier(0.6, 0, 0.3, 1) infinite; }
+}
+
+/* Wordmark glitch: every few seconds the letters jitter with a cyan and orange split.
+   Hovering the portrait still plays the letter hop, which takes priority. */
+@keyframes pt-glitch {
+  0%, 92.5%, 96.5%, 100% { translate: 0 0; filter: none; }
+  93% { translate: calc(var(--g, 1) * -6px) 0; filter: drop-shadow(10px 0 #0dcfe9) drop-shadow(-10px 0 #ff5e00); }
+  94% { translate: calc(var(--g, 1) * 8px) 3px; filter: drop-shadow(-8px 0 #0dcfe9) drop-shadow(8px 0 #ff5e00); }
+  95% { translate: calc(var(--g, 1) * -3px) -4px; filter: drop-shadow(6px 0 #0dcfe9); }
+  96% { translate: calc(var(--g, 1) * 4px) 0; filter: drop-shadow(-4px 0 #ff5e00); }
+}
+/* Neighbouring letters jump opposite ways: --g is 1 for odd --i and -1 for even. */
+.portrait .pt-letter { --g: calc(mod(var(--i, 0), 2) * 2 - 1); }
+@media (prefers-reduced-motion: no-preference) {
+  .portrait.glitch .pt-letter { animation: pt-glitch 7s steps(1, end) infinite; }
+}

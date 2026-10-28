@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
 import { EarlierWork } from "@/components/portfolio/earlier-work";
+import { ScrambleText } from "@/components/portfolio/scramble-text";
 
 const FirefoxIcon = ({ className }: { className?: string }) => (
   <svg
@@ -171,7 +172,7 @@ export function ProjectsSection() {
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div data-reveal="" className="space-y-2">
-            <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-5xl">My Projects</h2>
+            <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-5xl"><ScrambleText text="My Projects" /></h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Here are some of the projects I'm proud of. Each one represents a unique challenge and a learning opportunity.
             </p>

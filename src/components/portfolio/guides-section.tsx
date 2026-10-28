@@ -3,6 +3,7 @@
 import { ProjectCard, type Project } from "@/components/portfolio/project-card";
 import { ShowMoreButton } from "@/components/portfolio/show-more-button";
 import { usePeekCollapse } from "@/components/portfolio/use-peek-collapse";
+import { ScrambleText } from "@/components/portfolio/scramble-text";
 
 /** How much of the second row shows while collapsed, as a fraction of a card's height. */
 const PEEK_FRACTION = 0.4;
@@ -110,7 +111,7 @@ export function GuidesSection() {
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div data-reveal="" className="space-y-2">
-            <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-5xl">Technical Writing & Guides</h2>
+            <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-5xl"><ScrambleText text="Technical Writing & Guides" /></h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               In addition to writing code, I enjoy documenting my processes and sharing knowledge. Here are a few technical guides and articles I've written.
             </p>

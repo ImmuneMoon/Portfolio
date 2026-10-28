@@ -1,13 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
 import { GithubIcon } from "@/components/portfolio/brand-icons";
+import { ScrambleText } from "@/components/portfolio/scramble-text";
 
 export function Footer() {
   return (
     <footer id="contact" className="bg-secondary w-full py-12 md:py-16">
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div data-reveal="" className="flex flex-col items-center space-y-4">
-          <h2 className="font-headline text-2xl font-bold tracking-tighter sm:text-3xl">Get in Touch</h2>
+          <h2 className="font-headline text-2xl font-bold tracking-tighter sm:text-3xl"><ScrambleText text="Get in Touch" /></h2>
           <p className="text-center max-w-2xl text-muted-foreground">
             I'm currently open to new opportunities and collaborations. Feel free to reach out if you have a project in mind or just want to connect.
           </p>

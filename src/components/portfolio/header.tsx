@@ -1,6 +1,7 @@
 import { ThemeToggle } from "@/components/portfolio/theme-toggle";
 import { DesktopNav } from "@/components/portfolio/desktop-nav";
 import { MobileNav } from "@/components/portfolio/mobile-nav";
+import { EFFECTS } from "@/lib/effects";
 
 export function Header() {
   const Logo = () => (
@@ -31,6 +32,7 @@ export function Header() {
           <MobileNav logo={<Logo />} />
         </div>
       </div>
+      {EFFECTS.scrollProgress && <div aria-hidden="true" className="scroll-progress" />}
     </header>
   );
 }
