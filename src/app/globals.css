@@ -4,6 +4,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Tailwind 4 only applies hover: styles when the primary input can hover, which turns
+   them off on some touchscreen laptops. Keep the v3 behaviour: hover whenever hovered. */
+@custom-variant hover (&:hover);
+
 @theme {
   --font-body: var(--font-inter), Inter, sans-serif;
   --font-headline: var(--font-space-grotesk), Space Grotesk, sans-serif;
@@ -370,4 +374,57 @@
     animation: pt-letter-hop 0.5s ease-in-out both;
     animation-delay: calc(var(--i, 0) * 60ms);
   }
+}
+
+/* Buttons (button.tsx adds .btn-fx to every variant except "link").
+   Hover: a small lift, a glow in the theme colour and a light sweep across the face.
+   Press: a quick squeeze. Icons inside get a little nudge. The sweep sits under the
+   label (isolation + z-index -1), so text stays crisp. */
+.btn-fx {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.25s ease,
+    translate 0.2s ease,
+    scale 0.12s ease;
+}
+.btn-fx::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 30%, hsl(0 0% 100% / 0.35) 50%, transparent 70%);
+  translate: -120% 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn-fx:hover {
+    translate: 0 -2px;
+    box-shadow: 0 8px 22px -8px hsl(var(--primary) / 0.65), 0 0 0 1px hsl(var(--primary) / 0.25);
+  }
+  .btn-fx:hover::after {
+    translate: 120% 0;
+    transition: translate 0.7s ease;
+  }
+  .btn-fx:active {
+    translate: 0 0;
+    scale: 0.97;
+  }
+  .btn-fx:hover svg {
+    animation: btn-icon-nudge 0.6s ease;
+  }
+  /* Icon-only ghost buttons (theme toggle, social links) glow without lifting as much. */
+  .btn-fx-ghost:hover {
+    translate: 0 -1px;
+    box-shadow: 0 0 16px -4px hsl(var(--primary) / 0.55);
+  }
+}
+@keyframes btn-icon-nudge {
+  0%, 100% { translate: 0 0; rotate: 0deg; }
+  35% { translate: 0 -2px; rotate: -8deg; }
+  70% { translate: 0 1px; rotate: 4deg; }
 }
