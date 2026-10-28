@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from "@/components/portfolio/theme-provider";
 import { SpotlightTracker } from "@/components/portfolio/spotlight-tracker";
+import { ExternalLinkGuard } from "@/components/portfolio/external-link-guard";
 import { FirebaseAnalytics } from "@/components/firebase-analytics";
 
 const inter = Inter({
@@ -75,6 +76,7 @@ export default function RootLayout({
         </ThemeProvider>
         <FirebaseAnalytics />
         <SpotlightTracker />
+        <ExternalLinkGuard />
       </body>
     </html>
   );
