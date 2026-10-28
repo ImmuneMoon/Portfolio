@@ -168,7 +168,7 @@ export function ProjectsSection() {
     <section ref={sectionRef} id="projects" className="w-full py-12 md:py-24 lg:py-32">
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="space-y-2">
+          <div data-reveal="" className="space-y-2">
             <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-5xl">My Projects</h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Here are some of the projects I'm proud of. Each one represents a unique challenge and a learning opportunity.
@@ -177,7 +177,7 @@ export function ProjectsSection() {
         </div>
 
         <div className="relative mx-auto mt-12" style={{ overflowAnchor: 'none' }}>
-          <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+          <div data-reveal-group="" className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
             {teaserProjects.map((project) => (
               <ProjectCard
                 key={project.name}
@@ -188,7 +188,7 @@ export function ProjectsSection() {
 
           <Collapsible open={isOpen} onOpenChange={handleOpenChange} className="w-full">
             <CollapsibleContent className="space-y-8 overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
-              <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mt-8">
+              <div data-reveal-group="" className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mt-8">
                 {moreProjects.map((project) => (
                   <ProjectCard
                     key={project.name}

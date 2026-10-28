@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from "@/components/portfolio/theme-provider";
+import { SpotlightTracker } from "@/components/portfolio/spotlight-tracker";
 import { FirebaseAnalytics } from "@/components/firebase-analytics";
 
 const inter = Inter({
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [
       {
-        url: '/images/hero.webp',
+        url: '/images/portrait.png',
         width: 512,
         height: 512,
         alt: 'Fulllion Creative Works',
@@ -53,7 +54,7 @@ export const metadata: Metadata = {
     card: 'summary',
     title: siteTitle,
     description: siteDescription,
-    images: ['/images/hero.webp'],
+    images: ['/images/portrait.png'],
   },
   robots: {
     index: true,
@@ -73,6 +74,7 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <FirebaseAnalytics />
+        <SpotlightTracker />
       </body>
     </html>
   );

@@ -230,3 +230,144 @@
     opacity: 0.5;
   }
 }
+
+/* ===== Interactive effects ===================================================
+   Everything here is decoration: content is fully visible without it, and all
+   motion is skipped for people who ask their system for reduced motion. */
+
+/* 1. Scroll-driven reveals (CSS scroll-driven animations, no JavaScript).
+   Each element fades up as it enters the viewport. Browsers without
+   animation-timeline support simply show the content. In a [data-reveal-group]
+   grid, the 2nd and 3rd column start slightly later, so rows ripple in. */
+@keyframes reveal-up {
+  from { opacity: 0; translate: 0 2rem; }
+  to { opacity: 1; translate: 0 0; }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-reveal] {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+    [data-reveal-group] > [data-reveal]:nth-child(3n + 2),
+    [data-reveal-group] > :nth-child(3n + 2) > [data-reveal] {
+      animation-range: entry 8% entry 63%;
+    }
+    [data-reveal-group] > [data-reveal]:nth-child(3n),
+    [data-reveal-group] > :nth-child(3n) > [data-reveal] {
+      animation-range: entry 16% entry 71%;
+    }
+  }
+}
+
+/* Hero entrance on page load, stepped with --intro-step. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-intro] {
+    animation: reveal-up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--intro-step, 0) * 120ms);
+  }
+}
+
+/* 2. Cursor spotlight cards. spotlight-tracker.tsx sets --spot-x, --spot-y and
+   --spot-on as a mouse moves over a .spotlight element. The fill glow sits under
+   the card's content; the edge glow is a 1px ring masked to the border. */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+.spotlight::before,
+.spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--spot-on, 0);
+  transition: opacity 0.3s ease;
+}
+.spotlight::before {
+  z-index: -1;
+  background: radial-gradient(28rem circle at var(--spot-x, 50%) var(--spot-y, 50%), hsl(var(--primary) / 0.13), transparent 45%);
+}
+.spotlight::after {
+  padding: 1px;
+  background: radial-gradient(18rem circle at var(--spot-x, 50%) var(--spot-y, 50%), hsl(var(--primary) / 0.75), transparent 45%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+
+/* 3. Hero portrait: orbit rings drawn CSSBattle-style from single elements and
+   gradients, an idle float, and a pointer tilt set by hero-portrait.tsx. */
+.orbit {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+/* Dashed outer track */
+.orbit-track {
+  border: 1px dashed hsl(var(--accent) / 0.45);
+}
+/* A bright comet arc: a conic gradient masked down to a thin ring */
+.orbit-comet {
+  inset: 1.25rem;
+  background: conic-gradient(from 0deg, transparent 0 62%, hsl(var(--primary) / 0.15) 70%, hsl(var(--primary)) 86%, transparent 86.5%);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+}
+/* Two "moons": radial-gradient dots placed on the ring's edge */
+.orbit-moons {
+  background:
+    radial-gradient(circle at 50% 0.35rem, hsl(var(--accent)) 0.3rem, transparent 0.35rem),
+    radial-gradient(circle at 0.35rem 50%, hsl(var(--primary)) 0.22rem, transparent 0.27rem);
+}
+.hero-tilt {
+  transition: transform 0.25s ease-out;
+  transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+}
+@keyframes orbit-spin { to { rotate: 1turn; } }
+@keyframes hero-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -0.5rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .orbit-track { animation: orbit-spin 60s linear infinite reverse; }
+  .orbit-comet { animation: orbit-spin 7s linear infinite; }
+  .orbit-moons { animation: orbit-spin 18s linear infinite; }
+  .hero-float { animation: hero-float 6s ease-in-out infinite; }
+}
+
+/* Portrait (portrait-svg.tsx): every shape has a pt- class naming its feature.
+   transform-box: fill-box makes each shape move around its own box. */
+.portrait .pt-strands,
+.portrait .pt-pupil,
+.portrait .pt-letter {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.portrait .pt-strands { transform-origin: top center; }
+/* Pupils follow the pointer (hero-portrait.tsx sets --look-x and --look-y). */
+.portrait .pt-pupil {
+  transform: translate(var(--look-x, 0px), var(--look-y, 0px));
+  transition: transform 0.2s ease-out;
+}
+@keyframes pt-sway {
+  from { rotate: -0.9deg; }
+  to { rotate: 0.9deg; }
+}
+@keyframes pt-letter-hop {
+  0%, 100% { translate: 0 0; }
+  40% { translate: 0 -14%; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .portrait .pt-strands { animation: pt-sway 4.5s ease-in-out infinite alternate; }
+  .portrait .pt-strands:nth-of-type(2n) { animation-duration: 3.8s; animation-delay: -1.5s; }
+  .portrait .pt-strands:nth-of-type(3n) { animation-duration: 5.2s; animation-delay: -3s; }
+  /* Hovering the portrait sends a wave through the wordmark, one letter at a time. */
+  .hero-tilt:hover .portrait .pt-letter {
+    animation: pt-letter-hop 0.5s ease-in-out both;
+    animation-delay: calc(var(--i, 0) * 60ms);
+  }
+}

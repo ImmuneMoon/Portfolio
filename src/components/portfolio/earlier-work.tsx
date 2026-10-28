@@ -65,11 +65,12 @@ export function EarlierWork() {
       <p className="mt-2 text-sm text-muted-foreground">
         Front-end exercises from 2021 to 2022, mostly Frontend Mentor challenges, a record of where things started.
       </p>
-      <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <ul data-reveal-group="" className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {earlierProjects.map((project) => (
           <li
             key={project.name}
-            className="flex h-full flex-col rounded-lg border bg-card/50 p-4 shadow-xs backdrop-blur-xs transition-shadow hover:shadow-md"
+            data-reveal=""
+            className="spotlight flex h-full flex-col rounded-lg border bg-card/50 p-4 shadow-xs backdrop-blur-xs transition-shadow hover:shadow-md"
           >
             <p className="font-headline text-base font-bold">{project.name}</p>
             <p className="mt-1 grow text-sm text-muted-foreground">{project.description}</p>

@@ -39,7 +39,7 @@ export function CertificationsSection() {
       
       <div className="container relative mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="space-y-2">
+          <div data-reveal="" className="space-y-2">
             <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-5xl text-primary">My Certifications</h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               A collection of professional certifications I've worked to achieve.
@@ -47,9 +47,9 @@ export function CertificationsSection() {
           </div>
         </div>
 
-        <div className="grid gap-8 mt-12 sm:grid-cols-1 md:grid-cols-2">
+        <div data-reveal-group="" className="grid gap-8 mt-12 sm:grid-cols-1 md:grid-cols-2">
           {certifications.map((cert, index) => (
-            <Card key={index} className="flex flex-col h-full border-none shadow-xs hover:shadow-md transition-shadow bg-card/50 backdrop-blur-xs">
+            <Card key={index} data-reveal="" className="spotlight flex flex-col h-full border-none shadow-xs hover:shadow-md transition-shadow bg-card/50 backdrop-blur-xs">
               <CardHeader className="flex flex-row items-start gap-4 space-y-0">
                 <div className="rounded-xl bg-primary/10 p-3 text-primary ring-1 ring-primary/20">
                   <Award className="h-6 w-6" />

@@ -90,7 +90,7 @@ const EyeIcon = ({ className }: { className?: string }) => (
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card className="flex flex-col h-full overflow-hidden transition-shadow hover:shadow-xl">
+    <Card data-reveal="" className="spotlight flex flex-col h-full overflow-hidden transition-shadow hover:shadow-xl">
       <CardHeader>
         <CardTitle className="font-headline text-2xl">{project.name}</CardTitle>
         <div className="flex flex-wrap gap-2 pt-2">

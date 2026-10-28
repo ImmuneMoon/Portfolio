@@ -370,7 +370,7 @@ export function SkillsSection() {
       
       <div className="container relative mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="space-y-2">
+          <div data-reveal="" className="space-y-2">
             <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-5xl text-primary"> My Skills </h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               A collection of technologies and tools I use to bring ideas to life. Categorized by domain expertise.
@@ -388,7 +388,7 @@ export function SkillsSection() {
                   </h3>
                   <div className="h-px w-full bg-primary/10" />
                 </div>
-                <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                <div data-reveal-group="" className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
                   {category.skills.map((skill) => (
                     <SkillCard key={skill.name} skill={skill} />
                   ))}
@@ -408,7 +408,7 @@ export function SkillsSection() {
                       </h3>
                       <div className="h-px w-full bg-primary/10" />
                     </div>
-                    <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                    <div data-reveal-group="" className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
                       {category.skills.map((skill) => (
                         <SkillCard key={skill.name} skill={skill} />
                       ))}
@@ -459,9 +459,10 @@ function SkillCard({ skill }: { skill: { name: string; icon: React.ReactNode; ur
       href={skill.url}
       target="_blank"
       rel="noopener noreferrer"
+      data-reveal=""
       className="group rounded-lg focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2"
     >
-      <Card className="flex h-full flex-col items-center justify-center p-6 text-center transition-transform group-hover:scale-105 group-hover:shadow-lg bg-card/50 backdrop-blur-xs border-none shadow-xs">
+      <Card className="spotlight flex h-full flex-col items-center justify-center p-6 text-center transition-transform group-hover:scale-105 group-hover:shadow-lg bg-card/50 backdrop-blur-xs border-none shadow-xs">
         <div className="text-primary flex items-center justify-center w-8 h-8">
           {skill.icon}
         </div>
