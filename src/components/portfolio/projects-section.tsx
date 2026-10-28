@@ -62,7 +62,9 @@ const initialProjects: Project[] = [
     name: 'ShadowBase Campaign Manager',
     description: 'A campaign management web app built for a tabletop RPG group. It handles character creation that syncs with a companion Foundry VTT system, resource tracking, and campaign documentation, and installs as a PWA. Built with Next.js, Firebase, and Genkit.',
     image: '/images/shadowbase.png',
-    tags: ['Next.js', 'React', 'Firebase', 'Genkit', 'Tailwind CSS', 'PWA', 'FoundryVTT']
+    tags: ['Next.js', 'React', 'Firebase', 'Genkit', 'Tailwind CSS', 'PWA', 'FoundryVTT'],
+    demoUrl: 'https://shadow-base.com/',
+    demoButtonText: 'Live Site'
   },
   {
     name: 'Pocket Tabs',
