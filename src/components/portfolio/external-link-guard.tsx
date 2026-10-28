@@ -6,7 +6,8 @@ import { useEffect } from "react";
  * Makes every link that leaves the site open in a new tab, so visitors keep the
  * portfolio open. Links already marked target="_blank" are left alone; in-page links
  * and mailto: links are never touched. Also covers links that appear later, such as
- * cards revealed by Show More.
+ * cards revealed by Show More, and releases focus after a link is clicked so it
+ * doesn't stay highlighted when the visitor comes back.
  */
 export function ExternalLinkGuard() {
   useEffect(() => {
@@ -27,7 +28,22 @@ export function ExternalLinkGuard() {
       }
     });
     observer.observe(document.body, { childList: true, subtree: true });
-    return () => observer.disconnect();
+
+    // A link clicked with the mouse or a finger keeps focus while its new tab is open,
+    // and gets it back when the visitor returns, so its glow would stay lit. Let go of
+    // focus after a pointer click. Keyboard activation (detail 0) keeps focus, so
+    // keyboard users don't lose their place.
+    const onClick = (e: MouseEvent) => {
+      if (e.detail === 0) return;
+      const link = (e.target as Element | null)?.closest?.('a[target="_blank"]') as HTMLAnchorElement | null;
+      if (link) requestAnimationFrame(() => link.blur());
+    };
+    document.addEventListener('click', onClick);
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener('click', onClick);
+    };
   }, []);
 
   return null;
