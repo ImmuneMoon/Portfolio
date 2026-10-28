@@ -1,32 +1,36 @@
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Award, Calendar } from "lucide-react";
+import { TagBadge } from "@/components/portfolio/tag-badge";
+import { Award, Calendar, ExternalLink } from "lucide-react";
 
 const certifications = [
   {
     title: "Google IT Support Professional Certification",
     issuer: "Google/ Coursera",
     date: "Nov 2025",
+    url: "https://www.coursera.org/professional-certificates/google-it-support",
     skills: ["Network Administration", "Network Security", "Windows", "Mobile Devices", "Mobile Applications", "System Administration", "IT Infrastructure Management", "Linux"]
   },
   {
     title: "JavaScript Algorithms and Data Structures",
     issuer: "freeCodeCamp",
     date: "Apr 2023",
+    url: "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/",
     skills: ["Data Structures", "Algorithms", "JavaScript", "Front-End Development"]
   },
   {
     title: "CS50x: Introduction to Computer Science",
     issuer: "HarvardX",
     date: "Sep 2022",
+    url: "https://cs50.harvard.edu/x/",
     skills: ["Data Structures", "Algorithms", "C", "CSS", "Git", "HTML/CSS", "JavaScript", "Python", "Web Design", "Web Development", "Responsive Web Design", "Mobile Web Design", "Flask", "Bootstrap", "SQLite"]
   },
   {
     title: "Responsive Web Design",
     issuer: "freeCodeCamp",
     date: "Aug 2021",
+    url: "https://www.freecodecamp.org/learn/responsive-web-design/",
     skills: ["Web Design", "Front-End Development", "CSS", "HTML"]
   }
 ];
@@ -49,13 +53,26 @@ export function CertificationsSection() {
 
         <div data-reveal-group="" className="grid gap-8 mt-12 sm:grid-cols-1 md:grid-cols-2">
           {certifications.map((cert, index) => (
-            <Card key={index} data-reveal="" className="spotlight flex flex-col h-full border-none shadow-xs hover:shadow-md transition-shadow bg-card/50 backdrop-blur-xs">
+            <Card key={index} data-reveal="" className="cert-card spotlight flex flex-col h-full border-none shadow-xs hover:shadow-md transition-shadow bg-card/50 backdrop-blur-xs">
               <CardHeader className="flex flex-row items-start gap-4 space-y-0">
                 <div className="rounded-xl bg-primary/10 p-3 text-primary ring-1 ring-primary/20">
                   <Award className="h-6 w-6" />
                 </div>
                 <div className="flex-1">
-                  <CardTitle className="font-headline text-xl leading-tight">{cert.title}</CardTitle>
+                  <CardTitle className="font-headline text-xl leading-tight">
+                    {/* The link's ::after covers the whole card, so clicking anywhere on it
+                        opens the course; skill badges sit above it and keep their own links. */}
+                    <a
+                      href={cert.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cert-link after:absolute after:inset-0 after:content-['']"
+                    >
+                      {cert.title}
+                      <ExternalLink className="cert-link-icon ml-1.5 inline h-4 w-4 align-[-2px]" aria-hidden="true" />
+                      <span className="sr-only"> course page (opens in a new tab)</span>
+                    </a>
+                  </CardTitle>
                   <CardDescription className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-2 text-sm">
                     <span className="font-semibold text-primary">{cert.issuer}</span>
                     <span className="hidden sm:inline text-muted-foreground">•</span>
@@ -69,13 +86,7 @@ export function CertificationsSection() {
               <CardContent className="grow pt-2">
                 <div className="flex flex-wrap gap-2">
                   {cert.skills.map((skill) => (
-                    <Badge 
-                      key={skill} 
-                      variant="outline" 
-                      className="text-[10px] py-0 px-2 font-medium bg-background/50 hover:bg-primary/5 hover:text-primary hover:border-primary/30 transition-colors"
-                    >
-                      {skill}
-                    </Badge>
+                    <TagBadge key={skill} tag={skill} />
                   ))}
                 </div>
               </CardContent>

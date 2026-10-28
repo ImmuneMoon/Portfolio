@@ -428,3 +428,31 @@
   35% { translate: 0 -2px; rotate: -8deg; }
   70% { translate: 0 1px; rotate: 4deg; }
 }
+
+/* Linked tag badges (tag-badge.tsx). They sit above card-wide links (z-index), so a
+   badge inside a certification card opens its own docs instead of the course. */
+.tag-link {
+  position: relative;
+  z-index: 1;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.25s ease, translate 0.2s ease;
+}
+.tag-link:hover,
+.tag-link:focus-visible {
+  color: hsl(var(--primary));
+  border-color: hsl(var(--primary) / 0.5);
+  box-shadow: 0 0 12px -3px hsl(var(--primary) / 0.55);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tag-link:hover { translate: 0 -1px; }
+}
+
+/* Certification cards open their course page; the title shows it on hover. */
+.cert-card { cursor: pointer; }
+.cert-link { transition: color 0.2s ease; }
+.cert-link-icon { opacity: 0; transition: opacity 0.2s ease, translate 0.2s ease; }
+.cert-card:hover .cert-link,
+.cert-link:focus-visible { color: hsl(var(--primary)); }
+.cert-card:hover .cert-link-icon,
+.cert-link:focus-visible .cert-link-icon { opacity: 1; translate: 2px -2px; }
+.cert-link:focus-visible { outline: none; }
+.cert-link:focus-visible::after { border-radius: inherit; box-shadow: 0 0 0 2px hsl(var(--ring)); }

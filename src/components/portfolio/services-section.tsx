@@ -1,7 +1,7 @@
 'use client';
 
 import { Check, Globe, ShoppingCart, Wrench } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { TagBadge } from "@/components/portfolio/tag-badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ShowMoreButton } from "@/components/portfolio/show-more-button";
@@ -161,7 +161,7 @@ export function ServicesSection() {
                         </div>
                         <div className="mt-auto flex flex-wrap gap-2 pt-2">
                           {pkg.stack.map((tag) => (
-                            <Badge key={tag} variant="secondary">{tag}</Badge>
+                            <TagBadge key={tag} tag={tag} />
                           ))}
                         </div>
                       </CardContent>

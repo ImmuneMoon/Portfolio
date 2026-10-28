@@ -1,4 +1,4 @@
-import { Badge } from "@/components/ui/badge";
+import { TagBadge } from "@/components/portfolio/tag-badge";
 import { Button } from "@/components/ui/button";
 import { Eye } from "lucide-react";
 import { GithubIcon } from "@/components/portfolio/brand-icons";
@@ -76,7 +76,7 @@ export function EarlierWork() {
             <p className="mt-1 grow text-sm text-muted-foreground">{project.description}</p>
             <div className="mt-3 flex flex-wrap gap-1.5">
               {project.tags.map((tag) => (
-                <Badge key={tag} variant="outline" className="text-[10px] py-0 px-2">{tag}</Badge>
+                <TagBadge key={tag} tag={tag} />
               ))}
             </div>
             <div className="mt-4 flex gap-2">

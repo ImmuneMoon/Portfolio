@@ -1,0 +1,116 @@
+/**
+ * Where each badge on the site links: official documentation for tools and languages,
+ * a reference page for general topics. Badges whose label isn't listed here render as
+ * plain, unlinked badges, so adding a new tag never breaks anything.
+ */
+export const TAG_LINKS: Record<string, string> = {
+  // Languages and markup
+  'HTML': 'https://developer.mozilla.org/en-US/docs/Web/HTML',
+  'CSS': 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+  'HTML/CSS': 'https://developer.mozilla.org/en-US/docs/Learn_web_development',
+  'SCSS': 'https://sass-lang.com/documentation/',
+  'JavaScript': 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+  'TypeScript': 'https://www.typescriptlang.org/docs/',
+  'Python': 'https://docs.python.org/3/',
+  'C': 'https://en.cppreference.com/w/c',
+
+  // Frameworks and libraries
+  'React': 'https://react.dev/',
+  'Next.js': 'https://nextjs.org/docs',
+  'Tailwind CSS': 'https://tailwindcss.com/docs',
+  'Bootstrap': 'https://getbootstrap.com/docs/',
+  'jQuery': 'https://api.jquery.com/',
+  'Flask': 'https://flask.palletsprojects.com/',
+  'Electron': 'https://www.electronjs.org/docs/latest',
+  'CustomTkinter': 'https://customtkinter.tomschimansky.com/',
+  'Cheerio.js': 'https://cheerio.js.org/',
+  'Axios': 'https://axios-http.com/docs/intro',
+  'jspdf': 'https://github.com/parallax/jsPDF',
+  'Genkit': 'https://genkit.dev/docs/js/get-started/',
+  'WebRTC': 'https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API',
+
+  // Platforms and services
+  'Node.js': 'https://nodejs.org/docs/latest/api/',
+  'Firebase': 'https://firebase.google.com/docs',
+  'Firebase App Hosting': 'https://firebase.google.com/docs/app-hosting',
+  'Google Cloud': 'https://cloud.google.com/docs',
+  'Cloudflare': 'https://developers.cloudflare.com/',
+  'BigCommerce': 'https://developer.bigcommerce.com/docs',
+  'Shopify': 'https://help.shopify.com/',
+  'SQLite': 'https://www.sqlite.org/docs.html',
+  'FoundryVTT': 'https://foundryvtt.com/kb/',
+  'Discord': 'https://support.discord.com/',
+
+  // Tools
+  'Git': 'https://git-scm.com/doc',
+  'GitHub Actions': 'https://docs.github.com/en/actions',
+  'Docker': 'https://docs.docker.com/',
+  'PyInstaller': 'https://pyinstaller.org/en/stable/',
+  'Inno': 'https://jrsoftware.org/isinfo.php',
+  'Rufus': 'https://rufus.ie/',
+  'Antigravity IDE': 'https://antigravity.google/',
+  'PowerShell': 'https://learn.microsoft.com/en-us/powershell/',
+  'Bash': 'https://www.gnu.org/software/bash/manual/',
+  'CMD': 'https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cmd',
+  'SFC': 'https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/sfc',
+
+  // Operating systems and hardware
+  'Windows': 'https://learn.microsoft.com/en-us/windows/',
+  'Windows 10': 'https://learn.microsoft.com/en-us/windows/whats-new/',
+  'Windows 11': 'https://learn.microsoft.com/en-us/windows/whats-new/windows-11-overview',
+  'OOBE': 'https://learn.microsoft.com/en-us/windows-hardware/customize/desktop/customize-oobe-in-windows-11',
+  'Registry': 'https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry',
+  'Administration': 'https://learn.microsoft.com/en-us/windows/security/identity-protection/access-control/local-accounts',
+  'Security': 'https://learn.microsoft.com/en-us/windows/security/',
+  'macOS': 'https://support.apple.com/guide/mac-help/welcome/mac',
+  'Linux': 'https://en.wikipedia.org/wiki/Linux',
+  'Ubuntu': 'https://ubuntu.com/desktop/docs/en/latest/',
+  'Chromebook': 'https://support.google.com/chromebook/',
+  'Firmware': 'https://en.wikipedia.org/wiki/Firmware',
+  'Bootable USB': 'https://en.wikipedia.org/wiki/Live_USB',
+  'SSD Migration': 'https://en.wikipedia.org/wiki/Disk_cloning',
+
+  // Browsers and extensions
+  'Browser Extension': 'https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions',
+  'Browser Extensions': 'https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions',
+  'Chrome': 'https://developer.chrome.com/docs/extensions',
+  'Chrome Web Store': 'https://developer.chrome.com/docs/webstore',
+  'Firefox': 'https://extensionworkshop.com/',
+  'Firefox Addons': 'https://addons.mozilla.org/',
+
+  // Web concepts
+  'PWA': 'https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps',
+  'DNS': 'https://developer.mozilla.org/en-US/docs/Glossary/DNS',
+  'HTTPS': 'https://developer.mozilla.org/en-US/docs/Glossary/HTTPS',
+  'Web Development': 'https://developer.mozilla.org/en-US/docs/Learn_web_development',
+  'Front-End Development': 'https://developer.mozilla.org/en-US/docs/Learn_web_development',
+  'Web Design': 'https://en.wikipedia.org/wiki/Web_design',
+  'Responsive Web Design': 'https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design',
+  'Mobile Web Design': 'https://web.dev/learn/design',
+  'Web Scraping': 'https://en.wikipedia.org/wiki/Web_scraping',
+
+  // General computing topics
+  'CLI': 'https://en.wikipedia.org/wiki/Command-line_interface',
+  'GUI': 'https://en.wikipedia.org/wiki/Graphical_user_interface',
+  'P2P': 'https://en.wikipedia.org/wiki/Peer-to-peer',
+  'Cross-Platform': 'https://en.wikipedia.org/wiki/Cross-platform_software',
+  'Desktop App': 'https://en.wikipedia.org/wiki/Application_software',
+  'Utility': 'https://en.wikipedia.org/wiki/Utility_software',
+  'Executable': 'https://en.wikipedia.org/wiki/Executable',
+  'DevOps': 'https://en.wikipedia.org/wiki/DevOps',
+  'Documentation': 'https://en.wikipedia.org/wiki/Software_documentation',
+  'Technical Writing': 'https://en.wikipedia.org/wiki/Technical_writing',
+  'Troubleshooting': 'https://en.wikipedia.org/wiki/Troubleshooting',
+  'SysAdmin': 'https://en.wikipedia.org/wiki/System_administrator',
+  'System Administration': 'https://en.wikipedia.org/wiki/System_administrator',
+  'Network Administration': 'https://en.wikipedia.org/wiki/Network_administrator',
+  'Network Security': 'https://en.wikipedia.org/wiki/Network_security',
+  'IT Infrastructure Management': 'https://en.wikipedia.org/wiki/IT_infrastructure',
+  'Mobile Devices': 'https://en.wikipedia.org/wiki/Mobile_device',
+  'Mobile Applications': 'https://en.wikipedia.org/wiki/Mobile_app',
+  'Data Structures': 'https://en.wikipedia.org/wiki/Data_structure',
+  'Algorithms': 'https://en.wikipedia.org/wiki/Algorithm',
+  'Backup': 'https://en.wikipedia.org/wiki/Backup',
+};
+
+export const tagLink = (tag: string): string | undefined => TAG_LINKS[tag];

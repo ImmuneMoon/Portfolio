@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { TagBadge } from "@/components/portfolio/tag-badge";
 import { Button } from "@/components/ui/button";
 import React from "react";
 import { cn } from "@/lib/utils";
@@ -95,7 +95,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <CardTitle className="font-headline text-2xl">{project.name}</CardTitle>
         <div className="flex flex-wrap gap-2 pt-2">
           {project.tags.map((tag) => (
-            <Badge key={tag} variant="secondary">{tag}</Badge>
+            <TagBadge key={tag} tag={tag} />
           ))}
         </div>
       </CardHeader>
