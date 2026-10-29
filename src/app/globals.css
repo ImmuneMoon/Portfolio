@@ -470,10 +470,18 @@
   mix-blend-mode: normal;
 }
 
-/* Heading scramble (scramble-text.tsx). The box keeps its settled size while shuffling. */
+/* Heading scramble (scramble-text.tsx). The real text keeps its place but turns
+   invisible while the shuffle plays on a clipped layer over it, so layout never changes. */
 .scramble-text {
+  position: relative;
   display: inline-block;
+}
+.scramble-text[data-scrambling] > .scramble-text-real { color: transparent; }
+.scramble-text-layer {
+  position: absolute;
+  inset: 0;
   overflow: clip;
+  pointer-events: none;
 }
 
 /* Scroll progress line along the bottom of the header. */
@@ -543,17 +551,18 @@
   .hero-aurora > span:nth-child(3) { animation: aurora-drift 18s ease-in-out -6s infinite; }
 }
 
-/* Rotating hero title (rotating-title.tsx). Two lines are reserved so roles of
-   different lengths don't push the page around. */
+/* Rotating hero title (rotating-title.tsx). All roles share one grid cell, so the
+   title is as tall as the longest one; only the active role is visible. */
 .rotating-title {
-  display: block;
-  min-height: 2lh;
+  display: grid;
   perspective: 600px;
 }
-.rotating-title-word {
-  display: block;
-  transform-origin: 50% 100%;
+.rotating-title > span {
+  grid-area: 1 / 1;
+  visibility: hidden;
 }
+.rotating-title > [data-active] { visibility: visible; }
+.rotating-title-word { transform-origin: 50% 100%; }
 @keyframes title-flip-in {
   from { opacity: 0; transform: rotateX(80deg) translateY(0.15em); filter: blur(4px); }
   to { opacity: 1; transform: none; filter: none; }
