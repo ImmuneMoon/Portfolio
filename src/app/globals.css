@@ -470,8 +470,8 @@
   mix-blend-mode: normal;
 }
 
-/* Heading scramble (scramble-text.tsx). The real text keeps its place but turns
-   invisible while the shuffle plays on a clipped layer over it, so layout never changes. */
+/* Heading decode (scramble-text.tsx). The real text keeps its place but turns
+   invisible while the decode plays on a clipped layer over it, so layout never changes. */
 .scramble-text {
   position: relative;
   display: inline-block;
@@ -482,6 +482,11 @@
   inset: 0;
   overflow: clip;
   pointer-events: none;
+}
+/* Letters still decoding: dimmed, with a faint accent glow. */
+.scramble-text-pending {
+  opacity: 0.4;
+  text-shadow: 0 0 12px hsl(var(--accent) / 0.6);
 }
 
 /* Scroll progress line along the bottom of the header. */
