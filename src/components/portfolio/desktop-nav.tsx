@@ -3,14 +3,20 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { NAV_ITEMS, SECTION_ITEMS, activeHrefFor, readSectionProgress } from "@/components/portfolio/scroll-spy";
+import { NAV_ITEMS, SECTION_ITEMS, activeHrefFor, readSectionProgress, smoothstep } from "@/components/portfolio/scroll-spy";
 
 /** Smoothing time constant in ms; higher trails the scroll more softly. */
 const SMOOTHING_MS = 90;
 /** Keep animating this long after the last scroll event, so momentum scrolling is tracked. */
 const IDLE_MS = 200;
+/** Resting height of the glow in px (matches h-8). */
+const PILL_HEIGHT = 32;
+/** How much thinner the glow gets when fully stretched between two links (0 to 1). */
+const THINNING = 0.5;
 
-type Box = { x: number; w: number; o: number };
+type Box = { x: number; w: number; o: number; h: number };
+
+const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
 export function DesktopNav() {
   const pathname = usePathname();
@@ -27,8 +33,8 @@ export function DesktopNav() {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const onHome = pathname === '/';
 
-    const current: Box = { x: 0, w: 0, o: 0 };
-    let target: Box = { x: 0, w: 0, o: 0 };
+    const current: Box = { x: 0, w: 0, o: 0, h: 1 };
+    let target: Box = { x: 0, w: 0, o: 0, h: 1 };
     let frame = 0;
     let lastTime = 0;
     let lastWake = 0;
@@ -55,7 +61,7 @@ export function DesktopNav() {
         const href = activeHrefFor(pathname);
         const index = NAV_ITEMS.findIndex((it) => it.href === href);
         const box = index >= 0 ? linkBox(index) : null;
-        target = box ? { ...box, o: 1 } : { ...target, o: 0 };
+        target = box ? { ...box, o: 1, h: 1 } : { ...target, o: 0 };
         setActive(href);
         return true;
       }
@@ -65,8 +71,19 @@ export function DesktopNav() {
       const to = linkBox(SECTION_ITEMS[progress.next].index);
       if (!from || !to) return false;
 
+      // Glide like a cell: the leading edge sets off first and the trailing edge catches
+      // up last, so the glow stretches across the gap, thinning as it stretches, then
+      // pulls together on the next link.
       const g = progress.glide;
-      target = { x: from.x + (to.x - from.x) * g, w: from.w + (to.w - from.w) * g, o: 1 };
+      const lead = reduceMotion.matches ? g : smoothstep(0, 0.65, g);
+      const trail = reduceMotion.matches ? g : smoothstep(0.35, 1, g);
+      const forward = to.x >= from.x;
+      const left = lerp(from.x, to.x, forward ? trail : lead);
+      const right = lerp(from.x + from.w, to.x + to.w, forward ? lead : trail);
+      const restingWidth = lerp(from.w, to.w, g);
+      const gap = Math.abs(to.x + to.w / 2 - (from.x + from.w / 2));
+      const stretch = gap > 0 ? Math.min(1, Math.max(0, (right - left - restingWidth) / gap)) : 0;
+      target = { x: left, w: right - left, o: 1, h: 1 - THINNING * stretch };
       setActive(activeHrefFor(pathname, progress));
       return true;
     };
@@ -85,18 +102,20 @@ export function DesktopNav() {
 
       const snap = reduceMotion.matches || !hasRendered;
       const alpha = snap ? 1 : 1 - Math.exp(-dt / SMOOTHING_MS);
-      (['x', 'w', 'o'] as const).forEach((key) => {
+      (['x', 'w', 'o', 'h'] as const).forEach((key) => {
         current[key] += (target[key] - current[key]) * alpha;
       });
 
       const settled =
         Math.abs(target.x - current.x) < 0.2 &&
         Math.abs(target.w - current.w) < 0.2 &&
-        Math.abs(target.o - current.o) < 0.01;
+        Math.abs(target.o - current.o) < 0.01 &&
+        Math.abs(target.h - current.h) < 0.005;
       if (settled) Object.assign(current, target);
 
       pill.style.transform = `translate3d(${current.x}px, 0, 0)`;
       pill.style.width = `${current.w}px`;
+      pill.style.height = `${PILL_HEIGHT * current.h}px`;
       pill.style.opacity = String(current.o);
       hasRendered = true;
 
