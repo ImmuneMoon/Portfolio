@@ -499,7 +499,7 @@ function SkillCard({ skill }: { skill: { name: string; icon: React.ReactNode; ur
       data-reveal=""
       className="group rounded-lg focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2"
     >
-      <Card className="spotlight flex h-full flex-col items-center justify-center p-6 text-center transition-transform group-hover:scale-105 group-hover:shadow-lg bg-card/50 backdrop-blur-xs border-none shadow-xs">
+      <Card className="spotlight flex h-full flex-col items-center justify-center p-6 text-center transition-transform group-hover:scale-105 group-hover:shadow-lg bg-card/50 border-none shadow-xs">
         <div ref={iconRef} className="skill-icon text-primary flex items-center justify-center w-8 h-8">
           {skill.icon}
         </div>

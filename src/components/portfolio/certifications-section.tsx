@@ -153,7 +153,7 @@ function FlipCertCard({ cert }: { cert: Certification }) {
 /** The plain card, used when the flip effect is switched off. */
 function CertCard({ cert }: { cert: Certification }) {
   return (
-    <Card data-reveal="" className={`h-full ${CARD_CLASSES} backdrop-blur-xs`}>
+    <Card data-reveal="" className={`h-full ${CARD_CLASSES}`}>
       <CertHeader cert={cert} />
       <CardContent className="grow pt-2">
         <SkillBadges skills={cert.skills} />

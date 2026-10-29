@@ -561,17 +561,20 @@
   -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
   mask-image: linear-gradient(to bottom, #000 55%, transparent);
 }
+/* Each blob is a radial gradient that fades out on its own, so no blur filter is
+   needed: a big blur would have to be redrawn every frame while the blobs drift. */
 .hero-aurora > span {
   position: absolute;
-  width: 42rem;
+  width: 56rem;
   aspect-ratio: 1;
   border-radius: 50%;
-  filter: blur(80px);
+  background: radial-gradient(closest-side, var(--blob), transparent);
   opacity: 0.16;
+  will-change: transform;
 }
-.hero-aurora > span:nth-child(1) { background: hsl(var(--primary)); top: -18rem; left: -12rem; }
-.hero-aurora > span:nth-child(2) { background: hsl(var(--accent)); top: 4rem; right: -16rem; width: 36rem; }
-.hero-aurora > span:nth-child(3) { background: hsl(25 100% 50%); bottom: -24rem; left: 30%; width: 30rem; opacity: 0.12; }
+.hero-aurora > span:nth-child(1) { --blob: hsl(var(--primary)); top: -24rem; left: -18rem; }
+.hero-aurora > span:nth-child(2) { --blob: hsl(var(--accent)); top: -2rem; right: -22rem; width: 48rem; }
+.hero-aurora > span:nth-child(3) { --blob: hsl(25 100% 50%); bottom: -30rem; left: 25%; width: 42rem; opacity: 0.12; }
 .dark .hero-aurora > span { opacity: 0.22; }
 .dark .hero-aurora > span:nth-child(3) { opacity: 0.1; }
 @keyframes aurora-drift {

@@ -70,7 +70,7 @@ export function EarlierWork() {
           <li
             key={project.name}
             data-reveal=""
-            className="spotlight flex h-full flex-col rounded-lg border bg-card/50 p-4 shadow-xs backdrop-blur-xs transition-shadow hover:shadow-md"
+            className="spotlight flex h-full flex-col rounded-lg border bg-card/50 p-4 shadow-xs transition-shadow hover:shadow-md"
           >
             <p className="font-headline text-base font-bold">{project.name}</p>
             <p className="mt-1 grow text-sm text-muted-foreground">{project.description}</p>
