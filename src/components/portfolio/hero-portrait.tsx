@@ -16,6 +16,18 @@ const MAX_LOOK = 6;
 export function HeroPortrait() {
   const tiltRef = useRef<HTMLDivElement>(null);
 
+  // Pause the hero's looping animations (orbits, hair, glitch, aurora) while it's
+  // scrolled out of view, so they cost nothing while reading the rest of the page.
+  useEffect(() => {
+    const hero = tiltRef.current?.closest('section');
+    if (!hero) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      hero.toggleAttribute('data-offscreen', !entry.isIntersecting);
+    });
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     const tilt = tiltRef.current;
     const hero = tilt?.closest('section');

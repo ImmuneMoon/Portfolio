@@ -84,7 +84,7 @@ function outline(s: Shape, cy: number) {
 export function DesktopNav() {
   const pathname = usePathname();
   const navRef = useRef<HTMLElement>(null);
-  const glowRef = useRef<SVGSVGElement>(null);
+  const glowRef = useRef<HTMLSpanElement>(null);
   const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const [activeHref, setActiveHref] = useState<string | null>(null);
 
@@ -93,6 +93,8 @@ export function DesktopNav() {
     const glow = glowRef.current;
     if (!nav || !glow) return;
     const paths = glow.querySelectorAll('path');
+    let lastPath = '';
+    let lastOpacity = '';
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const onHome = pathname === '/';
@@ -194,9 +196,17 @@ export function DesktopNav() {
       const settled = KEYS.every((key) => Math.abs(target[key] - current[key]) < (key === 'neck' || key === 'swell' || key === 'o' ? 0.005 : 0.2));
       if (settled) Object.assign(current, target);
 
+      // Only touch the DOM when something changed, so a resting glow costs no repaints.
       const d = outline(current, nav.clientHeight / 2);
-      paths.forEach((p) => p.setAttribute('d', d));
-      glow.style.opacity = String(current.o);
+      if (d !== lastPath) {
+        lastPath = d;
+        paths.forEach((p) => p.setAttribute('d', d));
+      }
+      const opacity = current.o.toFixed(3);
+      if (opacity !== lastOpacity) {
+        lastOpacity = opacity;
+        glow.style.opacity = opacity;
+      }
       hasRendered = true;
 
       if (settled && now - lastWake > IDLE_MS) {
@@ -231,10 +241,15 @@ export function DesktopNav() {
 
   return (
     <nav ref={navRef} className="relative hidden items-center gap-0.5 lg:flex xl:gap-1.5" aria-label="Main">
-      <svg ref={glowRef} aria-hidden="true" className="nav-cell pointer-events-none absolute inset-0 h-full w-full opacity-0">
-        <path className="nav-cell-halo" />
-        <path className="nav-cell-body" />
-      </svg>
+      {/* The halo is its own element so its pulse runs on the GPU without repainting. */}
+      <span ref={glowRef} aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-0">
+        <svg className="nav-cell nav-cell-halo absolute inset-0 h-full w-full">
+          <path />
+        </svg>
+        <svg className="nav-cell absolute inset-0 h-full w-full">
+          <path className="nav-cell-body" />
+        </svg>
+      </span>
       {NAV_ITEMS.map((item, index) => {
         const active = item.href === activeHref;
         return (
