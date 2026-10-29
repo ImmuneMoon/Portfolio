@@ -9,32 +9,96 @@ import { NAV_ITEMS, SECTION_ITEMS, activeHrefFor, readSectionProgress, smoothste
 const SMOOTHING_MS = 90;
 /** Keep animating this long after the last scroll event, so momentum scrolling is tracked. */
 const IDLE_MS = 200;
-/** Resting height of the glow in px (matches h-8). */
+/** Resting height of the glow in px. */
 const PILL_HEIGHT = 32;
-/** How much thinner the glow gets when fully stretched between two links (0 to 1). */
-const THINNING = 0.5;
+/** How much thinner the neck between the two bulbs gets at full stretch (0 to 1). */
+const THINNING = 0.72;
+/** How much the bulbs swell at full stretch (0 to 1). */
+const SWELL = 0.12;
+/** Radius of the curves joining the bulbs to the neck, in px, at full stretch. */
+const FILLET = 14;
+/** Points along each edge of the outline. */
+const SAMPLES = 96;
 
-type Box = { x: number; w: number; o: number; h: number };
+/**
+ * The glow's shape: two pill-shaped bulbs (left one from `x`, right one ending at
+ * `x + w`) joined by a neck. At rest both bulbs cover the same link and the neck is
+ * as thick as the bulbs, so it's a plain pill.
+ */
+type Shape = { x: number; w: number; lw: number; rw: number; neck: number; swell: number; o: number };
+const KEYS = ['x', 'w', 'lw', 'rw', 'neck', 'swell', 'o'] as const;
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+/** Signed distance from (px, py) to a horizontal capsule from x1 to x2 (centre line y = 0). */
+function capsule(px: number, py: number, x1: number, x2: number, r: number) {
+  const cx = Math.min(Math.max(px, x1), x2);
+  return Math.hypot(px - cx, py) - r;
+}
+
+/** Smooth minimum: unions two shapes with a rounded join of size k. */
+function smin(a: number, b: number, k: number) {
+  if (k <= 0) return Math.min(a, b);
+  const h = Math.max(k - Math.abs(a - b), 0) / k;
+  return Math.min(a, b) - h * h * k * 0.25;
+}
+
+/** Traces the outline of a Shape as an SVG path, centred vertically on `cy`. */
+function outline(s: Shape, cy: number) {
+  const left = s.x;
+  const right = s.x + s.w;
+  const r = (PILL_HEIGHT / 2) * (1 + SWELL * s.swell);
+  const lw = Math.max(s.lw, 2 * r);
+  const rw = Math.max(s.rw, 2 * r);
+  // Bulb centre lines, kept inside the shape.
+  const l1 = left + r, l2 = Math.max(l1, Math.min(right - r, left + lw - r));
+  const r2 = right - r, r1 = Math.min(r2, Math.max(left + r, right - rw + r));
+  const neckR = (PILL_HEIGHT / 2) * s.neck;
+  const k = FILLET * (1 - s.neck);
+  const sdf = (px: number, py: number) =>
+    smin(Math.min(capsule(px, py, l1, l2, r), capsule(px, py, r1, r2, r)), capsule(px, py, l1, r2, neckR), k);
+
+  // For each column, find the half-height of the shape by bisection. Columns are spaced
+  // on a cosine curve so the rounded ends get more points.
+  const top: string[] = [];
+  const bottom: string[] = [];
+  for (let i = 0; i <= SAMPLES; i++) {
+    const px = left + (right - left) * (1 - Math.cos((Math.PI * i) / SAMPLES)) / 2;
+    let half = 0;
+    if (sdf(px, 0) < 0) {
+      let lo = 0;
+      let hi = r + 2;
+      for (let j = 0; j < 14; j++) {
+        const mid = (lo + hi) / 2;
+        if (sdf(px, mid) < 0) lo = mid;
+        else hi = mid;
+      }
+      half = lo;
+    }
+    top.push(`${px.toFixed(2)},${(cy - half).toFixed(2)}`);
+    bottom.push(`${px.toFixed(2)},${(cy + half).toFixed(2)}`);
+  }
+  return `M${top.join('L')}L${bottom.reverse().join('L')}Z`;
+}
 
 export function DesktopNav() {
   const pathname = usePathname();
   const navRef = useRef<HTMLElement>(null);
-  const pillRef = useRef<HTMLSpanElement>(null);
+  const glowRef = useRef<SVGSVGElement>(null);
   const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const [activeHref, setActiveHref] = useState<string | null>(null);
 
   useEffect(() => {
     const nav = navRef.current;
-    const pill = pillRef.current;
-    if (!nav || !pill) return;
+    const glow = glowRef.current;
+    if (!nav || !glow) return;
+    const paths = glow.querySelectorAll('path');
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const onHome = pathname === '/';
 
-    const current: Box = { x: 0, w: 0, o: 0, h: 1 };
-    let target: Box = { x: 0, w: 0, o: 0, h: 1 };
+    const current: Shape = { x: 0, w: 0, lw: 0, rw: 0, neck: 1, swell: 0, o: 0 };
+    let target: Shape = { ...current };
     let frame = 0;
     let lastTime = 0;
     let lastWake = 0;
@@ -53,6 +117,10 @@ export function DesktopNav() {
       return el ? { x: el.offsetLeft, w: el.offsetWidth } : null;
     };
 
+    const restingOn = (box: { x: number; w: number }): Shape => ({
+      x: box.x, w: box.w, lw: box.w, rw: box.w, neck: 1, swell: 0, o: 1,
+    });
+
     /** Works out where the glow should be. Returns false while the desktop nav is hidden. */
     const computeTarget = () => {
       if (nav.offsetParent === null) return false;
@@ -61,7 +129,7 @@ export function DesktopNav() {
         const href = activeHrefFor(pathname);
         const index = NAV_ITEMS.findIndex((it) => it.href === href);
         const box = index >= 0 ? linkBox(index) : null;
-        target = box ? { ...box, o: 1, h: 1 } : { ...target, o: 0 };
+        target = box ? restingOn(box) : { ...target, o: 0 };
         setActive(href);
         return true;
       }
@@ -70,21 +138,38 @@ export function DesktopNav() {
       const from = linkBox(SECTION_ITEMS[progress.current].index);
       const to = linkBox(SECTION_ITEMS[progress.next].index);
       if (!from || !to) return false;
+      setActive(activeHrefFor(pathname, progress));
 
-      // Glide like a cell: the leading edge sets off first and the trailing edge catches
-      // up last, so the glow stretches across the gap, thinning as it stretches, then
-      // pulls together on the next link.
       const g = progress.glide;
-      const lead = reduceMotion.matches ? g : smoothstep(0, 0.65, g);
-      const trail = reduceMotion.matches ? g : smoothstep(0.35, 1, g);
+      if (reduceMotion.matches) {
+        target = restingOn({ x: lerp(from.x, to.x, g), w: lerp(from.w, to.w, g) });
+        return true;
+      }
+
+      // Glide like a dividing cell: the leading edge sets off first and the trailing
+      // edge catches up last. Meanwhile the glow splits into a bulb on each link joined
+      // by a neck that thins as it stretches, then pulls back into one pill.
+      const lead = smoothstep(0, 0.65, g);
+      const trail = smoothstep(0.35, 1, g);
       const forward = to.x >= from.x;
       const left = lerp(from.x, to.x, forward ? trail : lead);
       const right = lerp(from.x + from.w, to.x + to.w, forward ? lead : trail);
       const restingWidth = lerp(from.w, to.w, g);
       const gap = Math.abs(to.x + to.w / 2 - (from.x + from.w / 2));
       const stretch = gap > 0 ? Math.min(1, Math.max(0, (right - left - restingWidth) / gap)) : 0;
-      target = { x: left, w: right - left, o: 1, h: 1 - THINNING * stretch };
-      setActive(activeHrefFor(pathname, progress));
+      // The bulb being left shrinks as the leading edge reaches out; the arriving bulb
+      // grows to the target link's width as the trailing edge catches up.
+      const leaving = lerp(from.w, PILL_HEIGHT, smoothstep(0, 0.4, g));
+      const arriving = lerp(PILL_HEIGHT, to.w, smoothstep(0.6, 1, g));
+      target = {
+        x: left,
+        w: right - left,
+        lw: forward ? leaving : arriving,
+        rw: forward ? arriving : leaving,
+        neck: 1 - THINNING * stretch,
+        swell: stretch,
+        o: 1,
+      };
       return true;
     };
 
@@ -102,21 +187,16 @@ export function DesktopNav() {
 
       const snap = reduceMotion.matches || !hasRendered;
       const alpha = snap ? 1 : 1 - Math.exp(-dt / SMOOTHING_MS);
-      (['x', 'w', 'o', 'h'] as const).forEach((key) => {
+      KEYS.forEach((key) => {
         current[key] += (target[key] - current[key]) * alpha;
       });
 
-      const settled =
-        Math.abs(target.x - current.x) < 0.2 &&
-        Math.abs(target.w - current.w) < 0.2 &&
-        Math.abs(target.o - current.o) < 0.01 &&
-        Math.abs(target.h - current.h) < 0.005;
+      const settled = KEYS.every((key) => Math.abs(target[key] - current[key]) < (key === 'neck' || key === 'swell' || key === 'o' ? 0.005 : 0.2));
       if (settled) Object.assign(current, target);
 
-      pill.style.transform = `translate3d(${current.x}px, 0, 0)`;
-      pill.style.width = `${current.w}px`;
-      pill.style.height = `${PILL_HEIGHT * current.h}px`;
-      pill.style.opacity = String(current.o);
+      const d = outline(current, nav.clientHeight / 2);
+      paths.forEach((p) => p.setAttribute('d', d));
+      glow.style.opacity = String(current.o);
       hasRendered = true;
 
       if (settled && now - lastWake > IDLE_MS) {
@@ -151,11 +231,10 @@ export function DesktopNav() {
 
   return (
     <nav ref={navRef} className="relative hidden items-center gap-0.5 lg:flex xl:gap-1.5" aria-label="Main">
-      <span
-        ref={pillRef}
-        aria-hidden="true"
-        className="nav-glow pointer-events-none absolute inset-y-0 left-0 my-auto h-8 rounded-full bg-primary/15 ring-1 ring-primary/50 opacity-0"
-      />
+      <svg ref={glowRef} aria-hidden="true" className="nav-cell pointer-events-none absolute inset-0 h-full w-full opacity-0">
+        <path className="nav-cell-halo" />
+        <path className="nav-cell-body" />
+      </svg>
       {NAV_ITEMS.map((item, index) => {
         const active = item.href === activeHref;
         return (

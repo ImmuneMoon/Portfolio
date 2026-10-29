@@ -235,6 +235,30 @@
   }
 }
 
+/* The desktop nav's version is an SVG shape (desktop-nav.tsx redraws it), so it can
+   stretch between links like a dividing cell. The body is the tinted fill and edge;
+   the halo is a blurred copy behind it that pulses. */
+.nav-cell { overflow: visible; }
+.nav-cell-body {
+  fill: hsl(var(--primary) / 0.15);
+  stroke: hsl(var(--primary) / 0.5);
+  stroke-width: 1;
+}
+.nav-cell-halo {
+  fill: hsl(var(--primary) / 0.25);
+  stroke: hsl(var(--primary) / 0.7);
+  stroke-width: 4;
+  filter: blur(7px);
+  opacity: 0.35;
+  animation: nav-glow-pulse 2.8s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-cell-halo {
+    animation: none;
+    opacity: 0.6;
+  }
+}
+
 /* ===== Interactive effects ===================================================
    Everything here is decoration: content is fully visible without it, and all
    motion is skipped for people who ask their system for reduced motion. */
