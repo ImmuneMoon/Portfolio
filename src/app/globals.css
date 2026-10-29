@@ -549,6 +549,19 @@
   transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .magnetic > * { flex: 1; }
+/* The pull can slide one button over the other: the one under the mouse goes on top,
+   then a keyboard-focused one. */
+.magnetic { position: relative; }
+.magnetic:focus-within { z-index: 1; }
+.magnetic:hover { z-index: 2; }
+/* The hero buttons stay fully opaque on hover and focus: a solid shade instead of the
+   default see-through hover colour, so nothing shows through them. */
+.hero-cta-primary:is(:hover, :focus-visible) {
+  background-color: color-mix(in oklab, hsl(var(--primary)) 88%, black);
+}
+.hero-cta-secondary:is(:hover, :focus-visible) {
+  background-color: color-mix(in oklab, hsl(var(--secondary)) 85%, hsl(var(--foreground)));
+}
 
 /* Aurora behind the hero: three soft colour blobs drifting slowly. */
 .hero-aurora {

@@ -28,12 +28,12 @@ export function HeroSection() {
             </div>
             <div data-intro="" style={step(2)} className="flex flex-col gap-2 min-[400px]:flex-row">
               <Magnetic>
-                <Button asChild size="lg">
+                <Button asChild size="lg" className="hero-cta-primary">
                   <a href="#projects">View My Work</a>
                 </Button>
               </Magnetic>
               <Magnetic>
-                <Button asChild variant="secondary" size="lg">
+                <Button asChild variant="secondary" size="lg" className="hero-cta-secondary">
                   <a href="#contact">Contact Me</a>
                 </Button>
               </Magnetic>
