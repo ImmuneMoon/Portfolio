@@ -499,8 +499,9 @@
   mix-blend-mode: normal;
 }
 
-/* Heading decode (scramble-text.tsx). The real text keeps its place but turns
-   invisible while the decode plays on a clipped layer over it, so layout never changes. */
+/* Heading decode (scramble-text.tsx). The real text keeps its place but turns invisible
+   while the decode plays. Each decoding letter is pinned over its real letter, so the
+   heading's layout never changes and letters don't slide or wrap. */
 .scramble-text {
   position: relative;
   display: inline-block;
@@ -510,10 +511,17 @@
   position: absolute;
   inset: 0;
   overflow: clip;
+  overflow-clip-margin: 0.15em;
   pointer-events: none;
 }
-/* Letters still decoding: dimmed, with a faint accent glow. */
-.scramble-text-pending {
+.scramble-letter {
+  position: absolute;
+  white-space: pre;
+}
+/* Letters still decoding: dimmed with a faint accent glow, centred on their real letter. */
+.scramble-letter[data-pending] {
+  display: flex;
+  justify-content: center;
   opacity: 0.4;
   text-shadow: 0 0 12px hsl(var(--accent) / 0.6);
 }

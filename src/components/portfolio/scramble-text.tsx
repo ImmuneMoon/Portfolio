@@ -10,47 +10,80 @@ const DURATION = 1400;
 /** How often the unsettled letters change, in ms. */
 const TICK = 70;
 
-/** A random letter in the same case as `ch`, so the shuffle stays close to the real width. */
+/** Where one real letter sits, relative to the heading text's box. */
+type Slot = { ch: string; x: number; y: number; w: number; h: number };
+/** What's on show: how many letters have settled, and the letter in each position. */
+type Decode = { settled: number; letters: string[] };
+
+/** A random letter in the same case as `ch`, so the shuffle stays close to the real shape. */
 function randomLike(ch: string) {
   const pool = ch === ch.toUpperCase() ? UPPER : LOWER;
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
+const isFixed = (ch: string) => /[\s&]/.test(ch);
+
 /**
  * Heading text that decodes, left to right, as it scrolls into view: the letters still
  * to settle cycle slowly and show dimmed. It starts out scrambled while off screen, so
- * the real word never shows first and then breaks up. The real text always holds its
- * place in the layout (it's only hidden while decoding), and the decode is drawn on a
- * clipped layer on top, so nothing around the heading ever moves.
+ * the real word never shows first and then breaks up.
+ *
+ * The real text always holds its place in the layout (it's only hidden while decoding).
+ * Each decoding letter is pinned to where its real letter sits, so a wider random letter
+ * can't push its neighbours around or wrap a word onto another line, and the settled
+ * letters line up exactly with the real text when the decode ends.
  */
 export function ScrambleText({ text }: { text: string }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [state, setState] = useState<{ settled: string; pending: string } | null>(null);
+  const realRef = useRef<HTMLSpanElement>(null);
+  const [slots, setSlots] = useState<Slot[] | null>(null);
+  const [decode, setDecode] = useState<Decode | null>(null);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || !EFFECTS.headingScramble || prefersReducedMotion()) return;
+    const real = realRef.current?.firstChild;
+    if (!el || !(real instanceof Text) || !EFFECTS.headingScramble || prefersReducedMotion()) return;
+
+    const measure = () => {
+      const box = el.getBoundingClientRect();
+      const range = document.createRange();
+      setSlots(
+        text.split("").map((ch, i) => {
+          range.setStart(real, i);
+          range.setEnd(real, i + 1);
+          const r = range.getBoundingClientRect();
+          return { ch, x: r.left - box.left, y: r.top - box.top, w: r.width, h: r.height };
+        })
+      );
+    };
 
     let frame = 0;
     let start = 0;
     let lastTick = 0;
-    let pending = text.split("").map((ch) => (/[\s&]/.test(ch) ? ch : randomLike(ch)));
-    setState({ settled: "", pending: pending.join("") });
+    let letters = text.split("").map((ch) => (isFixed(ch) ? ch : randomLike(ch)));
+
+    // The heading can reflow while it waits off screen, so keep the slots current.
+    const resize = new ResizeObserver(measure);
+    resize.observe(el);
+    document.fonts?.ready.then(measure);
+    measure();
+    setDecode({ settled: 0, letters });
+
     const run = (now: number) => {
       if (!start) start = now;
       const progress = Math.min(1, (now - start) / DURATION);
       if (progress >= 1) {
-        setState(null);
+        resize.disconnect();
+        setDecode(null);
         return;
       }
-      const settled = Math.floor(progress * text.length);
       if (now - lastTick >= TICK) {
         lastTick = now;
         // Change only some letters each tick, so the shuffle shimmers rather than flickers.
-        pending = text.split("").map((ch, i) =>
-          /[\s&]/.test(ch) ? ch : Math.random() < 0.5 ? randomLike(ch) : pending[i]
+        letters = text.split("").map((ch, i) =>
+          isFixed(ch) ? ch : Math.random() < 0.5 ? randomLike(ch) : letters[i]
         );
-        setState({ settled: text.slice(0, settled), pending: pending.slice(settled).join("") });
+        setDecode({ settled: Math.floor(progress * text.length), letters });
       }
       frame = requestAnimationFrame(run);
     };
@@ -67,17 +100,30 @@ export function ScrambleText({ text }: { text: string }) {
     observer.observe(el);
     return () => {
       observer.disconnect();
+      resize.disconnect();
       cancelAnimationFrame(frame);
     };
   }, [text]);
 
+  const showLayer = decode !== null && slots !== null;
+
   return (
-    <span ref={ref} className="scramble-text" data-scrambling={state ? "" : undefined}>
-      <span className="scramble-text-real">{text}</span>
-      {state && (
+    <span ref={ref} className="scramble-text" data-scrambling={showLayer ? "" : undefined}>
+      <span ref={realRef} className="scramble-text-real">{text}</span>
+      {showLayer && (
         <span aria-hidden="true" className="scramble-text-layer">
-          {state.settled}
-          <span className="scramble-text-pending">{state.pending}</span>
+          {slots.map((slot, i) =>
+            slot.ch.trim() === "" ? null : (
+              <span
+                key={i}
+                className="scramble-letter"
+                data-pending={i >= decode.settled && !isFixed(slot.ch) ? "" : undefined}
+                style={{ left: slot.x, top: slot.y, width: slot.w, height: slot.h, lineHeight: `${slot.h}px` }}
+              >
+                {i < decode.settled ? slot.ch : decode.letters[i]}
+              </span>
+            )
+          )}
         </span>
       )}
     </span>

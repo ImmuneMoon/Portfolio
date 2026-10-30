@@ -77,11 +77,13 @@ export function HeroPortrait() {
       <div aria-hidden="true" className="orbit orbit-comet" />
       <div aria-hidden="true" className="orbit orbit-moons inset-8" />
       <div ref={tiltRef} className="hero-tilt">
-        <div
-          className="h-64 w-64 overflow-hidden rounded-full border-4 border-primary shadow-[0_0_40px_hsl(var(--primary)/0.35)]"
-          style={{ backgroundColor: PORTRAIT_BACKGROUND }}
-        >
-          <PortraitSvg className={EFFECTS.wordmarkGlitch ? "portrait glitch h-full w-full" : "portrait h-full w-full"} />
+        {/* The ring is a filled circle behind the portrait, not a CSS border: browsers build a
+            round border from pieces that meet at the centre, and that join can flash as a
+            thin line while the portrait tilts in 3D. */}
+        <div className="h-64 w-64 rounded-full bg-primary p-1 shadow-[0_0_40px_hsl(var(--primary)/0.35)]">
+          <div className="h-full w-full overflow-hidden rounded-full" style={{ backgroundColor: PORTRAIT_BACKGROUND }}>
+            <PortraitSvg className={EFFECTS.wordmarkGlitch ? "portrait glitch h-full w-full" : "portrait h-full w-full"} />
+          </div>
         </div>
       </div>
     </div>
