@@ -12,7 +12,7 @@ const PEEK_MAX = 280;
 
 const guideGroups: { name: string; guides: Project[] }[] = [
   {
-    name: 'Web and Firebase',
+    name: 'Featured',
     guides: [
       {
         name: 'Building Firebase Apps in Google Antigravity IDE',
@@ -32,6 +32,16 @@ const guideGroups: { name: string; guides: Project[] }[] = [
         codeUrl: 'https://github.com/ImmuneMoon/Connecting-a-Custom-Domain-to-Firebase-App-Hosting',
         codeButtonText: 'Read Guide',
         demoUrl: 'https://github.com/ImmuneMoon/Connecting-a-Custom-Domain-to-Firebase-App-Hosting/raw/main/Connecting-a-Custom-Domain-to-Firebase-App-Hosting.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'Windows Migration and System Hardening',
+        description: 'Migrate Windows from an old hard drive to an NVMe SSD without reinstalling, then optimize, back up, and harden the fresh system. A worked example that adapts to any desktop, covering Secure Boot, TPM, BitLocker, and backups.',
+        image: '/images/windows-migration-guide.webp',
+        tags: ['Windows 11', 'SSD Migration', 'Security', 'Backup', 'Documentation'],
+        codeUrl: 'https://github.com/ImmuneMoon/Comprehensive_Windows_Migration_and_System_Hardening_Guide',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Comprehensive_Windows_Migration_and_System_Hardening_Guide/raw/main/Comprehensive_Windows_Migration_and_System_Hardening_Guide.pdf',
         demoButtonText: 'Download PDF'
       },
     ],
@@ -84,16 +94,6 @@ const guideGroups: { name: string; guides: Project[] }[] = [
   {
     name: 'Move and Upgrade',
     guides: [
-      {
-        name: 'Windows Migration and System Hardening',
-        description: 'Migrate Windows from an old hard drive to an NVMe SSD without reinstalling, then optimize, back up, and harden the fresh system. A worked example that adapts to any desktop, covering Secure Boot, TPM, BitLocker, and backups.',
-        image: '/images/windows-migration-guide.webp',
-        tags: ['Windows 11', 'SSD Migration', 'Security', 'Backup', 'Documentation'],
-        codeUrl: 'https://github.com/ImmuneMoon/Comprehensive_Windows_Migration_and_System_Hardening_Guide',
-        codeButtonText: 'Read Guide',
-        demoUrl: 'https://github.com/ImmuneMoon/Comprehensive_Windows_Migration_and_System_Hardening_Guide/raw/main/Comprehensive_Windows_Migration_and_System_Hardening_Guide.pdf',
-        demoButtonText: 'Download PDF'
-      },
       {
         name: 'Remove an Old Windows Install',
         description: 'Remove an old Windows install from a secondary drive and keep your files, even when the new drive is too small to take them. Confirms the new drive boots on its own first, then uses commands that avoid hidden links into your new system.',
