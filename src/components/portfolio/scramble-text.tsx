@@ -17,8 +17,9 @@ function randomLike(ch: string) {
 }
 
 /**
- * Heading text that decodes, left to right, the first time it scrolls into view: the
- * letters still to settle cycle slowly and show dimmed. The real text always holds its
+ * Heading text that decodes, left to right, as it scrolls into view: the letters still
+ * to settle cycle slowly and show dimmed. It starts out scrambled while off screen, so
+ * the real word never shows first and then breaks up. The real text always holds its
  * place in the layout (it's only hidden while decoding), and the decode is drawn on a
  * clipped layer on top, so nothing around the heading ever moves.
  */
@@ -33,7 +34,8 @@ export function ScrambleText({ text }: { text: string }) {
     let frame = 0;
     let start = 0;
     let lastTick = 0;
-    let pending = text.split("");
+    let pending = text.split("").map((ch) => (/[\s&]/.test(ch) ? ch : randomLike(ch)));
+    setState({ settled: "", pending: pending.join("") });
     const run = (now: number) => {
       if (!start) start = now;
       const progress = Math.min(1, (now - start) / DURATION);
@@ -59,7 +61,8 @@ export function ScrambleText({ text }: { text: string }) {
         observer.disconnect();
         frame = requestAnimationFrame(run);
       },
-      { threshold: 0.6 }
+      // Start once the heading is a little way up from the bottom of the screen.
+      { rootMargin: "0px 0px -15% 0px" }
     );
     observer.observe(el);
     return () => {
