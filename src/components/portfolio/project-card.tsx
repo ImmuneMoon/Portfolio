@@ -6,7 +6,7 @@ import { TagBadge } from "@/components/portfolio/tag-badge";
 import { Button } from "@/components/ui/button";
 import React from "react";
 import { cn } from "@/lib/utils";
-import { Eye } from "lucide-react";
+import { Eye, FileDown } from "lucide-react";
 
 export type ProjectLink = {
   url: string;
@@ -112,8 +112,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
         <CardDescription className="grow">{project.description}</CardDescription>
       </CardContent>
-       <CardFooter className="mt-auto pt-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
+       <CardFooter className="@container mt-auto pt-4">
+        <div className="grid grid-cols-1 @xs:grid-cols-2 gap-3 w-full">
             {project.links && project.links.length > 0 ? (
               project.links.map((link, idx) => (
                 <Button 
@@ -122,8 +122,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
                   variant={link.variant || "default"} 
                   className={cn(
                     "w-full",
-                    project.links!.length === 3 && idx === 0 ? "sm:col-span-2" : "sm:col-span-1",
-                    project.links!.length === 1 ? "sm:col-span-2" : ""
+                    project.links!.length === 3 && idx === 0 ? "@xs:col-span-2" : "@xs:col-span-1",
+                    project.links!.length === 1 ? "@xs:col-span-2" : ""
                   )}
                 >
                   <a href={link.url} target="_blank" rel="noopener noreferrer">
@@ -135,7 +135,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             ) : (
               <>
                 {project.codeUrl && (
-                <Button asChild className={cn("w-full", !project.demoUrl ? "sm:col-span-2" : "sm:col-span-1")}>
+                <Button asChild className={cn("w-full", !project.demoUrl ? "@xs:col-span-2" : "@xs:col-span-1")}>
                     <a href={project.codeUrl} target="_blank" rel="noopener noreferrer">
                     <GithubIcon className="mr-2" />
                     {project.codeButtonText || "View Code"}
@@ -143,9 +143,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 </Button>
                 )}
                 {project.demoUrl && (
-                <Button asChild variant="secondary" className={cn("w-full", !project.codeUrl ? "sm:col-span-2" : "sm:col-span-1")}>
+                <Button asChild variant="secondary" className={cn("w-full", !project.codeUrl ? "@xs:col-span-2" : "@xs:col-span-1")}>
                     <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                    {project.demoButtonText?.toLowerCase().includes('video') || project.demoButtonText?.toLowerCase().includes('demo') ? (
+                    {project.demoButtonText?.toLowerCase().includes('pdf') ? (
+                      <FileDown className="mr-2" />
+                    ) : project.demoButtonText?.toLowerCase().includes('video') || project.demoButtonText?.toLowerCase().includes('demo') ? (
                       <VideoIcon className="mr-2" />
                     ) : (
                       <EyeIcon className="mr-2" />
