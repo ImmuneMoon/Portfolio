@@ -127,8 +127,18 @@ const guideGroups: { name: string; guides: Project[] }[] = [
     ],
   },
   {
-    name: 'Repair and Troubleshoot',
+    name: 'Troubleshooting, Repair & Security',
     guides: [
+      {
+        name: 'DNS Rebinding and the NVIDIA App MCP Server',
+        description: 'A security write-up on how DNS rebinding threatens local MCP servers like the one in the NVIDIA App, why CORS does not stop it, and how Host and Origin header checks do. Separates what is confirmed from what is only reported, and shows how to check your own PC. No testing was done against the app.',
+        image: '/images/dns-rebinding-mcp-cover.webp',
+        tags: ['Web Security', 'DNS Rebinding', 'MCP', 'CORS', 'Technical Writing'],
+        codeUrl: 'https://github.com/ImmuneMoon/NVIDIA-App-MCP-DNS-Rebinding-Writeup',
+        codeButtonText: 'Read Write-up',
+        demoUrl: 'https://github.com/ImmuneMoon/NVIDIA-App-MCP-DNS-Rebinding-Writeup/raw/main/NVIDIA-App-MCP-DNS-Rebinding-Writeup.pdf',
+        demoButtonText: 'Download PDF'
+      },
       {
         name: 'Windows System Repair Guide',
         description: 'Step-by-step guide to repairing corrupted or missing Windows system files with DISM, SFC, and CHKDSK, run in the right order so each tool can do its job.',
