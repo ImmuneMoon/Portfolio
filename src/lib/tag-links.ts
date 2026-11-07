@@ -35,6 +35,8 @@ export const TAG_LINKS: Record<string, string> = {
   'Firestore': 'https://firebase.google.com/docs/firestore',
   'Firebase App Hosting': 'https://firebase.google.com/docs/app-hosting',
   'Google Cloud': 'https://cloud.google.com/docs',
+  'Cloud Storage': 'https://cloud.google.com/storage/docs',
+  'Signed URLs': 'https://cloud.google.com/storage/docs/access-control/signed-urls',
   'Cloudflare': 'https://developers.cloudflare.com/',
   'BigCommerce': 'https://developer.bigcommerce.com/docs',
   'Shopify': 'https://help.shopify.com/',
