@@ -15,7 +15,7 @@ export function SpotlightTracker() {
 
     let active: HTMLElement | null = null;
     let frame = 0;
-    let last: PointerEvent | null = null;
+    let last: { clientX: number; clientY: number; pointerType: string; target: EventTarget | null } | null = null;
 
     const clear = () => {
       if (active) active.style.setProperty('--spot-on', '0');
@@ -42,23 +42,35 @@ export function SpotlightTracker() {
       last = e;
       if (!frame) frame = requestAnimationFrame(apply);
     };
-    const onRelease = (e: PointerEvent) => {
-      if (e.pointerType === 'mouse') return;
+    // Touch-move events keep coming while the page scrolls, so a moving finger is followed
+    // even after the browser cancels the press. Lifting the finger ends it.
+    const onTouch = (e: TouchEvent) => {
+      const t = e.touches[0];
+      if (!t) return;
+      last = { clientX: t.clientX, clientY: t.clientY, pointerType: 'touch', target: null };
+      if (!frame) frame = requestAnimationFrame(apply);
+    };
+    const onTouchEnd = (e: TouchEvent) => {
+      if (e.touches.length) return;
       last = null;
       clear();
     };
 
     window.addEventListener('pointermove', onMove, { passive: true });
     window.addEventListener('pointerdown', onMove, { passive: true });
-    window.addEventListener('pointerup', onRelease);
-    window.addEventListener('pointercancel', onRelease);
+    window.addEventListener('touchstart', onTouch, { passive: true });
+    window.addEventListener('touchmove', onTouch, { passive: true });
+    window.addEventListener('touchend', onTouchEnd);
+    window.addEventListener('touchcancel', onTouchEnd);
     document.addEventListener('pointerleave', clear);
     window.addEventListener('blur', clear);
     return () => {
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerdown', onMove);
-      window.removeEventListener('pointerup', onRelease);
-      window.removeEventListener('pointercancel', onRelease);
+      window.removeEventListener('touchstart', onTouch);
+      window.removeEventListener('touchmove', onTouch);
+      window.removeEventListener('touchend', onTouchEnd);
+      window.removeEventListener('touchcancel', onTouchEnd);
       document.removeEventListener('pointerleave', clear);
       window.removeEventListener('blur', clear);
       if (frame) cancelAnimationFrame(frame);

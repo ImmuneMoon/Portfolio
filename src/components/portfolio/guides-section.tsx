@@ -94,6 +94,26 @@ const guideGroups: { name: string; featured?: boolean; guides: Project[] }[] = [
         demoButtonText: 'Download PDF'
       },
       {
+        name: 'Getting Started with DevOps',
+        description: 'A map of the skills behind building, shipping and running software reliably, and how DevOps differs from SRE. Starts with Linux, Git, networking and scripting, then CI/CD with GitHub Actions, Docker and an introduction to Kubernetes, each with a small example to run, plus Terraform and OpenTofu, and monitoring.',
+        image: '/images/devops-cover.webp',
+        tags: ['DevOps', 'Linux', 'GitHub Actions', 'Docker', 'Kubernetes'],
+        codeUrl: 'https://github.com/ImmuneMoon/Getting-Started-with-DevOps',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Getting-Started-with-DevOps/raw/main/Getting-Started-with-DevOps.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'Learn Data Science',
+        description: 'A plain-language route into working with data, in order: Python, SQL, statistics, then NumPy, pandas, Jupyter and matplotlib, then machine learning basics. Includes a first notebook and a first model you can run, how analysts, data scientists and machine learning engineers differ, free courses, datasets and project ideas.',
+        image: '/images/data-science-cover.webp',
+        tags: ['Python', 'SQL', 'pandas', 'Jupyter', 'Machine Learning'],
+        codeUrl: 'https://github.com/ImmuneMoon/Learn-Data-Science',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Learn-Data-Science/raw/main/Learn-Data-Science.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
         name: 'Computer Science Fundamentals',
         description: 'The computer science working developers actually use, with lectures and videos for each topic: data structures and algorithms with JavaScript and Python equivalents, Big O, recursion, the math that matters, design patterns and where to go next. Led by Harvard\'s CS50 and NeetCode\'s roadmap.',
         image: '/images/cs-fundamentals-cover.webp',
@@ -149,6 +169,16 @@ const guideGroups: { name: string; featured?: boolean; guides: Project[] }[] = [
         demoButtonText: 'Download PDF'
       },
       {
+        name: 'IT Support Careers and Certifications',
+        description: 'Starting a career in IT: the path from help desk to desktop support and system administration, the Google IT Support certificate and CompTIA A+ compared, what to take next, free study resources like Professor Messer\'s video courses, and a homelab practice list.',
+        image: '/images/it-support-cover.webp',
+        tags: ['IT Support', 'Google IT Support', 'CompTIA A+', 'System Administration'],
+        codeUrl: 'https://github.com/ImmuneMoon/IT-Support-Careers-and-Certifications',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/IT-Support-Careers-and-Certifications/raw/main/IT-Support-Careers-and-Certifications.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
         name: 'Open Source and Developer Communities',
         description: 'Learning to code alongside other people: finding a beginner-friendly project and issue, your first contribution step by step from fork to pull request with Git and the GitHub CLI, developer communities, asking good questions, and using AI coding tools responsibly.',
         image: '/images/open-source-cover.webp',
@@ -156,6 +186,61 @@ const guideGroups: { name: string; featured?: boolean; guides: Project[] }[] = [
         codeUrl: 'https://github.com/ImmuneMoon/Open-Source-and-Developer-Communities',
         codeButtonText: 'Read Guide',
         demoUrl: 'https://github.com/ImmuneMoon/Open-Source-and-Developer-Communities/raw/main/Open-Source-and-Developer-Communities.pdf',
+        demoButtonText: 'Download PDF'
+      },
+    ],
+  },
+  {
+    name: 'Developer Tools',
+    guides: [
+      {
+        name: 'Python and Node Tool Environments on Windows',
+        description: 'Set up Python and Node.js on Windows so every tool gets its own tidy space: the Python install manager and the Microsoft Store shortcut that hijacks the python command, a virtual environment per tool, requirements files, npm and Node version managers, and a simple folder layout for personal tools.',
+        image: '/images/tool-environments-cover.webp',
+        tags: ['Python', 'Node.js', 'Virtual Environments', 'npm', 'Windows'],
+        codeUrl: 'https://github.com/ImmuneMoon/Python-and-Node-Tool-Environments',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Python-and-Node-Tool-Environments/raw/main/Python-and-Node-Tool-Environments.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'Publishing to GitHub with the GitHub CLI',
+        description: 'Put a folder on your PC online as a GitHub repository from the terminal, then check that GitHub matches what you pushed. Covers signing in, committing with GitHub\'s private noreply email, creating a repo with a description and topics in one command, keeping secrets out, releases, line endings and binary files.',
+        image: '/images/publishing-github-cover.webp',
+        tags: ['GitHub CLI', 'Git', 'GitHub', 'GitHub Releases'],
+        codeUrl: 'https://github.com/ImmuneMoon/Publishing-to-GitHub-with-gh',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Publishing-to-GitHub-with-gh/raw/main/Publishing-to-GitHub-with-gh.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'Packaging Windows Apps with PyInstaller and Inno Setup',
+        description: 'From a Python script or any app folder to files you can hand to other people: PyInstaller builds from a one-line command to a repeatable spec file, bundled data and icons, why antivirus sometimes flags one-file builds, testing on a clean machine, and an Inno Setup installer with signing and troubleshooting.',
+        image: '/images/packaging-apps-cover.webp',
+        tags: ['Python', 'PyInstaller', 'Inno Setup', 'Code Signing', 'Windows'],
+        codeUrl: 'https://github.com/ImmuneMoon/Packaging-Windows-Apps-PyInstaller-Inno-Setup',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Packaging-Windows-Apps-PyInstaller-Inno-Setup/raw/main/Packaging-Windows-Apps-PyInstaller-Inno-Setup.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'PDF and Document Tools',
+        description: 'Everyday document jobs from the command line or a short script, with free tools: reading text from PDFs, making scanned PDFs searchable with OCR, Markdown to PDF with headless Chrome and page numbers, Word to PDF, and working with Word documents in code.',
+        image: '/images/document-tools-cover.webp',
+        tags: ['Python', 'PDF', 'OCR', 'Markdown', 'Headless Chrome'],
+        codeUrl: 'https://github.com/ImmuneMoon/PDF-and-Document-Tools',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/PDF-and-Document-Tools/raw/main/PDF-and-Document-Tools.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'Transcribing Videos with yt-dlp and faster-whisper',
+        description: 'Turn videos into timestamped, searchable text on your own PC, with no audio uploaded anywhere: downloading just the audio with yt-dlp, when you need FFmpeg, transcribing with faster-whisper, choosing a model and CPU or GPU, and the privacy and copyright side of it.',
+        image: '/images/transcribing-cover.webp',
+        tags: ['yt-dlp', 'faster-whisper', 'Python', 'FFmpeg', 'Privacy'],
+        codeUrl: 'https://github.com/ImmuneMoon/Transcribing-Videos-with-yt-dlp-and-faster-whisper',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Transcribing-Videos-with-yt-dlp-and-faster-whisper/raw/main/Transcribing-Videos-with-yt-dlp-and-faster-whisper.pdf',
         demoButtonText: 'Download PDF'
       },
     ],
@@ -194,6 +279,16 @@ const guideGroups: { name: string; featured?: boolean; guides: Project[] }[] = [
         demoButtonText: 'Download PDF'
       },
       {
+        name: 'Safer Package Installs with npm and pip',
+        description: 'How a poisoned package can reach your PC and the habits that make it much less likely: install scripts, typosquatting, lockfiles, pinned versions and hashes, waiting before using new releases, and auditing, for both npm and pip. Includes a case study of the self-spreading Shai-Hulud worms and what to do if something slips through.',
+        image: '/images/safer-installs-cover.webp',
+        tags: ['npm', 'pip', 'Supply Chain Security', 'Security'],
+        codeUrl: 'https://github.com/ImmuneMoon/Safer-Package-Installs-npm-and-pip',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Safer-Package-Installs-npm-and-pip/raw/main/Safer-Package-Installs-npm-and-pip.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
         name: 'iPhone Messages and AI Privacy',
         description: 'What Siri, Apple Intelligence and the ChatGPT extension can see of your messages, and the iCloud backup setting that matters most. Covers Advanced Data Protection and how iPhone and Android messages compare, all from Apple\'s own documentation.',
         image: '/images/iphone-privacy-cover.webp',
@@ -211,6 +306,41 @@ const guideGroups: { name: string; featured?: boolean; guides: Project[] }[] = [
         codeUrl: 'https://github.com/ImmuneMoon/Android-Gemini-Messages-Privacy',
         codeButtonText: 'Read Guide',
         demoUrl: 'https://github.com/ImmuneMoon/Android-Gemini-Messages-Privacy/raw/main/Android-Gemini-Messages-Privacy.pdf',
+        demoButtonText: 'Download PDF'
+      },
+    ],
+  },
+  {
+    name: '3D & Making',
+    guides: [
+      {
+        name: 'Learn 3D Modeling',
+        description: 'From what a vertex is to building, texturing, animating and exporting your own models in Blender, which is free. Compares the main ways of modeling and the software options, then walks through a first hour modeling a mug, the fundamentals, sculpting, rigging, rendering, and exporting for games and 3D printing.',
+        image: '/images/3d-modeling-cover.webp',
+        tags: ['Blender', '3D Modeling', 'Digital Sculpting', '3D Printing'],
+        codeUrl: 'https://github.com/ImmuneMoon/Learn-3D-Modeling',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Learn-3D-Modeling/raw/main/Learn-3D-Modeling.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: '3D Printing: Getting Started',
+        description: 'From what a 3D printer is to printing, tuning and fixing your own parts: how FDM and resin printers work, what to look for in a first printer, safety with fumes, heat and resin, filaments and drying them, slicers, calibration, finding and designing models, and troubleshooting.',
+        image: '/images/3d-printing-cover.webp',
+        tags: ['3D Printing', 'FDM', 'Resin Printing', 'Slicers'],
+        codeUrl: 'https://github.com/ImmuneMoon/3D-Printing-Getting-Started',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/3D-Printing-Getting-Started/raw/main/3D-Printing-Getting-Started.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'Batch Image and 3D Tools: GIMP, Blender and Pillow',
+        description: 'Run Pillow, GIMP and Blender from scripts so one command can process a whole folder: resizing, converting, Windows icons and game textures with Pillow, GIMP 3 with Python-Fu and no window, and Blender for batch renders and add-ons. Always on copies, never your originals.',
+        image: '/images/batch-tools-cover.webp',
+        tags: ['Pillow', 'GIMP', 'Blender', 'Python'],
+        codeUrl: 'https://github.com/ImmuneMoon/Batch-Image-and-3D-Tools-GIMP-Blender-Pillow',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Batch-Image-and-3D-Tools-GIMP-Blender-Pillow/raw/main/Batch-Image-and-3D-Tools-GIMP-Blender-Pillow.pdf',
         demoButtonText: 'Download PDF'
       },
     ],
@@ -334,13 +464,21 @@ const guideGroups: { name: string; featured?: boolean; guides: Project[] }[] = [
 
 const guideCount = guideGroups.reduce((total, group) => total + group.guides.length, 0);
 
-/** Collapsed view: the whole first row of cards, plus the top of the next row. */
+/** How much of the first card shows while collapsed on phones, as a fraction of its height. */
+const MOBILE_PEEK_FRACTION = 0.55;
+
+/** Collapsed view: the whole first row of cards, plus the top of the next row. On phones,
+    where cards stack one per row, just the top of the first card. */
 function measureGuides(content: HTMLElement) {
   const cards = Array.from(content.querySelectorAll<HTMLElement>('[data-guide]'));
   if (!cards.length) return { peek: null, data: { rowOneCount: 0 } };
   const firstTop = cards[0].offsetTop;
   const rowTwoIndex = cards.findIndex((card) => card.offsetTop > firstTop + 1);
   if (rowTwoIndex < 0) return { peek: null, data: { rowOneCount: cards.length } };
+  if (rowTwoIndex === 1) {
+    // The first card is cut off too, so nothing stays reachable behind the fade.
+    return { peek: Math.round(firstTop + cards[0].offsetHeight * MOBILE_PEEK_FRACTION), data: { rowOneCount: 0 } };
+  }
   const rowTwo = cards[rowTwoIndex];
   return {
     peek: Math.round(rowTwo.offsetTop + Math.min(rowTwo.offsetHeight * PEEK_FRACTION, PEEK_MAX)),

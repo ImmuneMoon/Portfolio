@@ -18,7 +18,7 @@ export function Magnetic({ children }: { children: ReactNode }) {
     if (!el || !EFFECTS.magneticButtons || prefersReducedMotion()) return;
 
     let frame = 0;
-    let last: PointerEvent | null = null;
+    let last: { clientX: number; clientY: number; pointerType: string; target: EventTarget | null } | null = null;
     const apply = () => {
       frame = 0;
       if (!last) return;
@@ -39,20 +39,32 @@ export function Magnetic({ children }: { children: ReactNode }) {
       last = e;
       if (!frame) frame = requestAnimationFrame(apply);
     };
-    const onRelease = (e: PointerEvent) => {
-      if (e.pointerType === "mouse") return;
+    // Touch-move events keep coming while the page scrolls, so a moving finger is followed
+    // even after the browser cancels the press. Lifting the finger ends it.
+    const onTouch = (e: TouchEvent) => {
+      const t = e.touches[0];
+      if (!t) return;
+      last = { clientX: t.clientX, clientY: t.clientY, pointerType: "touch", target: null };
+      if (!frame) frame = requestAnimationFrame(apply);
+    };
+    const onTouchEnd = (e: TouchEvent) => {
+      if (e.touches.length) return;
       last = null;
       el.style.transform = "";
     };
     window.addEventListener("pointermove", onMove, { passive: true });
     window.addEventListener("pointerdown", onMove, { passive: true });
-    window.addEventListener("pointerup", onRelease);
-    window.addEventListener("pointercancel", onRelease);
+    window.addEventListener("touchstart", onTouch, { passive: true });
+    window.addEventListener("touchmove", onTouch, { passive: true });
+    window.addEventListener("touchend", onTouchEnd);
+    window.addEventListener("touchcancel", onTouchEnd);
     return () => {
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerdown", onMove);
-      window.removeEventListener("pointerup", onRelease);
-      window.removeEventListener("pointercancel", onRelease);
+      window.removeEventListener("touchstart", onTouch);
+      window.removeEventListener("touchmove", onTouch);
+      window.removeEventListener("touchend", onTouchEnd);
+      window.removeEventListener("touchcancel", onTouchEnd);
       if (frame) cancelAnimationFrame(frame);
     };
   }, []);

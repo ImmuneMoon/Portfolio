@@ -6,13 +6,14 @@
 
 /* hover: styles follow the input being used, not the device, since touchscreen laptops have
    both. input-mode.tsx marks the page data-input="touch" after a touch and clears it when
-   the mouse moves. With a mouse they show on hover; with touch they show only while a
-   finger is pressing (:active), so a tap never leaves anything stuck looking hovered. */
+   the mouse moves. With a mouse they show on hover; with touch they show on whatever is
+   under the finger (data-touched, set by input-mode.tsx), following it as it slides and
+   clearing when it lifts, so a tap never leaves anything stuck looking hovered. */
 @custom-variant hover {
   :root:not([data-input="touch"]) &:hover {
     @slot;
   }
-  :root[data-input="touch"] &:active {
+  :root[data-input="touch"] &[data-touched] {
     @slot;
   }
 }
@@ -440,8 +441,8 @@
   background: linear-gradient(115deg, transparent 30%, hsl(0 0% 100% / 0.35) 50%, transparent 70%);
   translate: -120% 0;
 }
-/* Hover effects with a mouse. With touch, the same effects show only while a finger is
-   pressing, then let go with it (see the hover variant at the top). */
+/* Hover effects with a mouse. With touch, the same effects show on whatever is under the
+   finger and clear when it lifts (see the hover variant at the top). */
 @media (prefers-reduced-motion: no-preference) {
   :root:not([data-input="touch"]) .btn-fx:hover {
     translate: 0 -2px;
@@ -461,19 +462,19 @@
   }
 }
 @media (prefers-reduced-motion: no-preference) {
-  :root[data-input="touch"] .btn-fx:active {
+  :root[data-input="touch"] .btn-fx[data-touched] {
     translate: 0 -2px;
     box-shadow: 0 8px 22px -8px hsl(var(--primary) / 0.65), 0 0 0 1px hsl(var(--primary) / 0.25);
   }
-  :root[data-input="touch"] .btn-fx:active::after {
+  :root[data-input="touch"] .btn-fx[data-touched]::after {
     translate: 120% 0;
     transition: translate 0.7s ease;
   }
-  :root[data-input="touch"] .btn-fx:active svg {
+  :root[data-input="touch"] .btn-fx[data-touched] svg {
     animation: btn-icon-nudge 0.6s ease;
   }
   /* Icon-only ghost buttons (theme toggle, social links) glow without lifting as much. */
-  :root[data-input="touch"] .btn-fx-ghost:active {
+  :root[data-input="touch"] .btn-fx-ghost[data-touched] {
     translate: 0 -1px;
     box-shadow: 0 0 16px -4px hsl(var(--primary) / 0.55);
   }
@@ -509,7 +510,7 @@
   border-color: hsl(var(--primary) / 0.5);
   box-shadow: 0 0 12px -3px hsl(var(--primary) / 0.55);
 }
-:root[data-input="touch"] .tag-link:active {
+:root[data-input="touch"] .tag-link[data-touched] {
   color: hsl(var(--primary));
   border-color: hsl(var(--primary) / 0.5);
   box-shadow: 0 0 12px -3px hsl(var(--primary) / 0.55);
@@ -518,7 +519,7 @@
   :root:not([data-input="touch"]) .tag-link:hover { translate: 0 -1px; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  :root[data-input="touch"] .tag-link:active { translate: 0 -1px; }
+  :root[data-input="touch"] .tag-link[data-touched] { translate: 0 -1px; }
 }
 
 /* Certification cards open their course page; the title shows it on hover. */
@@ -529,8 +530,8 @@
 .cert-link:focus-visible .cert-link-icon { opacity: 1; translate: 2px -2px; }
 :root:not([data-input="touch"]) .cert-card:hover .cert-link { color: hsl(var(--primary)); }
 :root:not([data-input="touch"]) .cert-card:hover .cert-link-icon { opacity: 1; translate: 2px -2px; }
-:root[data-input="touch"] .cert-card:active .cert-link { color: hsl(var(--primary)); }
-:root[data-input="touch"] .cert-card:active .cert-link-icon { opacity: 1; translate: 2px -2px; }
+:root[data-input="touch"] .cert-card[data-touched] .cert-link { color: hsl(var(--primary)); }
+:root[data-input="touch"] .cert-card[data-touched] .cert-link-icon { opacity: 1; translate: 2px -2px; }
 .cert-link:focus-visible { outline: none; }
 .cert-link:focus-visible::after { border-radius: inherit; box-shadow: 0 0 0 2px hsl(var(--ring)); }
 
@@ -610,7 +611,7 @@
 .magnetic { position: relative; }
 .magnetic:focus-within { z-index: 1; }
 :root:not([data-input="touch"]) .magnetic:hover { z-index: 2; }
-:root[data-input="touch"] .magnetic:active { z-index: 2; }
+:root[data-input="touch"] .magnetic[data-touched] { z-index: 2; }
 /* The hero buttons stay fully opaque on hover and focus: a solid shade instead of the
    default see-through hover colour, so nothing shows through them. */
 .hero-cta-primary:focus-visible {
@@ -625,10 +626,10 @@
 :root:not([data-input="touch"]) .hero-cta-secondary:hover {
   background-color: color-mix(in oklab, hsl(var(--secondary)) 85%, hsl(var(--foreground)));
 }
-:root[data-input="touch"] .hero-cta-primary:active {
+:root[data-input="touch"] .hero-cta-primary[data-touched] {
   background-color: color-mix(in oklab, hsl(var(--primary)) 88%, black);
 }
-:root[data-input="touch"] .hero-cta-secondary:active {
+:root[data-input="touch"] .hero-cta-secondary[data-touched] {
   background-color: color-mix(in oklab, hsl(var(--secondary)) 85%, hsl(var(--foreground)));
 }
 
@@ -719,7 +720,7 @@
   background: conic-gradient(transparent 0 68%, hsl(var(--accent) / 0.9) 84%, hsl(var(--primary)) 93%, transparent 100%);
 }
 :root:not([data-input="touch"]) :hover > .beam { opacity: 1; }
-:root[data-input="touch"] :active > .beam { opacity: 1; }
+:root[data-input="touch"] [data-touched] > .beam { opacity: 1; }
 @keyframes beam-spin { to { rotate: 1turn; } }
 @media (prefers-reduced-motion: no-preference) {
   .beam::before {

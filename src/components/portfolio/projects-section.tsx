@@ -164,6 +164,8 @@ export function ProjectsSection() {
   };
 
   const teaserCount = 4;
+  /** On phones, where cards stack one per row, fewer show before Show More. */
+  const mobileTeaserCount = 1;
   const teaserProjects = initialProjects.slice(0, teaserCount);
   const moreProjects = initialProjects.slice(teaserCount);
 
@@ -181,11 +183,13 @@ export function ProjectsSection() {
 
         <div className="relative mx-auto mt-12" style={{ overflowAnchor: 'none' }}>
           <div data-reveal-group="" className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-            {teaserProjects.map((project) => (
-              <ProjectCard
+            {teaserProjects.map((project, index) => (
+              <div
                 key={project.name}
-                project={project}
-              />
+                className={cn("h-full", !isOpen && index >= mobileTeaserCount && "max-md:hidden")}
+              >
+                <ProjectCard project={project} />
+              </div>
             ))}
           </div>
 

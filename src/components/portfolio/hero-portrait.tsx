@@ -35,7 +35,7 @@ export function HeroPortrait() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     let frame = 0;
-    let last: PointerEvent | null = null;
+    let last: { clientX: number; clientY: number; pointerType: string; target: EventTarget | null } | null = null;
 
     const apply = () => {
       frame = 0;
@@ -57,8 +57,20 @@ export function HeroPortrait() {
       last = e;
       if (!frame) frame = requestAnimationFrame(apply);
     };
-    const onRelease = (e: PointerEvent) => {
-      if (e.pointerType !== 'mouse') reset();
+    // Touch-move events keep coming while the page scrolls, so a moving finger is followed
+    // even after the browser cancels the press. Lifting the finger ends it.
+    const onTouch = (e: TouchEvent) => {
+      const t = e.touches[0];
+      if (!t) return;
+      last = { clientX: t.clientX, clientY: t.clientY, pointerType: 'touch', target: null };
+      if (!frame) frame = requestAnimationFrame(apply);
+    };
+    const onTouchEnd = (e: TouchEvent) => {
+      if (!e.touches.length) reset();
+    };
+    // Only a mouse leaving the hero resets; a touch ends when the finger lifts.
+    const onLeave = (e: PointerEvent) => {
+      if (e.pointerType === 'mouse') reset();
     };
     const reset = () => {
       last = null;
@@ -67,15 +79,19 @@ export function HeroPortrait() {
 
     hero.addEventListener('pointermove', onMove, { passive: true });
     hero.addEventListener('pointerdown', onMove, { passive: true });
-    hero.addEventListener('pointerup', onRelease);
-    hero.addEventListener('pointercancel', onRelease);
-    hero.addEventListener('pointerleave', reset);
+    hero.addEventListener('touchstart', onTouch, { passive: true });
+    hero.addEventListener('touchmove', onTouch, { passive: true });
+    hero.addEventListener('touchend', onTouchEnd);
+    hero.addEventListener('touchcancel', onTouchEnd);
+    hero.addEventListener('pointerleave', onLeave);
     return () => {
       hero.removeEventListener('pointermove', onMove);
       hero.removeEventListener('pointerdown', onMove);
-      hero.removeEventListener('pointerup', onRelease);
-      hero.removeEventListener('pointercancel', onRelease);
-      hero.removeEventListener('pointerleave', reset);
+      hero.removeEventListener('touchstart', onTouch);
+      hero.removeEventListener('touchmove', onTouch);
+      hero.removeEventListener('touchend', onTouchEnd);
+      hero.removeEventListener('touchcancel', onTouchEnd);
+      hero.removeEventListener('pointerleave', onLeave);
       if (frame) cancelAnimationFrame(frame);
     };
   }, []);

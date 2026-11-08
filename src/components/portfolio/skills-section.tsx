@@ -362,6 +362,8 @@ export function SkillsSection() {
   };
 
   const teaserCount = 2;
+  /** On phones, where the cards take more height, one category shows before Show More. */
+  const mobileTeaserCount = 1;
   const teaserCategories = skillCategories.slice(0, teaserCount);
   const moreCategories = skillCategories.slice(teaserCount);
 
@@ -382,8 +384,11 @@ export function SkillsSection() {
 
         <div className="relative mx-auto mt-16" style={{ overflowAnchor: 'none' }}>
           <div className="space-y-12">
-            {teaserCategories.map((category) => (
-              <div key={category.name} className="space-y-6">
+            {teaserCategories.map((category, index) => (
+              <div
+                key={category.name}
+                className={!isOpen && index >= mobileTeaserCount ? "space-y-6 max-md:hidden" : "space-y-6"}
+              >
                 <div className="flex items-center gap-4 w-full">
                   <h3 className="font-headline text-xl font-bold text-primary/80 whitespace-nowrap">
                     {category.name}
