@@ -52,10 +52,13 @@ export function HeroPortrait() {
       tilt.style.setProperty('--look-y', `${(dy * MAX_LOOK).toFixed(2)}px`);
     };
 
+    // A mouse is followed as it moves over the hero; a finger while it's pressed there.
     const onMove = (e: PointerEvent) => {
-      if (e.pointerType !== 'mouse') return;
       last = e;
       if (!frame) frame = requestAnimationFrame(apply);
+    };
+    const onRelease = (e: PointerEvent) => {
+      if (e.pointerType !== 'mouse') reset();
     };
     const reset = () => {
       last = null;
@@ -63,9 +66,15 @@ export function HeroPortrait() {
     };
 
     hero.addEventListener('pointermove', onMove, { passive: true });
+    hero.addEventListener('pointerdown', onMove, { passive: true });
+    hero.addEventListener('pointerup', onRelease);
+    hero.addEventListener('pointercancel', onRelease);
     hero.addEventListener('pointerleave', reset);
     return () => {
       hero.removeEventListener('pointermove', onMove);
+      hero.removeEventListener('pointerdown', onMove);
+      hero.removeEventListener('pointerup', onRelease);
+      hero.removeEventListener('pointercancel', onRelease);
       hero.removeEventListener('pointerleave', reset);
       if (frame) cancelAnimationFrame(frame);
     };

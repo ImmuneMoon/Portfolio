@@ -8,7 +8,8 @@ const REACH = 70;
 /** Furthest the element moves toward the cursor, in px. */
 const MAX_PULL = 12;
 
-/** Wraps a button so it leans toward the mouse as the cursor approaches. */
+/** Wraps a button so it leans toward the pointer as it approaches: a mouse as it moves,
+    a finger while it's pressed nearby. It settles back when the finger lifts. */
 export function Magnetic({ children }: { children: ReactNode }) {
   const ref = useRef<HTMLSpanElement>(null);
 
@@ -35,13 +36,23 @@ export function Magnetic({ children }: { children: ReactNode }) {
       el.style.transform = `translate(${clamp(dx * 0.35 * pull)}px, ${clamp(dy * 0.35 * pull)}px)`;
     };
     const onMove = (e: PointerEvent) => {
-      if (e.pointerType !== "mouse") return;
       last = e;
       if (!frame) frame = requestAnimationFrame(apply);
     };
+    const onRelease = (e: PointerEvent) => {
+      if (e.pointerType === "mouse") return;
+      last = null;
+      el.style.transform = "";
+    };
     window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("pointerdown", onMove, { passive: true });
+    window.addEventListener("pointerup", onRelease);
+    window.addEventListener("pointercancel", onRelease);
     return () => {
       window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerdown", onMove);
+      window.removeEventListener("pointerup", onRelease);
+      window.removeEventListener("pointercancel", onRelease);
       if (frame) cancelAnimationFrame(frame);
     };
   }, []);

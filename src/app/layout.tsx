@@ -4,6 +4,7 @@ import './globals.css';
 import { ThemeProvider } from "@/components/portfolio/theme-provider";
 import { SpotlightTracker } from "@/components/portfolio/spotlight-tracker";
 import { ExternalLinkGuard } from "@/components/portfolio/external-link-guard";
+import { InputMode } from "@/components/portfolio/input-mode";
 import { FirebaseAnalytics } from "@/components/firebase-analytics";
 
 const inter = Inter({
@@ -77,6 +78,7 @@ export default function RootLayout({
         <FirebaseAnalytics />
         <SpotlightTracker />
         <ExternalLinkGuard />
+        <InputMode />
       </body>
     </html>
   );
