@@ -94,8 +94,9 @@ export function ScrambleText({ text }: { text: string }) {
         observer.disconnect();
         frame = requestAnimationFrame(run);
       },
-      // Start once the heading is a little way up from the bottom of the screen.
-      { rootMargin: "0px 0px -15% 0px" }
+      // Start as soon as the whole heading is on screen, wherever it sits, so headings
+      // already in view on tall screens decode without waiting for a scroll.
+      { threshold: 1 }
     );
     observer.observe(el);
     return () => {

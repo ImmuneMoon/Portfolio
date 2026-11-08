@@ -27,6 +27,9 @@ export const SECTION_ITEMS = NAV_ITEMS.map((item, index) => ({ item, index })).f
 const LINE_OFFSET = 8;
 /** How far through a section the highlight starts heading for the next link (0 = immediately). */
 export const GLIDE_START = 0.35;
+/** The glide never starts further than this from the next section, in screen heights, so in
+    a long section the highlight stays put until the next section is actually coming up. */
+const GLIDE_MAX_SCREENS = 1.5;
 
 export const smoothstep = (edge0: number, edge1: number, x: number) => {
   const t = Math.min(1, Math.max(0, (x - edge0) / (edge1 - edge0)));
@@ -68,7 +71,8 @@ export function readSectionProgress(): SectionProgress {
   let glide = 0;
   if (next !== current && !Number.isNaN(tops[next])) {
     const span = tops[next] - tops[current];
-    glide = span > 0 ? smoothstep(GLIDE_START, 1, (readingLine - tops[current]) / span) : 0;
+    const distance = Math.min(span * (1 - GLIDE_START), window.innerHeight * GLIDE_MAX_SCREENS);
+    glide = distance > 0 ? smoothstep(0, 1, 1 - (tops[next] - readingLine) / distance) : 0;
   }
   return { current, next, glide };
 }

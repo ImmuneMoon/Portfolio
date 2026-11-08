@@ -1,6 +1,7 @@
 'use client';
 
 import { ProjectCard, type Project } from "@/components/portfolio/project-card";
+import { GuideGroup } from "@/components/portfolio/guide-group";
 import { ShowMoreButton } from "@/components/portfolio/show-more-button";
 import { usePeekCollapse } from "@/components/portfolio/use-peek-collapse";
 import { ScrambleText } from "@/components/portfolio/scramble-text";
@@ -10,9 +11,12 @@ const PEEK_FRACTION = 0.4;
 /** Upper limit on the peek in pixels, so tall single-column cards don't show too much. */
 const PEEK_MAX = 280;
 
-const guideGroups: { name: string; guides: Project[] }[] = [
+/** Groups of guides. The featured group shows as large cards; the rest show as a
+    detailed list, one guide per row. */
+const guideGroups: { name: string; featured?: boolean; guides: Project[] }[] = [
   {
     name: 'Featured',
+    featured: true,
     guides: [
       {
         name: 'Building Firebase Apps in Google Antigravity IDE',
@@ -47,7 +51,172 @@ const guideGroups: { name: string; guides: Project[] }[] = [
     ],
   },
   {
-    name: 'Install and Set Up',
+    name: 'Learn to Code',
+    guides: [
+      {
+        name: 'Learn Web Development: Start Here',
+        description: 'The first stop in a set of free web development guides. Explains how a web app works in plain terms, the front-end, back-end and full-stack paths and how to pick one, five steps from your first line of code to your first job, free curricula compared, and a beginner\'s toolkit.',
+        image: '/images/learn-web-dev-cover.webp',
+        tags: ['Web Development', 'HTML', 'CSS', 'JavaScript'],
+        codeUrl: 'https://github.com/ImmuneMoon/Learn-Web-Development-Start-Here',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Learn-Web-Development-Start-Here/raw/main/Learn-Web-Development-Start-Here.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'Learn Front-End Web Development',
+        description: 'A learning path for the part of the web that runs in the browser, in order: HTML, CSS, a CSS framework, JavaScript, then Node.js, Vite, TypeScript, React, Next.js, Vue and Angular. Also covers what beginners often skip: accessibility, responsive design, developer tools and web performance, with free resources and project ideas.',
+        image: '/images/front-end-cover.webp',
+        tags: ['HTML', 'CSS', 'JavaScript', 'React', 'Accessibility'],
+        codeUrl: 'https://github.com/ImmuneMoon/Learn-Front-End-Web-Development',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Learn-Front-End-Web-Development/raw/main/Learn-Front-End-Web-Development.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'Learn Back-End Web Development',
+        description: 'A plain-language route into the server side of the web: Python, Java, SQL, Flask or Django, and Git, with Node.js and Express as an alternative. Covers HTTP, REST APIs and JSON, databases, sign-in, web security, secrets, testing and deployment.',
+        image: '/images/back-end-cover.webp',
+        tags: ['Python', 'SQL', 'Node.js', 'REST APIs', 'Web Security'],
+        codeUrl: 'https://github.com/ImmuneMoon/Learn-Back-End-Web-Development',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Learn-Back-End-Web-Development/raw/main/Learn-Back-End-Web-Development.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'Full-Stack Web Development and Stacks',
+        description: 'What building both ends of a web app involves, and how to choose a stack. Compares MEAN and MERN, the T3 stack, Next.js on its own, and Firebase and Supabase as of 2026, then covers Core Web Vitals, caching and capstone project ideas.',
+        image: '/images/full-stack-cover.webp',
+        tags: ['Full Stack', 'Next.js', 'Firebase', 'Supabase'],
+        codeUrl: 'https://github.com/ImmuneMoon/Full-Stack-Web-Development-and-Stacks',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Full-Stack-Web-Development-and-Stacks/raw/main/Full-Stack-Web-Development-and-Stacks.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'Computer Science Fundamentals',
+        description: 'The computer science working developers actually use, with lectures and videos for each topic: data structures and algorithms with JavaScript and Python equivalents, Big O, recursion, the math that matters, design patterns and where to go next. Led by Harvard\'s CS50 and NeetCode\'s roadmap.',
+        image: '/images/cs-fundamentals-cover.webp',
+        tags: ['Data Structures', 'Algorithms', 'Big O', 'CS50'],
+        codeUrl: 'https://github.com/ImmuneMoon/Computer-Science-Fundamentals',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Computer-Science-Fundamentals/raw/main/Computer-Science-Fundamentals.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'Learning How to Learn Programming',
+        description: 'One practical method for studying code: plan, learn, build, review. Covers research-backed techniques like active recall, spacing and interleaving, the Feynman technique, getting out of tutorial hell by building things, notes, motivation, wellbeing and books.',
+        image: '/images/learning-to-learn-cover.webp',
+        tags: ['Study Skills', 'Active Recall', 'Spaced Repetition', 'Documentation'],
+        codeUrl: 'https://github.com/ImmuneMoon/Learning-How-to-Learn-Programming',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Learning-How-to-Learn-Programming/raw/main/Learning-How-to-Learn-Programming.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'Learn Game Development',
+        description: 'A starting point for making your first games: Harvard\'s CS50 game course and freeCodeCamp tutorials, an engine comparison of Godot, GameMaker, Unity, Unreal, Pygame and building from scratch with licensing and pricing, then art and free assets, performance, game jams and publishing.',
+        image: '/images/game-dev-cover.webp',
+        tags: ['Godot', 'GameMaker', 'Unity', 'Unreal Engine', 'Pygame'],
+        codeUrl: 'https://github.com/ImmuneMoon/Learn-Game-Development',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Learn-Game-Development/raw/main/Learn-Game-Development.pdf',
+        demoButtonText: 'Download PDF'
+      },
+    ],
+  },
+  {
+    name: 'Careers & Community',
+    guides: [
+      {
+        name: 'Coding Practice and Interview Prep',
+        description: 'Sharpen your coding skills and get ready for developer interviews: practice sites compared, with what\'s free in 2026, LeetCode, NeetCode and Cracking the Coding Interview, a study plan, solving problems out loud, and technical and behavioral interview prep.',
+        image: '/images/interview-prep-cover.webp',
+        tags: ['LeetCode', 'NeetCode', 'Algorithms', 'Interview Prep'],
+        codeUrl: 'https://github.com/ImmuneMoon/Coding-Practice-and-Interview-Prep',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Coding-Practice-and-Interview-Prep/raw/main/Coding-Practice-and-Interview-Prep.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'Web Developer Careers and Freelancing',
+        description: 'Turning the basics into paid work: what employers expect from a junior web developer now, projects that show real skill, building a portfolio site and GitHub profile, resumes, job searching, interviews, raises and freelancing basics.',
+        image: '/images/web-careers-cover.webp',
+        tags: ['Portfolio', 'Resume', 'Interview Prep', 'Freelancing'],
+        codeUrl: 'https://github.com/ImmuneMoon/Web-Developer-Careers-Portfolio-and-Freelancing',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Web-Developer-Careers-Portfolio-and-Freelancing/raw/main/Web-Developer-Careers-Portfolio-and-Freelancing.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'Open Source and Developer Communities',
+        description: 'Learning to code alongside other people: finding a beginner-friendly project and issue, your first contribution step by step from fork to pull request with Git and the GitHub CLI, developer communities, asking good questions, and using AI coding tools responsibly.',
+        image: '/images/open-source-cover.webp',
+        tags: ['Open Source', 'Git', 'GitHub', 'Pull Requests'],
+        codeUrl: 'https://github.com/ImmuneMoon/Open-Source-and-Developer-Communities',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Open-Source-and-Developer-Communities/raw/main/Open-Source-and-Developer-Communities.pdf',
+        demoButtonText: 'Download PDF'
+      },
+    ],
+  },
+  {
+    name: 'Security & Privacy',
+    guides: [
+      {
+        name: 'DNS Rebinding and the NVIDIA App MCP Server',
+        description: 'A security write-up on how DNS rebinding threatens local MCP servers like the one in the NVIDIA App, why CORS does not stop it, and how Host and Origin header checks do. Separates what is confirmed from what is only reported, and shows how to check your own PC. No testing was done against the app.',
+        image: '/images/dns-rebinding-mcp-cover.webp',
+        tags: ['Web Security', 'DNS Rebinding', 'MCP', 'CORS', 'Technical Writing'],
+        codeUrl: 'https://github.com/ImmuneMoon/NVIDIA-App-MCP-DNS-Rebinding-Writeup',
+        codeButtonText: 'Read Write-up',
+        demoUrl: 'https://github.com/ImmuneMoon/NVIDIA-App-MCP-DNS-Rebinding-Writeup/raw/main/NVIDIA-App-MCP-DNS-Rebinding-Writeup.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'PC Network Activity and RAT Check',
+        description: 'See what your Windows PC looks up and connects to, with tools already in Windows plus Microsoft\'s free TCPView. Explains how remote access trojans hide behind normal Windows programs, how to look up an address you don\'t recognize, and how to make script attacks harder.',
+        image: '/images/network-rat-check-cover.webp',
+        tags: ['Windows', 'Network Forensics', 'TCPView', 'PowerShell', 'Security'],
+        codeUrl: 'https://github.com/ImmuneMoon/PC-Network-Activity-and-RAT-Check',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/PC-Network-Activity-and-RAT-Check/raw/main/PC-Network-Activity-and-RAT-Check.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'Windows Malware Removal',
+        description: 'Clean malware off a Windows PC: what to do first, Microsoft\'s free scanners and the Tron script in the right order, when it\'s better to reinstall, and securing your accounts afterward. Adds the steps a popular video leaves out, like backing up first and what Tron changes on your PC.',
+        image: '/images/malware-removal-cover.webp',
+        tags: ['Windows', 'Malware', 'Microsoft Defender', 'Tron', 'Security'],
+        codeUrl: 'https://github.com/ImmuneMoon/Windows-Malware-Removal-Guide',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Windows-Malware-Removal-Guide/raw/main/Windows-Malware-Removal-Guide.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'iPhone Messages and AI Privacy',
+        description: 'What Siri, Apple Intelligence and the ChatGPT extension can see of your messages, and the iCloud backup setting that matters most. Covers Advanced Data Protection and how iPhone and Android messages compare, all from Apple\'s own documentation.',
+        image: '/images/iphone-privacy-cover.webp',
+        tags: ['iPhone', 'Apple Intelligence', 'iCloud', 'Advanced Data Protection', 'Privacy'],
+        codeUrl: 'https://github.com/ImmuneMoon/iPhone-Messages-AI-Privacy',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/iPhone-Messages-AI-Privacy/raw/main/iPhone-Messages-AI-Privacy.pdf',
+        demoButtonText: 'Download PDF'
+      },
+      {
+        name: 'Gemini and Your Android Messages',
+        description: 'What Google\'s Gemini can and can\'t do with your Phone, Messages and WhatsApp, why turning off Gemini Apps Activity doesn\'t stop it, the settings that actually control it, and which of your conversations are end-to-end encrypted.',
+        image: '/images/android-privacy-cover.webp',
+        tags: ['Android', 'Gemini', 'Google Messages', 'Privacy'],
+        codeUrl: 'https://github.com/ImmuneMoon/Android-Gemini-Messages-Privacy',
+        codeButtonText: 'Read Guide',
+        demoUrl: 'https://github.com/ImmuneMoon/Android-Gemini-Messages-Privacy/raw/main/Android-Gemini-Messages-Privacy.pdf',
+        demoButtonText: 'Download PDF'
+      },
+    ],
+  },
+  {
+    name: 'Install & Set Up',
     guides: [
       {
         name: 'Windows Install Guide',
@@ -92,7 +261,7 @@ const guideGroups: { name: string; guides: Project[] }[] = [
     ],
   },
   {
-    name: 'Move and Upgrade',
+    name: 'Move & Upgrade',
     guides: [
       {
         name: 'Windows Migration and System Hardening',
@@ -127,18 +296,8 @@ const guideGroups: { name: string; guides: Project[] }[] = [
     ],
   },
   {
-    name: 'Troubleshooting, Repair & Security',
+    name: 'Troubleshooting & Repair',
     guides: [
-      {
-        name: 'DNS Rebinding and the NVIDIA App MCP Server',
-        description: 'A security write-up on how DNS rebinding threatens local MCP servers like the one in the NVIDIA App, why CORS does not stop it, and how Host and Origin header checks do. Separates what is confirmed from what is only reported, and shows how to check your own PC. No testing was done against the app.',
-        image: '/images/dns-rebinding-mcp-cover.webp',
-        tags: ['Web Security', 'DNS Rebinding', 'MCP', 'CORS', 'Technical Writing'],
-        codeUrl: 'https://github.com/ImmuneMoon/NVIDIA-App-MCP-DNS-Rebinding-Writeup',
-        codeButtonText: 'Read Write-up',
-        demoUrl: 'https://github.com/ImmuneMoon/NVIDIA-App-MCP-DNS-Rebinding-Writeup/raw/main/NVIDIA-App-MCP-DNS-Rebinding-Writeup.pdf',
-        demoButtonText: 'Download PDF'
-      },
       {
         name: 'Windows System Repair Guide',
         description: 'Step-by-step guide to repairing corrupted or missing Windows system files with DISM, SFC, and CHKDSK, run in the right order so each tool can do its job.',
@@ -226,18 +385,24 @@ export function GuidesSection() {
                     <h3 className="font-headline text-xl font-bold whitespace-nowrap text-primary/80">{group.name}</h3>
                     <div className="h-px w-full bg-primary/10" />
                   </div>
-                  <div data-reveal-group="" className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                    {group.guides.map((guide) => {
-                      const index = cardIndex++;
-                      return (
-                        // Cards past the first row are clipped while collapsed, so keep them out of
-                        // the tab order and away from screen readers until the list is expanded.
-                        <div key={guide.name} data-guide="" className="h-full" inert={!isOpen && hasMore && index >= rowOneCount}>
-                          <ProjectCard project={guide} />
-                        </div>
-                      );
-                    })}
-                  </div>
+                  {(() => {
+                    // Guides past the first row are clipped while the section is collapsed, so
+                    // keep them out of the tab order and away from screen readers until it opens.
+                    const start = cardIndex;
+                    cardIndex += group.guides.length;
+                    const rowInert = (i: number) => !isOpen && hasMore && start + i >= rowOneCount;
+                    return group.featured ? (
+                      <div data-reveal-group="" className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                        {group.guides.map((guide, i) => (
+                          <div key={guide.name} data-guide="" className="h-full" inert={rowInert(i)}>
+                            <ProjectCard project={guide} />
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <GuideGroup guides={group.guides} rowInert={rowInert} />
+                    );
+                  })()}
                 </div>
               ))}
             </div>
